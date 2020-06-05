@@ -333,6 +333,7 @@ footer {
 	background-color: #303030;
 	border-top: 1px solid #ddd;
 	color: #e2e2e2;
+	display: none;
 }
 footer hr {
 	border-top: none;
