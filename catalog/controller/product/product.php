@@ -12,6 +12,7 @@ class ControllerProductProduct extends Controller {
 			'href' => $this->url->link('common/home')
 		);
 
+
 		$this->load->model('catalog/category');
 
 		if (isset($this->request->get['path'])) {

@@ -880,7 +880,7 @@ h2.price {
 	   background: none;
 	   border-radius: 30px;
 	   font-size: 50px;
-	   top: 9px;
+	   top: 37px;
    }
 
    .add{
@@ -891,7 +891,7 @@ h2.price {
 	 background: none;
 	 border-radius: 30px;
 	 font-size: 50px;
-	 top: 9px;
+	 top: 37px;
    }
 
    .add,.minus:hover {
@@ -900,6 +900,12 @@ h2.price {
 	outline-offset: 80px;
 	text-shadow: 1px 1px 6px #fff;
 
+  }
+  .order{
+
+	background-color: #ff7c00 !important;
+	border-radius: 40px;
+	margin-top: 5px;
   }
 
 
@@ -922,8 +928,8 @@ h2.price {
 
    .subrayado  {
 	border: none;
-	border-bottom: 1px solid #3a3a3a;
-	padding-bottom: 5px;
+	border-bottom: 2px solid #f7f7f7;
+	padding-bottom: 5px; 
 	margin-top: 0px;
 	font-size: 14px;
 	width: 100%;
@@ -937,5 +943,8 @@ select option {
 	background: rgb(0, 0, 0);
 	color: #fff;
 	text-shadow: 0 1px 0 rgb(0, 0, 0);
+	}
+	.h1_tam{
+		font-size :18px;
 	}
   

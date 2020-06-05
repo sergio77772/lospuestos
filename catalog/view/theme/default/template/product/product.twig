@@ -120,8 +120,9 @@
             <button type="button" data-toggle="tooltip" class="btn btn-default" title="{{ button_wishlist }}" onclick="wishlist.add('{{ product_id }}');"><i class="fa fa-heart"></i></button>
             <button type="button" data-toggle="tooltip" class="btn btn-default" title="{{ button_compare }}" onclick="compare.add('{{ product_id }}');"><i class="fa fa-exchange"></i></button>
           </div>
-          <h1>{{ heading_title }}</h1>
-          <ul class="list-unstyled">
+           <h3 class="h1_tam">ESTA ORDENANDO</h3>
+          <h1 class="subrayado">{{ heading_title }}</h1>
+          <ul class="list-unstyled deleted">
             {% if manufacturer %}
             <li>{{ text_manufacturer }} <a href="{{ manufacturers }}">{{ manufacturer }}</a></li>
             {% endif %}
@@ -144,7 +145,8 @@
             </li>
             {% endif %}
             {% if tax %}
-            <li>{{ text_tax }} {{ tax }}</li>
+            {# <li class="">{{ text_tax }} {{ tax }}</li> #}
+              <li class=""> *Precio por unidad</li> 
             {% endif %}
             {% if points %}
             <li>{{ text_points }} {{ points }}</li>
@@ -160,7 +162,6 @@
           </ul>
           {% endif %}
           <div id="product"> {% if options %}
-            <hr>
             <h3>{{ text_option }}</h3>
             {% for option in options %}
             {% if option.type == 'select' %}
@@ -284,7 +285,9 @@
         <br /><br />
               <input type="hidden" name="product_id" value="{{ product_id }}" />
               <br />
-              <button type="button" id="button-cart" data-loading-text="{{ text_loading }}" class="btn btn-primary btn-lg btn-block">{{ button_cart }}</button>
+              <button type="button" id="button-cart" data-loading-text="{{ text_loading }}" class="btn  btn-lg btn-block order">{{ button_cart }}</button>
+              <a href="http://lospuestosjujuy.local/index.php?route=checkout/checkout"><button type="button" id="button-finish" style="display:none" data-loading-text="Finalizar pedido" class="btn  btn-lg btn-block order">Finalizar pedido</button></a>
+
             </div>
             {% if minimum > 1 %}
             <div class="alert alert-info"><i class="fa fa-info-circle"></i> {{ text_minimum }}</div>
@@ -383,6 +386,8 @@ $('select[name=\'recurring_id\'], input[name="quantity"]').change(function(){
 
 <script type="text/javascript"><!--
 $('#button-cart').on('click', function() {
+
+
 	$.ajax({
 		url: 'index.php?route=checkout/cart/add',
 		type: 'post',
@@ -420,6 +425,7 @@ $('#button-cart').on('click', function() {
 			}
 
 			if (json['success']) {
+       
 				$('.breadcrumb').after('<div class="alert alert-success alert-dismissible">' + json['success'] + '<button type="button" class="close" data-dismiss="alert">&times;</button></div>');
 
 				$('#cart > button').html('<span id="cart-total"><i class="fa fa-cutlery"></i> ' + json['total'] + '</span>');
@@ -427,6 +433,43 @@ $('#button-cart').on('click', function() {
 				$('html, body').animate({ scrollTop: 0 }, 'slow');
 
 				$('#cart > ul').load('index.php?route=common/cart/info ul li');
+
+       const swalWithBootstrapButtons = Swal.mixin({
+  customClass: {
+    confirmButton: 'btn btn-success',
+    cancelButton: 'btn btn-danger'
+  },
+  buttonsStyling: false
+})
+
+swalWithBootstrapButtons.fire({
+  title: 'Desea Agregar una Bebida?',
+  text: "texto de prueba",
+  icon: 'warning',
+  showCancelButton: true,
+  confirmButtonText: 'Si ir a bebidas !',
+  cancelButtonText: 'No, Pagar!',
+  reverseButtons: true
+}).then((result) => {
+  if (result.value) {
+    swalWithBootstrapButtons.fire(
+      'Deleted!',
+      'Your file has been deleted.',
+      'success'
+    )
+  } else if (
+    /* Read more about handling dismissals below */
+    result.dismiss === Swal.DismissReason.cancel
+  ) {
+    swalWithBootstrapButtons.fire(
+      'Cancelled',
+      'Your imaginary file is safe :)',
+      'error'
+    )
+  }
+})
+       $('#button-finish').show();
+
 			}
 		},
         error: function(xhr, ajaxOptions, thrownError) {
