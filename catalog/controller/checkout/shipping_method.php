@@ -18,8 +18,13 @@ class ControllerCheckoutShippingMethod extends Controller {
 					$quote = $this->{'model_extension_shipping_' . $result['code']}->getQuote($this->session->data['shipping_address']);
 
 					if ($quote) {
+                         
+                          foreach ($quote['quote'] as $key => $value) {
+							$quote['quote'][$key]['title']=preg_replace("/\((.*?)\)/i", "", $value['title']);
+						  }
+
 						$method_data[$result['code']] = array(
-							'title'      => $quote['title'],
+							'title'      => 'Metodo de Envio',
 							'quote'      => $quote['quote'],
 							'sort_order' => $quote['sort_order'],
 							'error'      => $quote['error']
