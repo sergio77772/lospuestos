@@ -7,7 +7,7 @@ $moduleVersion = $mp_util->getModuleVersion();
 
 // Heading
 $_['heading_title'] = 'Mercado Pago - Básico' . ' (v' .$moduleVersion . ')';
-$_['text_mp_standard'] = '<a onclick="window.open(\'https://www.mercadopago.com\');" target="_blank"><img src="view/image/payment/mp_standard.png" alt="Mercado Pago" title="Mercado Pago" style="border: 1px solid #EEEEEE;" /></a> <br /><b> Checkout Básico</b>';
+$_['text_mp_standard'] = '<a onclick="window.open(\'https://www.mercadopago.com\');" target="_blank"><img src="view/image/payment/mp_standard.png" alt="Mercado Pago2" title="Mercado Pago" style="border: 1px solid #EEEEEE;" /></a> <br /><b> Checkout Básico</b>';
 
 // Other translations
 $_['text_edit'] = 'Edit';
