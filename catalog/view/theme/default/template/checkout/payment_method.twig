@@ -5,7 +5,7 @@
 <p>{{ text_payment_method }}</p>
 {% for payment_method in payment_methods %}
 <div class="radio">
-  <label>{% if payment_method.code == code or not code %}
+  <label class="black">{% if payment_method.code == code or not code %}
     {% set code = payment_method.code %}
     <input type="radio" name="payment_method" value="{{ payment_method.code }}" checked="checked" />
     {% else %}
@@ -18,9 +18,9 @@
 </div>
 {% endfor %}
 {% endif %}
-<p><strong>{{ text_comments }}</strong></p>
+
 <p>
-  <textarea name="comment" rows="8" class="form-control">{{ comment }}</textarea>
+  <textarea readonly name="comment" id="comment2" class="form-control subrayado" >{{ comment }}</textarea>
 </p>
 {% if text_agree %}
 <div class="buttons">
@@ -31,7 +31,7 @@
     <input type="checkbox" name="agree" value="1" />
     {% endif %}
     &nbsp;
-    <input type="button" value="{{ button_continue }}" id="button-payment-method" data-loading-text="{{ text_loading }}" class="btn btn-primary" />
+    <input type="button" value="{{ button_continue }}" id="button-payment-method" data-loading-text="{{ text_loading }}" class="btn btn order" />
   </div>
 </div>
 {% else %}
@@ -41,3 +41,59 @@
   </div>
 </div>
 {% endif %} 
+
+<script type="text/javascript">
+	$(document).ready(function()
+		{
+       let  coment=$("#comment2").val();
+       let check=$('input:radio[name=shipping_method]:checked').val()
+            console.log(check);
+            if (check=="weight.weight_7")
+            {
+              $("#comment2").val(" Punto de Referencia :" +coment);
+              $("input[value='cod']").css('display','none');
+             $('.black').css("color" , "aliceblue");
+            }
+               if (check=="weight.weight_5")
+            {
+              $("#comment2").val(" Mesa N° :" +coment);
+            }
+
+                if (check=="weight.weight_6")
+            {
+              $("#comment2").val(" Hora Estimada :" +coment); 
+              $("input[value='cod']").css('display','none');
+              $('.black').css("color" , "aliceblue");
+
+
+            }
+
+
+
+	/*	$('.radio').click(function () {
+            let check=$('input:radio[name=shipping_method]:checked').val()
+            console.log(check);
+            if (check=="weight.weight_5")
+            {
+              document.getElementById('lblcomentario').innerHTML = "N° de Mesa";
+              $("#comment").attr("placeholder", "ingrese el numero de mesa");
+            }
+
+           if (check=="weight.weight_7")
+            {
+              document.getElementById('lblcomentario').innerHTML = "Punto de Referencia";
+              $("#comment").attr("placeholder", "*referencia para el delivery");
+            }
+            
+             if (check=="weight.weight_6")
+            {
+              document.getElementById('lblcomentario').innerHTML = "Hora Estimada";
+              $("#comment").attr("placeholder", "--:--");
+            }
+
+            //document.getElementById('price').innerHTML = $(this).val();
+
+       });*/
+    
+    });
+</script>

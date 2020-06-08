@@ -1,6 +1,6 @@
 <?php
 // Heading
-$_['heading_title']      = 'Pago al Entregar';
+$_['heading_title']      = 'Pago En Efectivo';//
 
 // Text
 $_['text_extension']     = 'Extensiones';
