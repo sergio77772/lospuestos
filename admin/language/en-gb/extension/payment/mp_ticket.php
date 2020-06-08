@@ -11,7 +11,7 @@ $_['heading_title'] = 'Mercado Pago - Ticket Checkout' . ' (v' .$moduleVersion .
 // Text
 $_['text_payment'] = 'Payment';
 $_['text_success'] = 'Success, your modifications are done!';
-$_['text_mp_ticket'] = '<a onclick="window.open(\'https://www.mercadopago.com\');" target="_blank"><img src="view/image/payment/mp_ticket.png" alt="Mercadopago" title="Mercadopago" style="border: 1px solid #EEEEEE;" /></a> <br /><b> Ticket Checkout</b>';
+$_['text_mp_ticket'] = '<a onclick="window.open(\'https://www.mercadopago.com\');" target="_blank"><img src="view/image/payment/mp_ticket.png" alt="Mercadopago" title="Mercadopago" style="border: 1px solid #EEEEEE; max-width:79px;" /></a> <br /><b> Ticket Checkout</b>';
 $_['text_argentina'] = 'Argentina';
 $_['text_brasil'] = 'Brasil';
 $_['text_colombia'] = 'Colombia';
