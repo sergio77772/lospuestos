@@ -965,3 +965,7 @@ select option {
 		background-color: white;
 		color: black;
 	}
+
+	.nowra{
+    white-space:normal !important;
+	}
