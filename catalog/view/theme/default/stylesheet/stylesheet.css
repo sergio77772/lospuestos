@@ -969,3 +969,16 @@ select option {
 	.nowra{
     white-space:normal !important;
 	}
+
+	.modal-content {
+		background-color:#000;
+	}
+
+	.float{
+		position: absolute;
+		margin-top: 360px;
+		margin-left: -7px;
+	}
+	.modal{
+		z-index: 99999999;
+	}
