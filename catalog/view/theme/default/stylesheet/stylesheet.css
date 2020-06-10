@@ -1001,9 +1001,9 @@ select option {
 
 	.float {
 		position: absolute;
-		margin-top: 72%;
-		margin-left: 11%;
-		width: 74%;
+		margin-top: 71%;
+		margin-left: 18%;
+		width: 72%;
 	}
 
 
@@ -1037,15 +1037,14 @@ select option {
 		margin-left: 112px;
 	} */
 
-	.campana
-	{
+	.campana{
 		z-index: 99;
 		position: absolute;
 		left: 40px;
 		top: 40px;
 		max-width: 100px;
-		margin-top: 84%;
-		margin-left: 25%;
+		margin-top: 93%;
+		margin-left: 29%;
 	}
 
 
@@ -1110,4 +1109,11 @@ select option {
 	  .change .bar3 {
 		-webkit-transform: rotate(45deg) translate(-8px, -8px);
 		transform: rotate(45deg) translate(-8px, -8px);
+	  }
+
+
+	  .modal-body
+	  {
+		padding:0px! important;
+		margin-left:-17px !important;
 	  }
