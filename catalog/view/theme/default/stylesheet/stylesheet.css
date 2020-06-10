@@ -901,8 +901,16 @@ h2.price {
 	outline-color: rgba(49, 138, 172, 0);
 	outline-offset: 80px;
 	text-shadow: 1px 1px 6px #fff;
+	outline: 0;
 
   }
+
+
+  .add ,.minus:focus {
+	outline:none;
+	box-shadow: none;
+  }
+
   .order{
 
 	background-color: #ff7c00 !important;
