@@ -17,17 +17,18 @@
       {# <h1>{{ heading_title }}</h1>
       {{ text_message }} #}
 
-<section class="responsive gracias">
-	<div class="col-xs-12">
+<section class="responsive">
+	<div class="col-xs-12"style="
+    text-align: center;" >
 		<p class=" iconFont icon-like gracias">Gracias por elegirnos</p>
-    <img src="../image/gracias.png">
-
+    <img class ="gracias" src="../image/gracias.png">
+{{ text_message }}
 	</div>
 </section>
 
 
       <div class="buttons">
-        <div class="pull-right"><a href="{{ continue }}" class="btn btn">{{ button_continue }}</a></div>
+        <div class="pull-right"><a href="{{ continue }}" class="btn btn order">{{ button_continue }}</a></div>
       </div>
       {{ content_bottom }}</div>
     {{ column_right }}</div>

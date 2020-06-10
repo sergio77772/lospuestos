@@ -1,5 +1,17 @@
+<style>
+table,  td {
+    border: hidden !important;
+}
+</style>
+
 {% if not redirect %}
-<div class="table-responsive" style="white-space: normal;" >
+<div class="table-responsive " style="white-space: normal;" >
+<div style="text-align: center;" >
+<img src="../image/logo.png"><img>
+<br>
+<p class="subrayado">TICKET DE COMPRA.</p>
+
+<div>
   <table class="table table-bordered table-hover">
     <thead>
       <tr style="display:none;">
@@ -14,8 +26,8 @@
     
     {% for product in products %}
     <tr>
-      <td class="text-right nowra">{{ product.quantity }}</td>
-      <td class="text-left"><a href="{{ product.href }}">{{ product.name }}</a> {% for option in product.option %} <br />
+      <td class="text-right nowra">{{ product.quantity }} </td>
+      <td class="text-left"><a href="{{ product.href }}">X   {{ product.name }}</a> {% for option in product.option %} <br />
         &nbsp;<small> - {{ option.name }}: {{ option.value }}</small> {% endfor %}
         {% if product.recurring %} <br />
         <span class="label label-info">{{ text_recurring_item }}</span> <small>{{ product.recurring }}</small> {% endif %}</td>

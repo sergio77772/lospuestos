@@ -444,28 +444,25 @@ $('#button-cart').on('click', function() {
 
 swalWithBootstrapButtons.fire({
   title: 'Desea Agregar una Bebida?',
-  text: "texto de prueba",
+  text: "",
   icon: 'warning',
   showCancelButton: true,
-  confirmButtonText: 'Si ir a bebidas !',
-  cancelButtonText: 'No, Pagar!',
+  confirmButtonText: 'Si',
+  cancelButtonText: 'No',
   reverseButtons: true
 }).then((result) => {
   if (result.value) {
-    swalWithBootstrapButtons.fire(
-      'Deleted!',
-      'Your file has been deleted.',
-      'success'
-    )
+ 
+   window.location.replace("../index.php?route=product/category&path=34");
   } else if (
     /* Read more about handling dismissals below */
     result.dismiss === Swal.DismissReason.cancel
   ) {
-    swalWithBootstrapButtons.fire(
+    /*swalWithBootstrapButtons.fire(
       'Cancelled',
       'Your imaginary file is safe :)',
       'error'
-    )
+    )*/
   }
 })
        $('#button-finish').show();
