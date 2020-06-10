@@ -26,7 +26,7 @@
             <h2>{{ text_new_customer }}</h2>
             <p><strong>{{ text_register }}</strong></p>
             <p>{{ text_register_account }}</p>
-            <a href="{{ register }}" class="btn btn-primary">{{ button_continue }}</a></div>
+            <a href="{{ register }}" class="btn btn order">{{ button_continue }}</a></div>
         </div>
         <div class="col-sm-6">
           <div class="well">
@@ -41,7 +41,7 @@
                 <label class="control-label" for="input-password">{{ entry_password }}</label>
                 <input type="password" name="password" value="{{ password }}" placeholder="{{ entry_password }}" id="input-password" class="form-control" />
                 <a href="{{ forgotten }}">{{ text_forgotten }}</a></div>
-              <input type="submit" value="{{ button_login }}" class="btn btn-primary" />
+              <input type="submit" value="{{ button_login }}" class="btn btn order" />
               {% if redirect %}
               <input type="hidden" name="redirect" value="{{ redirect }}" />
               {% endif %}
