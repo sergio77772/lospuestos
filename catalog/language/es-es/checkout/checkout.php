@@ -4,7 +4,7 @@ $_['heading_title']                  = 'Pagar';
 
 // Text
 $_['text_cart']                      = 'Carro de Compras';
-$_['text_checkout_option']           = 'Paso %s: Opciones de Pago';
+$_['text_checkout_option']           = "Opciones de Pago"; //'Paso %s: Opciones de Pago';
 $_['text_checkout_account']          = 'Paso %s: Cuenta y Detalles de Facturación';
 $_['text_checkout_payment_address']  = 'Paso %s: Detalles de Facturación';
 $_['text_checkout_shipping_address'] = 'Paso %s: Detalles de Entrega ';

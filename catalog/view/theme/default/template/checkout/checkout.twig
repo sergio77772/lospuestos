@@ -22,7 +22,7 @@
       <h1>{{ heading_title }}</h1>
       <div class="panel-group" id="accordion">
         <div class="panel panel-default">
-          <div class="panel-heading">
+          <div class="panel-heading paso1 deleted">{# paso 1 #} 
             <h4 class="panel-title">{{ text_checkout_option }}</h4>
           </div>
           <div class="panel-collapse collapse" id="collapse-checkout-option">
@@ -39,7 +39,7 @@
           </div>
         </div>
         {% else %}
-        <div class="panel panel-default">
+        <div class="panel panel-default paso2">
           <div class="panel-heading">
             <h4 class="panel-title">{{ text_checkout_payment_address }}</h4>
           </div>
@@ -49,7 +49,7 @@
         </div>
         {% endif %}
         {% if shipping_required %}
-        <div class="panel panel-default">
+        <div class="panel panel-default paso3">
           <div class="panel-heading">
             <h4 class="panel-title">{{ text_checkout_shipping_address }}</h4>
           </div>
@@ -88,6 +88,7 @@
 </div>
 <script type="text/javascript"><!--
 $(document).on('change', 'input[name=\'account\']', function() {
+    console.log("y ahora ?")
 	if ($('#collapse-payment-address').parent().find('.panel-heading .panel-title > *').is('a')) {
 		if (this.value == 'register') {
 			$('#collapse-payment-address').parent().find('.panel-heading .panel-title').html('<a href="#collapse-payment-address" data-toggle="collapse" data-parent="#accordion" class="accordion-toggle">{{ text_checkout_account }} <i class="fa fa-caret-down"></i></a>');
@@ -105,8 +106,10 @@ $(document).on('change', 'input[name=\'account\']', function() {
 
 {% if not logged %}
 $(document).ready(function() {
+//$(".paso1").css("display", "none");
     $.ajax({
         url: 'index.php?route=checkout/login',
+
         dataType: 'html',
         success: function(html) {
            $('#collapse-checkout-option .panel-body').html(html);
@@ -114,11 +117,39 @@ $(document).ready(function() {
 			$('#collapse-checkout-option').parent().find('.panel-heading .panel-title').html('<a href="#collapse-checkout-option" data-toggle="collapse" data-parent="#accordion" class="accordion-toggle">{{ text_checkout_option }} <i class="fa fa-caret-down"></i></a>');
 
 			$('a[href=\'#collapse-checkout-option\']').trigger('click');
+ //////////////////////////////////////////
+            $('#button-account').trigger('click'); //
+            
+          //  $(".paso1").css("display", "none");
+ /////////////////////////////////////////////
         },
         error: function(xhr, ajaxOptions, thrownError) {
             alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
         }
     });
+
+// si no estoy logeado mando esto ();
+let timerId = setInterval(() => console.log('tick'), 3000);
+
+
+setTimeout(() => { clearInterval(timerId); ; 
+$(".paso2").css("display", "none");
+$(".paso3").css("display", "none"); 
+
+$("#input-payment-firstname").val('Consumidor');
+$("#input-payment-lastname").val('Final');
+$("#input-payment-email").val('sergio77772@gmail.com');
+$("#input-payment-telephone").val('0388');
+$("#input-payment-address-1").val('local');
+$("#input-payment-city").val('JUJUY');
+$("#input-payment-postcode").val('4600');
+$("#input-payment-zone").val(165);
+$('#button-guest').trigger('click')
+}, 3000);
+
+
+
+
 });
 {% else %}
 $(document).ready(function() {
@@ -526,7 +557,7 @@ $(document).delegate('#button-shipping-address', 'click', function() {
         }
     });
 });
-
+  ///paso 2 ---->
 // Guest
 $(document).delegate('#button-guest', 'click', function() {
     $.ajax({
@@ -563,6 +594,7 @@ $(document).delegate('#button-guest', 'click', function() {
 				// Highlight any found errors
 				$('.text-danger').parent().addClass('has-error');
             } else {
+               
                 {% if shipping_required %}
                 var shipping_address = $('#collapse-payment-address input[name=\'shipping_address\']:checked').prop('value');
 
@@ -704,6 +736,7 @@ $(document).delegate('#button-guest-shipping', 'click', function() {
 
 						$('#collapse-payment-method').parent().find('.panel-heading .panel-title').html('{{ text_checkout_payment_method }}');
 						$('#collapse-checkout-confirm').parent().find('.panel-heading .panel-title').html('{{ text_checkout_confirm }}');
+                
                     },
                     error: function(xhr, ajaxOptions, thrownError) {
                         alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);

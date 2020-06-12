@@ -22,10 +22,24 @@
 {% endif %}
 {% endfor %}
 {% endif %}
+<p id="lbldireccion" name="lbldireccion" class="direccion"><strong>Direccion:</strong></p>
+
+<input name="new_direccion" id="new_direccion" class="form-control subrayado" placeholder="ingrese la direccion de entrega"></input>
+
 <p id="lblcomentario" name="lblcomentario" class="comentarios"><strong>Punto de Referencia</strong></p>
 <p>
   <textarea name="comment" id="comment"  class="form-control subrayado">{{ comment }}</textarea>
 </p>
+
+<p id="lblcorreo" name="lblcorreo" class="direccion"><strong>E-Mail:</strong></p>
+
+<input  type ="email" name="new_correo" id="new_correo" class="form-control subrayado" placeholder="Correo electronico"></input>
+
+<p id="lbltelefono" name="lbltelefono" class="direccion"><strong>Telefono:</strong></p>
+
+<input  type ="text" name="new_tel" id="new_tel" class="form-control subrayado" placeholder="telefono"></input>
+
+
 <div class="buttons">
   <div class="pull-right">
     <input type="button" value="{{ button_continue }}" id="button-shipping-method" data-loading-text="{{ text_loading }}" class="btn btn order" />
@@ -41,12 +55,25 @@
             {
               document.getElementById('lblcomentario').innerHTML = "N° de Mesa";
               $("#comment").attr("placeholder", "ingrese el numero de mesa");
+              $("#lbldireccion").hide();
+              $("#new_direccion").hide();
+              $("#lblcorreo").hide();
+              $("#new_correo").hide();
+              $("#lbltelefono").hide();
+              $("#new_tel").hide();
             }
 
            if (check=="weight.weight_7")
             {
               document.getElementById('lblcomentario').innerHTML = "Punto de Referencia";
               $("#comment").attr("placeholder", "*referencia para el delivery");
+              $("#comment").attr("placeholder", "ingrese el numero de mesa");
+              $("#lbldireccion").show();
+              $("#new_direccion").show();
+              $("#lblcorreo").show();
+              $("#new_correo").show();
+              $("#lbltelefono").show();
+              $("#new_tel").show();
             }
             
              if (check=="weight.weight_6")
