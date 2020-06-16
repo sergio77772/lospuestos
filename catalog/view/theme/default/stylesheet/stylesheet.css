@@ -1001,11 +1001,17 @@ select option {
 
 	.float {
 		position: absolute;
-		margin-top: 71%;
-		margin-left: 18%;
-		width: 72%;
-	}
+		margin-top: 82%;
+		margin-left: 55%;
+		width: 71%;
+		transform: translate(-50%, -50%);
+		-ms-transform: translate(-50%, -50%);
+		padding: 12p
 
+	}
+	.social .float:hover {
+		background-color: black;
+	  }
 
 	.modal{
 		z-index: 99999999;
@@ -1023,6 +1029,7 @@ select option {
 		/* margin-bottom: 75px; */
 		/* padding-bottom: 70px; */
 		margin-top: -71px;
+		position: relative;
 	}
 	
 
