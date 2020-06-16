@@ -46,17 +46,7 @@
 </div>
 {{ footer }}
 <script>
-    setTimeout(function(){
-     document.getElementById('video1').play();
- },1000);
-
-document.getElementById('video1').addEventListener('ended',myHandler,false);
-    function myHandler(e) {
-        if(!e) { e = window.event; }
-		$("#video1").css("display", "none");
-    $(".social").css("display", "block");
-	
-    }
+    
 
     $( "#button-menu" ).click(function() {
   $('#modal-agree').hide();
