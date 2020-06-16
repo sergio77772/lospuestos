@@ -1117,3 +1117,13 @@ select option {
 		padding:0px! important;
 		margin-left:-17px !important;
 	  }
+
+	  .modal-header
+	  {
+		border-bottom:none
+	  }
+
+	  .modal-header .close
+	  {
+		  display: none;
+	  }
