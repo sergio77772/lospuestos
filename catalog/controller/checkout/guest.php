@@ -335,10 +335,10 @@ class ControllerCheckoutGuest extends Controller {
 				}
 			}
 
-			unset($this->session->data['shipping_method']);
-			unset($this->session->data['shipping_methods']);
-			unset($this->session->data['payment_method']);
-			unset($this->session->data['payment_methods']);
+			// unset($this->session->data['shipping_method']);
+			// unset($this->session->data['shipping_methods']);
+			// unset($this->session->data['payment_method']);
+			// unset($this->session->data['payment_methods']);
 		}
 
 		$this->response->addHeader('Content-Type: application/json');

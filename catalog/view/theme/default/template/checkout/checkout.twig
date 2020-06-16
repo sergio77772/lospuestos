@@ -57,7 +57,7 @@
             <div class="panel-body"></div>
           </div>
         </div>
-        <div class="panel panel-default">
+        <div class="panel panel-default paso4">
           <div class="panel-heading">
             <h4 class="panel-title">{{ text_checkout_shipping_method }}</h4>
           </div>
@@ -128,8 +128,9 @@ $(document).ready(function() {
         }
     });
 
-// si no estoy logeado mando esto ();
 let timerId = setInterval(() => console.log('tick'), 3000);
+
+// si no estoy logeado mando esto ();
 
 
 setTimeout(() => { clearInterval(timerId); ; 
@@ -749,8 +750,67 @@ $(document).delegate('#button-guest-shipping', 'click', function() {
         }
     });
 });
-
+ //paso 4
 $(document).delegate('#button-shipping-method', 'click', function() {
+
+ let check=$('input:radio[name=shipping_method]:checked').val()
+let direccion =$("#new_direccion").val();
+let correo =$("#new_correo").val();
+let tel =$("#new_tel").val();
+let fail=false;
+if (direccion ==="" || correo ==="" || tel==="" )
+{
+    fail=true;
+}
+
+ if (check=="weight.weight_7" && fail===true)
+{
+    Swal.fire({
+  icon: 'error',
+  title: 'Oops...',
+  text: 'Complete los campos!',
+  
+})
+    return false;
+       
+}
+
+if (check=="weight.weight_7" && fail===false)
+{
+
+$(".paso4").css("display", "none");
+
+$("#input-payment-email").val(correo);
+$("#input-payment-telephone").val(tel);
+$("#input-payment-address-1").val(direccion);
+let timerId = setInterval(() => console.log("cosas")
+, 1000);
+
+setTimeout(() => { clearInterval(timerId); ; 
+
+}, 3000);
+
+
+fetch("../index.php?route=checkout/guest/save", {
+  "headers": {
+    "accept": "application/json, text/javascript, */*; q=0.01",
+    "accept-language": "es-ES,es;q=0.9,en;q=0.8,gl;q=0.7,ca;q=0.6,pt;q=0.5",
+    "cache-control": "no-cache",
+    "content-type": "application/x-www-form-urlencoded; charset=UTF-8",
+    "pragma": "no-cache",
+    "x-requested-with": "XMLHttpRequest"
+  },
+  "referrer": "",
+  "referrerPolicy": "no-referrer-when-downgrade",
+  "body": "customer_group_id=1&firstname=Consumidor&lastname=Final&email="+correo+"&telephone="+tel+"&company=&address_1="+direccion+"&address_2=&city=JUJUY&postcode=4600&country_id=10&zone_id=165&shipping_address=1",
+  "method": "POST",
+  "mode": "cors",
+  "credentials": "include"
+});
+
+}
+
+
     $.ajax({
         url: 'index.php?route=checkout/shipping_method/save',
         type: 'post',
@@ -819,6 +879,7 @@ $(document).delegate('#button-payment-method', 'click', function() {
                     $('#collapse-payment-method .panel-body').prepend('<div class="alert alert-danger alert-dismissible">' + json['error']['warning'] + '<button type="button" class="close" data-dismiss="alert">&times;</button></div>');
                 }
             } else {
+                //aqui si es que se hace algo con el checkout
                 $.ajax({
                     url: 'index.php?route=checkout/confirm',
                     dataType: 'html',
