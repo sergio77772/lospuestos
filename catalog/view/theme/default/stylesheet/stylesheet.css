@@ -212,6 +212,7 @@ div.required .control-label:before {
 	position: fixed;
 	z-index: 9999;
 	width: 100%;
+	margin-top:-3px;
 }
 #menu .nav > li > a {
 	color: #fff;
