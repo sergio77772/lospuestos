@@ -355,6 +355,7 @@ footer h5 {
 /* alert */
 .alert {
 	padding: 8px 14px 8px 14px;
+	margin-top:52px;
 }
 /* breadcrumb */
 .breadcrumb {
