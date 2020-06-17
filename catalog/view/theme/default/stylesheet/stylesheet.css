@@ -1134,3 +1134,6 @@ select option {
 	  {
 		  display: none;
 	  }
+	  .fa {
+		font-size: 35px;
+	}
