@@ -1139,3 +1139,16 @@ select option {
 	  .fa {
 		font-size: 35px;
 	}
+
+	.alert-dismissable .close, .alert-dismissible .close {
+		position: relative;
+		top: -2px;
+		right: -7px;
+		color: inherit;
+	} 
+
+	.alert-success {
+		color: #3c763d;
+		background-color: #b4d7a5;
+		border-color: #d6e9c6;
+	}
