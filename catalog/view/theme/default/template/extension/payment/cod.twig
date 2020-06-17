@@ -1,6 +1,10 @@
 <div class="buttons">
+        <div class="pull-left"> 
+		<input type="button" value="Descarga Ticket" id="button-dowload1" data-loading-text="{{ text_loading }}" class="btn btn order " />
+</div>
+
   <div class="pull-right">
-    <input type="button" value="{{ button_confirm }}" id="button-confirm" data-loading-text="{{ text_loading }}" class="btn btn-primary" />
+    <input type="button" value="{{ button_confirm }}" id="button-confirm" data-loading-text="{{ text_loading }}" class="btn btn order " />
   </div>
 </div>
 <script type="text/javascript"><!--
@@ -24,4 +28,28 @@ $('#button-confirm').on('click', function() {
 		}
 	});
 });
+
+$('#button-dowload1').on('click', function() {
+	
+	
+	 make_product_sheet();
+
+
+	console.log('descargamos');
+});
+
+function make_product_sheet() {
+
+    console.log("#generate_pdf_btn clicked");
+    var pdf = new jsPDF('p', 'pt', 'a4');
+    pdf.addHTML(document.getElementById("collapse-checkout-confirm"), function() {
+
+        ps_filename = "lospuestos";
+        pdf.save(ps_filename+'.pdf');
+    });
+}
+
+
+
+
 //--></script>
