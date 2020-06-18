@@ -41,7 +41,7 @@ $('#button-dowload1').on('click', function() {
 function make_product_sheet() {
 
     console.log("#generate_pdf_btn clicked");
-    var pdf = new jsPDF('p', 'pt', 'a4');
+    var pdf = new jsPDF('p', 'pt', 'a4',true);
     pdf.addHTML(document.getElementById("collapse-checkout-confirm"), function() {
 
         ps_filename = "lospuestos";
