@@ -39,7 +39,7 @@ background-color:rgb(248, 248, 248);
     {% set class = 'col-sm-12' %}
     {% endif %}
     <div id="content" class="{{ class }}">{{ content_top }}
-      <h1>{{ heading_title }}</h1>
+      <h1 class="titleh1">{{ heading_title }}</h1>
       <div class="panel-group" id="accordion">
         <div class="panel panel-default">
           <div class="panel-heading paso1 deleted">{# paso 1 #} 
@@ -86,7 +86,7 @@ background-color:rgb(248, 248, 248);
           </div>
         </div>
         {% endif %}
-        <div class="panel panel-default">
+        <div class="panel panel-default paso5">
           <div class="panel-heading">
             <h4 class="panel-title">{{ text_checkout_payment_method }}</h4>
           </div>
@@ -94,8 +94,8 @@ background-color:rgb(248, 248, 248);
             <div class="panel-body"></div>
           </div>
         </div>
-        <div class="panel panel-default">
-          <div class="panel-heading">
+        <div class="panel panel-default paso6">
+          <div class="panel-heading title6">
             <h4 class="panel-title">{{ text_checkout_confirm }}</h4>
           </div>
           <div class="panel-collapse collapse" id="collapse-checkout-confirm">
