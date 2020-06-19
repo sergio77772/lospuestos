@@ -7,15 +7,81 @@
 
 <div class="tp-row">
     <div class="pull-right button tp-padding">
-        <button id="comenzar-pago-btn" onclick="initForm()" class="tp-btn" value="Comenzar Pago">
+        <button id="comenzar-pago-btn " onclick="initForm()" class="btn btn order" value="Comenzar Pago">
             Confirmar Orden
         </button>
     </div>
 </div>
+<div class="buttons">
+        <div class="pull-left"> 
+		<button id="button-dowload3" class="btn order"><i class="fa fa-download" style="font-size: 14px;"></i> Descargar Ticket</button>
+</div>
+</div>
 
 <script type="text/javascript">
+
+$( document ).ready(function() {
+    console.log( "ready!" );
+	addScript('https://raw.githack.com/eKoopmans/html2pdf/master/dist/html2pdf.bundle.js');
+
+});
+
+
+$('#button-dowload3').on('click', function() {
+	
+	
+	 make_product_sheet();
+
+
+	console.log('descargamos');
+});
+
+function make_product_sheet() {
+
+    console.log("#generate_pdf_btn clicked");
+ $(".paso4").css("display", "none"); 
+ $(".paso5").css("display", "none");
+  $(".order").css("display", "none");
+  $(".title6").css("display", "none"); 
+  $(".navbar").css("display", "none");
+   $(".titleh1").css("display", "none");
+  $(".mp-form").css("display", "none");
+  $(".progress").css("display", "none");
+  
+
+
+  html2pdf(document.body);
+  setTimeout(function(){
+  $(".paso4").css("display", "block"); 
+ $(".paso5").css("display", "block");
+$(".title6").css("display", "block");
+  $(".order").css("display", "block");
+  $(".navbar").css("display", "block"); 
+  $(".titleh1").css("display", "block");
+  $(".mp-form ").css("display", "block");
+  $(".progress").css("display", "block");
+
+}, 3000); 
+
+}
+
+function addScript(url) {
+    var script = document.createElement('script');
+    script.type = 'application/javascript';
+    script.src = url;
+    document.head.appendChild(script);
+}
+
+
+
+
+
+//aqui termina el cod de imprimir ticket
+
+
     let action = '{{ action }}';
     let orderId = '{{ order_id }}';
+    console.log("orden:"+orderId)
 
     /************* FIRST STEP *********************/
 
@@ -104,7 +170,7 @@
     }
 
 </script>
-
+<br><br><br>
 <div class="progress">
     <div class="progress-bar progress-bar-striped active" id="loading-hibrid" role="progressbar"
          aria-valuemin="0"
