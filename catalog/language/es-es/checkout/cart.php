@@ -1,6 +1,6 @@
 <?php
 // Heading
-$_['heading_title']            = 'Carro de Compras';
+$_['heading_title']            = 'Mis Pedidos';
 
 // Text
 $_['text_success']             = 'Operación Exitosa: Se agregó <a href="%s">%s</a> a  <a href="%s">Mis Pedidos</a>.';
@@ -10,7 +10,7 @@ $_['text_items']               = '%s item(s) - %s';
 $_['text_points']              = 'Puntos de Regalo: %s';
 $_['text_next']                = 'Qué desea hacer?';
 $_['text_next_choice']         = 'Seleccionar el Código de Descuento o Puntos de Regalo para estimar el Costo de Entrega.';
-$_['text_empty']               = 'El Carro de Compras está vacío.';
+$_['text_empty']               = 'Mis Pedidos está vacío.';
 $_['text_day']                 = 'día';
 $_['text_week']                = 'semana';
 $_['text_semi_month']          = 'quincena';

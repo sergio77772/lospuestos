@@ -14,7 +14,13 @@ background-color:rgb(248, 248, 248);
     width: 333px!important;
     display: table!important;
     margin-top: 49%!important;
-}</style>
+}
+a:focus, a:hover {
+    color: #FFC107;
+    text-decoration: underline;
+}
+
+</style>
 <div id="product-category" class="container">
 <div id="loading_oculto"><img src="../image/ajax_loader.gif" class="loader_gif_img"/></div>
 
@@ -77,7 +83,7 @@ background-color:rgb(248, 248, 248);
           </div>
         </div>
         <div class="col-md-3 col-sm-6">
-          <div class="form-group"><a href="{{ compare }}" id="compare-total" class="btn btn-link">{{ text_compare }}</a></div>
+          <div class="form-group deleted"><a href="{{ compare }}" id="compare-total" class="btn btn-link">{{ text_compare }}</a></div>
         </div>
         <div class="col-md-4 col-xs-6">
           <div class="form-group input-group input-group-sm">
@@ -190,7 +196,7 @@ background-color:rgb(248, 248, 248);
       {% if not categories and not products %}
       <p>{{ text_empty }}</p>
       <div class="buttons">
-        <div class="pull-right"><a href="{{ continue }}" class="btn btn-primary">{{ button_continue }}</a></div>
+        <div class="pull-right"><a href="{{ continue }}" class="btn btn order">{{ button_continue }}</a></div>
       </div>
       {% endif %}
       {{ content_bottom }}</div>
