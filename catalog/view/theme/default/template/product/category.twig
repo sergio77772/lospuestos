@@ -177,5 +177,24 @@
       {{ content_bottom }}</div>
     {{ column_right }}</div>
 </div>
+<script type="text/javascript">
+$( document ).ready(function() {
+  var menu = getParameterByName('path');
 
+    console.log( menu);
+
+if (menu=="34" || menu=="34_42"|| menu=="34_61" || menu=="34_62"){
+  $(".img-thumbnail").attr("src","../image/bebidas.jpg");
+}
+
+})
+function getParameterByName(name) {
+    name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+    var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
+    results = regex.exec(location.search);
+    return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
+}
+
+
+</script>
 {{ footer }} 
