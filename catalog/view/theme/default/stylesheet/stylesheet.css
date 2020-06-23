@@ -16,7 +16,7 @@ body {
 	font-size: 12px;
 	line-height: 20px;
 	width: 100%;
-	background-color: rgba(0, 0, 0, 0.91);/* lo agregue */
+	background-color: #262626;/* lo agregue */
 	
 }
 h1, h2, h3, h4, h5, h6 {
@@ -815,9 +815,16 @@ h2.price {
     margin: 6px 15px;
     float: left;
     width: auto;
-    max-height: 28px;
+    max-width: 32px;
     border-radius: 50%;
     background-color: #9f9f95;
+}
+
+.logoWeb2 {
+    margin: 6px 60px;
+    float: left;
+    width: auto;
+    max-width:83px;
 }
 
 .deleted
@@ -915,7 +922,7 @@ h2.price {
 
   .order ,.btn-primary{
 
-	background-color: #ff7c00 !important;
+	background-color: #DB8700 !important;
 	border-radius: 40px;
 	margin-top: 5px;
   }
@@ -958,6 +965,7 @@ select option {
 	}
 	.h1_tam{
 		font-size :18px;
+		padding-top: 34px;
 	}
   
 	.panel{
