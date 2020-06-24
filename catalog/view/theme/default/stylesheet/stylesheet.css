@@ -927,17 +927,26 @@ h2.price {
 	margin-top: 5px;
   }
 
-  .order:active{
+  .order,.btn-primary:active{
 	background-color: rgb(255, 255, 255) !important;
 	color:#DB8700;
 
   }
-  .order:hover{
+  .order,.btn-primary:hover{
 	background-color: rgb(255, 255, 255) !important;
 	color:#DB8700;
 
   }
+  #button-register:active{
+	background-color: rgb(255, 255, 255) !important;
+	color:#DB8700;
 
+  }
+  #button-register:hover{
+	background-color: rgb(255, 255, 255) !important;
+	color:#DB8700;
+
+  }
   
 
 
