@@ -1180,4 +1180,10 @@ select option {
 			margin-left: 5px;
 		}
 
+
+		.img-thumbnail{
+			background-color:#262626;
+			border:none;
+		}
+
 	
