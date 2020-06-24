@@ -1176,4 +1176,8 @@ select option {
 			margin-top: 49%!important;
 		}
 
+		#button-dowload1,#button-dowload2,#button-dowload3{
+			margin-left: 5px;
+		}
+
 	
