@@ -1,5 +1,7 @@
 {% set img = 'image/usuario.png' %}
 {% set login = 'index.php?route=account/account' %}
+{% set m = '?main=off' %}
+
 {% if categories %}
 <div class="container">
   <nav id="menu" class="navbar">
@@ -10,7 +12,7 @@
 {# <a href="../index.php?route=checkout/cart" class="fa fa-cutlery" title="Mis Pedidos" style="
     padding-left: 17px;
 "></a> #}
-    <a href={{base}} class="TTSLogo1"><img class="logoWeb2" src={{logo}} title="logo" alt="logo"></a>
+    <a href={{base ~ m}} class="TTSLogo1"><img class="logoWeb2" src={{logo}} title="logo" alt="logo"></a>
 
       <button type="button" class="btn btn-navbar navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse"><i class="fa fa-bars"></i></button>
     </div>
