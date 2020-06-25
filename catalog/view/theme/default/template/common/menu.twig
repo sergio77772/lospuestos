@@ -42,6 +42,19 @@
 {% endif %} 
 <div class="contenedor">
 
-<img src="../image/mi-pedido.png" data-toggle="tooltip" data-placement="right" title="Mis Ordenes!">
+<img id="order_img" name="order_img" src="../image/mi-pedido.png" data-toggle="tooltip" data-placement="right">
 </img>
 </div>
+<script>
+$( "#order_img" ).on( "click", function() {
+    // lo que queramos realizar
+    console.log('ayuda?');
+    var duration = 'slow';
+//$( "#cart" ).css( "display","block" );
+$("#cart").toggle("slide");
+//$( "#cart" ).css( "display","block" );
+setTimeout(function(){ $('#boton_carrito').click()}, 100);
+
+});
+
+</script>
