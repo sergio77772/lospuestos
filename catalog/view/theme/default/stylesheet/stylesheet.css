@@ -1247,3 +1247,6 @@ select option {
     position: fixed;
     z-index: 9999;
 }
+.left {
+	margin-left:-5px;
+}

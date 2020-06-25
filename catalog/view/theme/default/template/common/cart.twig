@@ -53,11 +53,12 @@ table,  td {
       
 <div class="buttons">
         <div class="pull-left"> 
-		<a href="{{ cart }}"><button id="button-dowload1" class="btn order">Mis Pedidos</button></a>
+		<a href="{{ cart }}" onclick="callmymethod(event, 24)"><button id="button-pedidos" class="btn order left">Mis Pedidos</button></a>
+    <a href="{{ cart }}" onclick="callmymethod(event, 24)" ><button id="button-cerrar" class="btn order left">Continuar Ordenando</button></a>
 </div>
 
 <div class="pull-right">
-    <a href="{{ checkout }}"><input type="button" value="Pagar" id="button-confirm" data-loading-text="{{ text_loading }}" class="btn btn order " /></a>
+    <a href="{{ checkout }}" onclick="callmymethod(event, 24)"><input type="button" value="Pagar" id="button-pagar" data-loading-text="{{ text_loading }}" class="btn btn order left" /></a>
   </div>
 
 
@@ -70,3 +71,14 @@ table,  td {
     {% endif %}
   </ul>
 </div>
+<script type="text/javascript">
+function callmymethod(e, myVal){
+  //setTimeout(function(){ $('#boton_carrito').click()}, 800);
+  $("#cart").toggle("slide");
+    //doing custom things with myVal
+
+    //here I want to prevent default
+    e = e || window.event;
+    e.preventDefault();
+}
+</script>
