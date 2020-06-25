@@ -783,7 +783,7 @@ h2.price {
   .test{
 	  background-color: rgba(0, 0, 0, 0.22);
 	  display: block;
-	  z-index: 99;
+	  z-index: 2;
 	  position: relative;
 	  bottom: 36px;
 	  left: 0px;
@@ -1203,5 +1203,21 @@ select option {
 			background-color:#262626;
 			border:none;
 		}
-
+.contenedor
+{
+	position: absolute;
+}
 	
+.contenedor > img {
+	max-width: 71px;
+    margin-left: 12px;
+    margin-top: 52px;
+    position: fixed;
+    z-index: 99;
+}
+.contenedor > p {
+    margin-left: 29px;
+    margin-top: 52px;
+    position: fixed;
+	z-index: 99;
+}
