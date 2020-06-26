@@ -1224,21 +1224,21 @@ select option {
 }
 
 .dropdown-backdrop {
-    position: fixed;
-    top: 0;
+	position: fixed;
+    top: -14px;
     right: 0;
     bottom: 0;
-    left: 0;
+    left: -16px;
     z-index: 990;
     background-color: #262626;
-    background: url(/../image/mi-pedido-desplegado.png) no-repeat fixed center;
+    background: url(/../image/mi-pedido-desplegado.png) no-repeat;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
-    height: 100%;
-    width: 100%;
-	text-align: center;
+    height: 840px;
+    width: auto;
+    text-align: center;
 }
 #order_img_close {
     max-width: 71px;

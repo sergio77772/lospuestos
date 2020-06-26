@@ -84,6 +84,8 @@ console.log(e);
 
 $(".zonalink").click(function(event) {
    $("#cart").toggle("slide");
+   $( "#menu" ).css( "display","block" );
+
   var href= $(this).attr('href');
   event.preventDefault();
   if (href!=""){
