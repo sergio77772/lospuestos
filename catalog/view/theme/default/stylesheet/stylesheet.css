@@ -355,8 +355,10 @@ footer h5 {
 }
 /* alert */
 .alert {
-	padding: 8px 14px 8px 14px;
-	margin-top:52px;
+    padding: 4px 19px 14px 18px;
+    margin-top: 57px;
+    position: absolute;
+    z-index: 890;
 }
 /* breadcrumb */
 .breadcrumb {
@@ -984,7 +986,7 @@ select option {
 	}
 	.h1_tam{
 		font-size :18px;
-		padding-top: 34px;
+		padding-top: 102px;
 	}
   
 	.panel{
@@ -1175,8 +1177,8 @@ select option {
 	} 
 
 	.alert-success {
-		color: #3c763d;
-		background-color: #b4d7a5;
+		color: #f1f1f1;
+		background-color: #db8700;
 		border-color: #d6e9c6;
 	}
 	#loading_oculto{
@@ -1249,4 +1251,9 @@ select option {
 }
 .left {
 	margin-left:-5px;
+}
+
+.titleh1
+{
+	margin-top: 53px;
 }

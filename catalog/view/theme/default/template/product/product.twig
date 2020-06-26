@@ -113,7 +113,7 @@
         {% if column_left or column_right %}
         {% set class = 'col-sm-6' %}
         {% else %}
-        {% set class = 'col-sm-8 este' %}
+        {% set class = 'col-sm-12 este' %}
         {% endif %}
         <div class="{{ class }}">
           <div class="btn-group deleted">
@@ -285,7 +285,7 @@
         <br /><br />
               <input type="hidden" name="product_id" value="{{ product_id }}" />
               <br />
-              <button type="button" id="button-cart" data-loading-text="{{ text_loading }}" class="btn  btn-lg btn-block order">{{ button_cart }}</button>
+              <button type="button" id="button-cart" data-loading-text="{{ text_loading }}" class="btn  btn-lg btn-block order">Agregar a la Orden</button>
                <a href="../index.php?main=off"><button type="button" id="button-retry" style="display:block" data-loading-text="Pagar" class="btn  btn-lg btn-block order">Seguir ordenando</button></a>
               <a href="../index.php?route=checkout/checkout"><button type="button" id="button-finish" style="display:none" data-loading-text="Pagar" class="btn  btn-lg btn-block order">Pagar</button></a>
 
