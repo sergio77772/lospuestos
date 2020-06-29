@@ -1271,3 +1271,13 @@ select option {
 .agree{
 	color:#db8700 ;
 }
+
+#comenzar-pago-btn {
+    margin-top: 13px;
+}
+
+#button-confirm{
+	
+    margin-right: 5px;
+
+}
