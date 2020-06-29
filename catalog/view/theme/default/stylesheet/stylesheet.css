@@ -204,6 +204,7 @@ div.required .control-label:before {
 }
 #cart .dropdown-menu li p {
 	margin: 20px 0;
+	color: #070707;
 }
 /* menu */
 #menu {
@@ -988,6 +989,11 @@ select option {
 		font-size :18px;
 		padding-top: 102px;
 	}
+
+	.h1_tam2{
+		font-size :18px;
+		padding-top: 46px;
+	}
   
 	.panel{
 		background: rgba(0,0,0,0.50) ;
@@ -1260,4 +1266,8 @@ select option {
 
 .orden_succes{
 	font-size: 35px;
+}
+
+.agree{
+	color:#db8700 ;
 }

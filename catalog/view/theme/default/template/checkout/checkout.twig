@@ -788,6 +788,9 @@ if (direccion ==="" || correo ==="" || tel==="" )
     fail=true;
 }
 
+  
+
+
  if (check=="weight.weight_7" && fail===true)
 {
     Swal.fire({
@@ -799,6 +802,18 @@ if (direccion ==="" || correo ==="" || tel==="" )
     return false;
        
 }
+
+if($("#new_correo").val().indexOf('@', 0) == -1 || $("#new_correo").val().indexOf('.', 0) == -1 && check=="weight.weight_7" ) {
+            Swal.fire({
+  icon: 'error',
+  title: 'Oops...',
+  text: 'Correo no valido!',
+  
+})
+            return false;
+        }
+
+
 
 if (check=="weight.weight_7" && fail===false)
 {

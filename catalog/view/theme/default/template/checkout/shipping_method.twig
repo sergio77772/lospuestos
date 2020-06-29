@@ -48,6 +48,11 @@
 <script type="text/javascript">
 	$(document).ready(function()
 		{
+            $("#comment").val("");
+
+         setTimeout(function(){ $('.radio').click()}, 100);
+
+
 		$('.radio').click(function () {
             let check=$('input:radio[name=shipping_method]:checked').val()
             console.log(check);
@@ -60,26 +65,43 @@
               $("#lblcorreo").hide();
               $("#new_correo").hide();
               $("#lbltelefono").hide();
-              $("#new_tel").hide();
+              $("#new_tel").hide(); 
+              $("#comment").val("");
+              $('#comment').on('input', function () { 
+    this.value = this.value.replace(/[^0-9]/g,'');
+});
+
             }
 
            if (check=="weight.weight_7")
             {
               document.getElementById('lblcomentario').innerHTML = "Punto de Referencia";
               $("#comment").attr("placeholder", "*referencia para el delivery");
-              $("#comment").attr("placeholder", "ingrese el numero de mesa");
               $("#lbldireccion").show();
               $("#new_direccion").show();
               $("#lblcorreo").show();
               $("#new_correo").show();
               $("#lbltelefono").show();
               $("#new_tel").show();
+               $("#comment").val("");
+                 $("#comment").unbind("input");
             }
             
              if (check=="weight.weight_6")
             {
               document.getElementById('lblcomentario').innerHTML = "Hora Estimada";
               $("#comment").attr("placeholder", "--:--");
+               $("#comment").val("");
+                $("#lbldireccion").hide();
+              $("#new_direccion").hide();
+              $("#lblcorreo").hide();
+              $("#new_correo").hide();
+              $("#lbltelefono").hide();
+              $("#new_tel").hide();  
+              
+             $("#comment").unbind("input");
+
+
             }
 
             //document.getElementById('price').innerHTML = $(this).val();

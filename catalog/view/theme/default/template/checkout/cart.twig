@@ -35,7 +35,7 @@
     {% set class = 'col-sm-12' %}
     {% endif %}
     <div id="content" class="{{ class }}">{{ content_top }}
-      <h1> Mis Pedidos </h1>
+      <h1 class="h1_tam2"> Mis Ordenes </h1>
       <form action="{{ action }}" method="post" enctype="multipart/form-data">
         <div class="table-responsive">
           <table class="table table-bordered">
@@ -114,8 +114,23 @@
       <div class="buttons clearfix">
         <div class="pull-left"><a href="{{ continue }}" class="btn btn order">{{ button_shopping }}</a></div>
         <div class="pull-right"><a href="{{ checkout }}" class="btn btn order">{{ button_checkout }}</a></div>
+        <div class="pull-right"><a href="#" id="a_eliminar" class="btn btn order">Eliminar Orden</a></div>
       </div>
+
+
       {{ content_bottom }}</div>
     {{ column_right }}</div>
 </div>
+
+<script type="text/javascript">
+
+$("#a_eliminar").click(function(event) {
+  $( "#cart .btn" ).trigger( "click" ); 
+  
+});
+
+</script>
+
+
+
 {{ footer }} 
