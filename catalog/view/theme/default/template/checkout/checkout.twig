@@ -778,7 +778,8 @@ $(document).delegate('#button-guest-shipping', 'click', function() {
  //paso 4
 $(document).delegate('#button-shipping-method', 'click', function() {
 
- let check=$('input:radio[name=shipping_method]:checked').val()
+ let check=$('input:radio[name=shipping_method]:checked').val();
+ console.log("que valor hay:?"+check);
 let direccion =$("#new_direccion").val();
 let correo =$("#new_correo").val();
 let tel =$("#new_tel").val();
@@ -803,7 +804,9 @@ if (direccion ==="" || correo ==="" || tel==="" )
        
 }
 
-if($("#new_correo").val().indexOf('@', 0) == -1 || $("#new_correo").val().indexOf('.', 0) == -1 && check=="weight.weight_7" ) {
+if (check=="weight.weight_7"){
+
+if($("#new_correo").val().indexOf('@', 0) == -1 || $("#new_correo").val().indexOf('.', 0) == -1 ) {
             Swal.fire({
   icon: 'error',
   title: 'Oops...',
@@ -812,7 +815,7 @@ if($("#new_correo").val().indexOf('@', 0) == -1 || $("#new_correo").val().indexO
 })
             return false;
         }
-
+}
 
 
 if (check=="weight.weight_7" && fail===false)
