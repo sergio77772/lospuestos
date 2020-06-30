@@ -1281,3 +1281,14 @@ select option {
     margin-right: 5px;
 
 }
+
+.esterow
+{
+	background: url(/../image/plato.png) no-repeat;
+    margin-right: -15px;
+    margin-left: -15px;
+    background-size: 235px;
+    background-position: center;
+    background-position-x: 68px;
+    background-position-y: 85px;
+}
