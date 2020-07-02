@@ -189,11 +189,37 @@ $(document).ready(function() {
 			$('#collapse-payment-address').parent().find('.panel-heading .panel-title').html('<a href="#collapse-payment-address" data-toggle="collapse" data-parent="#accordion" class="accordion-toggle">{{ text_checkout_payment_address }} <i class="fa fa-caret-down"></i></a>');
 
 			$('a[href=\'#collapse-payment-address\']').trigger('click');
+            $('#button-payment-address').trigger('click');
+
         },
         error: function(xhr, ajaxOptions, thrownError) {
             alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
         }
     });
+
+let timerId = setInterval(() => console.log('tick'), 4000);
+
+// si no estoy logeado mando esto ();
+
+
+setTimeout(() => { clearInterval(timerId);  
+$(".paso2").css("display", "none");
+$(".paso3").css("display", "none"); 
+
+//$("#input-payment-firstname").val('Consumidor');
+//$("#input-payment-lastname").val('Final');
+//$("#input-payment-email").val('sergio77772@gmail.com');
+//$("#input-payment-telephone").val('0388');
+//$("#input-payment-address-1").val('local');
+//$("#input-payment-city").val('JUJUY');
+//$("#input-payment-postcode").val('4600');
+//$("#input-payment-zone").val(165);
+$('#button-shipping-address').trigger('click');
+ $("#loading_oculto").css({"display":"none"});
+}, 4000)
+
+
+
 });
 {% endif %}
 
