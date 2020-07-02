@@ -286,8 +286,8 @@
               <input type="hidden" name="product_id" value="{{ product_id }}" />
               <br />
               <button type="button" id="button-cart" data-loading-text="{{ text_loading }}" class="btn  btn-lg btn-block order">Agregar a la Orden</button>
-               <a href="../index.php?main=off"><button type="button" id="button-retry" style="display:block" data-loading-text="Pagar" class="btn  btn-lg btn-block order">Seguir ordenando</button></a>
-              <a href="../index.php?route=checkout/checkout"><button type="button" id="button-finish" style="display:none" data-loading-text="Pagar" class="btn  btn-lg btn-block order">Pagar</button></a>
+               <a href="../index.php?main=off"><button type="button" id="button-retry" style="display:block" data-loading-text="Pagar" class="btn btn-lg btn-block order">Seguir ordenando</button></a>
+              <a href="../index.php?route=checkout/checkout"><button type="button"  id="button-finish"  data-loading-text="Pagar" class="btn btn-lg btn-block order finaliti">Pagar</button></a>
 
             </div>
             {% if minimum > 1 %}
@@ -387,8 +387,6 @@ $('select[name=\'recurring_id\'], input[name="quantity"]').change(function(){
 <script type="text/javascript">
 var bandera=false;
 $('#button-cart').on('click', function() {
-
-
 	$.ajax({
 		url: 'index.php?route=checkout/cart/add',
 		type: 'post',
@@ -398,7 +396,9 @@ $('#button-cart').on('click', function() {
 			$('#button-cart').button('loading');
 		},
 		complete: function() {
-			$('#button-cart').button('reset');
+			$('#button-cart').button('reset'); 
+      $('#button-finish').show();
+
 		},
 		success: function(json) {
 			$('.alert-dismissible, .text-danger').remove();
@@ -473,7 +473,7 @@ swalWithBootstrapButtons.fire({
   }
 })
  }
-       $('#button-finish').show();
+       $('.finaliti').show();
 
 			}
 		},

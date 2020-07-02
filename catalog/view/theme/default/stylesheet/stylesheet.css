@@ -1293,3 +1293,6 @@ select option {
     background-position-y: 413px;
     padding-bottom: 85px;
 }
+#button-finish{
+	display: none;
+}
