@@ -845,7 +845,7 @@ h2.price {
 {
     clear: left;
     float: left;
-	max-width: 80%;
+	max-width: 79%;
 	padding: 2px;
 }
 
@@ -1289,9 +1289,9 @@ select option {
     margin-left: -15px;
     background-size: 235px;
     background-position: center;
-    background-position-x: 68px;
-    background-position-y: 413px;
-    padding-bottom: 85px;
+    background-position-x: 50%;
+    background-position-y: 100%;
+    padding-bottom: 24%;
 }
 #button-finish{
 	display: none;

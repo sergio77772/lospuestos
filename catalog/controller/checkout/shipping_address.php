@@ -172,8 +172,8 @@ class ControllerCheckoutShippingAddress extends Controller {
 						$this->model_account_customer->editAddressId($this->customer->getId(), $address_id);
 					}
 					
-					unset($this->session->data['shipping_method']);
-					unset($this->session->data['shipping_methods']);
+					//unset($this->session->data['shipping_method']);
+					//unset($this->session->data['shipping_methods']);
 				}
 			}
 		}
