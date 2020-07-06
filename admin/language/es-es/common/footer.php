@@ -1,4 +1,4 @@
 <?php
 // Text
-$_['text_footer']  = '<a href="http://www.systemidea.com.ar" target="_blank">SystemIdea</a> &copy; 2009-' . date('Y') . ' Todos los Derechos Reservados.';
-$_['text_version'] = 'Versión %s';
+$_['text_footer']  = 'Diseño y Desarrollo <a href="https://www.blimop.tech/" target="_blank">Blimop</a> LOS PUESTOS © 2020 ';
+$_['text_version'] = '';
