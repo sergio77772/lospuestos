@@ -1296,3 +1296,8 @@ select option {
 #button-finish{
 	display: none;
 }
+
+.swiper-viewport{
+display:none;
+}
+
