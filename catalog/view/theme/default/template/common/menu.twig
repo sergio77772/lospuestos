@@ -53,7 +53,7 @@ $( "#order_img" ).on( "click", function() {
 //$( "#cart" ).css( "display","block" );
 $("#cart").toggle("slide");
 $( "#menu" ).css( "display","none" );
-setTimeout(function(){ $('#boton_carrito').click()}, 1000);
+setTimeout(function(){ $('#boton_carrito').click(),$( "#cart" ).append( '<div class="dropdown-backdrop"></div>' );}, 1000);
 
 });
 

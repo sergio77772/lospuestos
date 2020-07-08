@@ -920,12 +920,14 @@ h2.price {
   }
 
 
-  #button-retry{
-	background:#0d6b09 !important;
+  #button-retry {
+    background: #262626 !important;
+    color: #f28600;
 }
 
-#button-finish{
-background: #1c1ca5cc !important;
+#button-finish {
+    background: #ffffffcc !important;
+    color: #f28600;
 }
 #button-retry:hover{
 	background-color: rgb(255, 255, 255) !important;
@@ -1326,6 +1328,33 @@ display:none;
 
 @media (min-width: 768px)
 {
+	.modal-dialog {
+		
+		font-family:"Nexa Light" ;
+	}
+	
+	
+	
+	.dropdown-menu.pull-right {
+		right: 0;
+		left: auto;
+		margin-right: 712px;
+		margin-top: 180px;
+	}
+
+
+	.dropdown-backdrop {
+		
+		top: -100px;
+		
+	}
+	
+	
+	#cart .dropdown-menu {
+		background: #f9f9f9;
+		z-index: 1001;
+	}
+
 
 	#menu {
 		background-color: rgb(38, 38, 38);

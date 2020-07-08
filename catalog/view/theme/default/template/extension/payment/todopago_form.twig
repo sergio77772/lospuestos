@@ -37,6 +37,10 @@ $('#button-dowload3').on('click', function() {
 });
 
 function make_product_sheet() {
+var parameters = {
+filename: 'ticket_aromas.pdf',
+};
+
 
     console.log("#generate_pdf_btn clicked");
  $(".paso4").css("display", "none"); 
@@ -47,10 +51,12 @@ function make_product_sheet() {
    $(".titleh1").css("display", "none");
   $(".mp-form").css("display", "none");
   $(".progress").css("display", "none");
-  
+  $('#content').addClass('col-sm-8').removeClass('col-sm-12');
 
 
-  html2pdf(document.body);
+
+  html2pdf(document.body,parameters);
+
   setTimeout(function(){
   $(".paso4").css("display", "block"); 
  $(".paso5").css("display", "block");
@@ -60,6 +66,7 @@ $(".title6").css("display", "block");
   $(".titleh1").css("display", "block");
   $(".mp-form ").css("display", "block");
   $(".progress").css("display", "block");
+$('#content').addClass('col-sm-12').removeClass('col-sm-8');
 
 }, 3000); 
 

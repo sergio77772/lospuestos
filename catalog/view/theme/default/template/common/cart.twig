@@ -4,9 +4,7 @@ table,  td {
     border: hidden !important;
 }
 </style>
-<div id="cart" class="btn-group btn-block deleted"><div class="contenedor">
-</div>
-
+<div id="cart" class="btn-group btn-block deleted">
   <button type="button" id="boton_carrito" name="boton_carrito" data-toggle="dropdown" data-loading-text="{{ text_loading }}" class="btn btn-inverse btn-block btn-lg deleted dropdown-toggle"><i class="fa fa-shopping-cart"></i> <span id="cart-total">{{ text_items }}</span></button>
   <ul class="dropdown-menu pull-right">
     {% if products or vouchers %}
@@ -90,7 +88,6 @@ console.log(e);
 $(".zonalink").click(function(event) {
    $("#cart").toggle("slide");
    $( "#menu" ).css( "display","block" );
-
   var href= $(this).attr('href');
   event.preventDefault();
   if (href!=""){
