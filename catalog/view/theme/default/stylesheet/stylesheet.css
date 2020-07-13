@@ -278,7 +278,7 @@ div.required .control-label:before {
 	font-stretch: expanded;
 	/* color: #FFF; */
 	padding: 2px 18px;
-	float: right;
+	float: left;
 	/* background-color: #e5ebee; */
 	/* background-image: linear-gradient(to bottom, #000000, #000000); */
 	/* background-repeat: repeat-x; */
@@ -817,8 +817,8 @@ h2.price {
 }
 
 .logoWeb {
-    margin: 6px 15px;
-    float: left;
+    margin: 6px 77px;
+    float: right;
     width: auto;
     max-width: 32px;
     border-radius: 50%;
@@ -826,10 +826,17 @@ h2.price {
 }
 
 .logoWeb2 {
-    margin: 6px 60px;
+    margin: -42px 31px;
     float: left;
     width: auto;
-    max-width:83px;
+    max-width: 83px;
+}
+
+.username
+{
+	margin: -31px 35px; 
+     float: right; 
+    width: auto;
 }
 
 .deleted
@@ -1328,6 +1335,40 @@ display:none;
 
 @media (min-width: 768px)
 {
+     
+		.username {
+			margin-left: 925px;
+			margin-top: 11px;
+			float: right;
+		}
+
+	.logoWeb {
+		margin-left: 885px;
+		margin-top: 0px;
+		float: right;
+		width: auto;
+		max-width: 32px;
+		border-radius: 50%;
+		background-color: #9f9f95;
+		position: absolute;
+	}
+
+	.logoWeb2 {
+		margin: 0;
+		float: left;
+		width: auto;
+		max-width: 83px;
+		position: absolute;
+	}
+
+
+	.navbar-nav {
+		float: left;
+		margin: 0px;
+		margin-left: 73px;
+	}
+
+
 	.modal-dialog {
 		
 		font-family:"Nexa Light" ;

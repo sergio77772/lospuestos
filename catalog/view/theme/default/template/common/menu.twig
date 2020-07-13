@@ -1,20 +1,21 @@
 {% set img = 'image/usuario.png' %}
 {% set login = 'index.php?route=account/account' %}
 {% set m = '?main=off' %}
-
 {% if categories %}
 <div class="container">
   <nav id="menu" class="navbar">
     <div class="navbar-header"><span id="category" class="visible-xs">{{ text_category }}</span>
+      <button type="button" class="btn btn-navbar navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse"><i class="fa fa-bars"></i></button>
 
 {# <a href="/index.php" class="topnav-icons fa fa-home w3-left w3-bar-item w3-button" title="Home"></a>
- #}    <a href={{base ~ login}} class="TTSLogo1"><img class="logoWeb" src={{base ~ img}} title="logo" alt="logo"></a>
+ #}    <a href={{base ~ login}} class="TTSLogo1"><img class="logoWeb" src={{base ~ img}}   title="user" alt="user"><strong class="username">{{name}}</strong></img>
+       
+ </a>
 {# <a href="../index.php?route=checkout/cart" class="fa fa-cutlery" title="Mis Pedidos" style="
     padding-left: 17px;
 "></a> #}
     <a href={{base ~ m}} class="TTSLogo1"><img class="logoWeb2" src={{logo}} title="logo" alt="logo"></a>
 
-      <button type="button" class="btn btn-navbar navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse"><i class="fa fa-bars"></i></button>
     </div>
     <div class="collapse navbar-collapse navbar-ex1-collapse">
       <ul class="nav navbar-nav">

@@ -8,6 +8,14 @@ class ControllerCommonMenu extends Controller {
 
 		$this->load->model('catalog/product');
 
+
+		if ($this->customer->isLogged()) {
+			$this->load->model('account/wishlist');
+			$data["name"]=$this->customer->getFirstName(); 
+		}
+		else{
+			$data["name"]="Login";
+		}
 		$data['categories'] = array();
 		
 		if ($this->request->server['HTTPS']) {
