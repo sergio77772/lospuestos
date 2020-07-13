@@ -9,13 +9,74 @@
 <script type="text/javascript" src="view/javascript/bootstrap/js/bootstrap.min.js"></script>
 <link href="view/javascript/font-awesome/css/font-awesome.min.css" type="text/css" rel="stylesheet" />
 <link type="text/css" href="view/stylesheet/stylesheet.css" rel="stylesheet" media="all" />
+<style>
+td,
+th,
+tr,
+table {
+    border-top: 1px solid black;    
+    border:none;
+    margin-left: 0px;
+    font-size: 12px;
+
+}
+
+td.producto,
+th.producto {
+    width: 75px;
+    max-width: 75px;
+}
+
+td.cantidad,
+th.cantidad {
+    width: 40px;
+    max-width:52px;
+}
+
+td.precio,
+th.precio {
+    width: 40px;
+    max-width: 52px;
+    word-break: break-all;
+}
+
+.centrado {
+    text-align: center;
+    align-content: center;
+    margin-left: 65px;
+
+}
+
+.ticket {
+    width: 155px;
+    max-width: 155px;
+}
+
+img {
+    max-width: inherit;
+    width: inherit;
+    margin-left: 36px;
+}
+@media print {
+    .oculto-impresion,
+    .oculto-impresion * {
+        display: none !important;
+    }
+}
+
+.deleted{
+  display:none;
+}
+
+
+</style>
 </head>
 <body>
 <div class="container">
   {% for order in orders %}
   <div style="page-break-after: always;">
-    <h1>{{ text_invoice }} #{{ order.order_id }}</h1>
-    <table class="table table-bordered">
+    <h1 class="deleted">{{ text_invoice }} #{{ order.order_id }}</h1>
+    <table class="table table-bordered deleted">
       <thead>
         <tr>
           <td colspan="2">{{ text_order_detail }}</td>
@@ -63,26 +124,36 @@
         </tr>
       </tbody>
     </table>
+
+
+    <div class="ticket">
+    <img src="../image/logo_negro.png" alt="Logotipo">
+  <p class="centrado">Los Puestos
+                <br>Jujuy
+                <br>{{order.date_added}}<br>
+                Ticket N°{{order.order_id}}</p>
+
+
     <table class="table table-bordered">
       <thead>
         <tr>
-          <td><b>{{ column_product }}</b></td>
-          <td><b>{{ column_model }}</b></td>
-          <td class="text-right"><b>{{ column_quantity }}</b></td>
-          <td class="text-right"><b>{{ column_price }}</b></td>
-          <td class="text-right"><b>{{ column_total }}</b></td>
+           <th class="cantidad">unidad</th>
+                        <th class="producto">Producto</th>
+                        <th class="precio">Precio</th>  
+                        <th class="precio">Total</th>
+
         </tr>
       </thead>
       <tbody>
         {% for product in order.product %}
         <tr>
+        <td class="text-right">{{ product.quantity }}</td>
           <td>{{ product.name }}
             {% for option in product.option %}
             <br />
-            &nbsp;<small> - {{ option.name }}: {{ option.value }}</small>
+            &nbsp;<small> </small>
             {% endfor %}</td>
-          <td>{{ product.model }}</td>
-          <td class="text-right">{{ product.quantity }}</td>
+          
           <td class="text-right">{{ product.price }}</td>
           <td class="text-right">{{ product.total }}</td>
         </tr>
@@ -98,14 +169,17 @@
         {% endfor %}
         {% for total in order.total %}
         <tr>
-          <td class="text-right" colspan="4"><b>{{ total.title }}</b></td>
+          <td class="text-right" colspan="3"><b>{{ total.title }}</b></td>
           <td class="text-right">{{ total.text }}</td>
         </tr>
         {% endfor %}
       </tbody>
     </table>
+    <p class="centrado">¡GRACIAS POR SU COMPRA!
+    <br></p>
+
     {% if order.comment %}
-    <table class="table table-bordered">
+    <table class="table table-bordered deleted">
       <thead>
         <tr>
           <td><b>{{ text_comment }}</b></td>
@@ -117,9 +191,19 @@
         </tr>
       </tbody>
     </table>
+    </div>
     {% endif %}
   </div>
   {% endfor %}
 </div>
 </body>
+
+<script>
+    $( document ).ready(function() {
+        console.log( "document loaded" );
+        window.print();
+    });
+ 
+  
+    </script>
 </html>

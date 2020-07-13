@@ -1667,6 +1667,11 @@ class ControllerSaleOrder extends Controller {
 				);
 			}
 		}
+		ini_set('xdebug.var_display_max_depth', '10');
+		ini_set('xdebug.var_display_max_children', '256');
+		ini_set('xdebug.var_display_max_data', '1024');
+
+		//var_dump($data);
 
 		$this->response->setOutput($this->load->view('sale/order_invoice', $data));
 	}
