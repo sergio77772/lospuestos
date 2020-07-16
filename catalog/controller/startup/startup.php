@@ -2,6 +2,8 @@
 class ControllerStartupStartup extends Controller {
 	public function index() {
 		// Store
+
+		//$value=str_replace('/carrito', '', $_SERVER['PHP_SELF']);//usar solo en server de don web
 		if ($this->request->server['HTTPS']) {
 			$query = $this->db->query("SELECT * FROM " . DB_PREFIX . "store WHERE REPLACE(`ssl`, 'www.', '') = '" . $this->db->escape('https://' . str_replace('www.', '', $_SERVER['HTTP_HOST']) . rtrim(dirname($_SERVER['PHP_SELF']), '/.\\') . '/') . "'");
 		} else {
@@ -16,6 +18,7 @@ class ControllerStartupStartup extends Controller {
 			$this->config->set('config_store_id', 0);
 		}
 		
+	
 		if (!$query->num_rows) {
 			$this->config->set('config_url', HTTP_SERVER);
 			$this->config->set('config_ssl', HTTPS_SERVER);
@@ -37,7 +40,10 @@ class ControllerStartupStartup extends Controller {
 		
 		// Url
 		$this->registry->set('url', new Url($this->config->get('config_url'), $this->config->get('config_ssl')));
-		
+		ini_set('xdebug.var_display_max_depth', '10');
+ini_set('xdebug.var_display_max_children', '256');
+ini_set('xdebug.var_display_max_data', '1024');
+		var_dump($this->registry);
 		// Language
 		$code = '';
 		
