@@ -199,6 +199,7 @@
       <div class="form-group required">
         <label class="control-label" for="input-payment-zone">{{ entry_zone }}</label>
         <select name="zone_id" id="input-payment-zone" class="form-control">
+<option value="165" selected="selected">Jujuy</option>
         </select>
       </div>
       {% for custom_field in custom_fields %}
@@ -497,7 +498,7 @@ $('#collapse-payment-address select[name=\'country_id\']').on('change', function
 					html += '>' + json['zone'][i]['name'] + '</option>';
 				}
 			} else {
-				html += '<option value="0" selected="selected">{{ text_none }}</option>';
+				html += '<option value="165" selected="selected">{{ text_none }}</option>';
 			}
 
 			$('#collapse-payment-address select[name=\'zone_id\']').html(html);

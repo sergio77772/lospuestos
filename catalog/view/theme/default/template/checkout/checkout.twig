@@ -620,6 +620,9 @@ $(document).delegate('#button-shipping-address', 'click', function() {
   ///paso 2 ---->
 // Guest
 $(document).delegate('#button-guest', 'click', function() {
+    $("#input-payment-zone").val(165);
+    $("#input-payment-zone").val(165);
+
     $.ajax({
         url: 'index.php?route=checkout/guest/save',
         type: 'post',
