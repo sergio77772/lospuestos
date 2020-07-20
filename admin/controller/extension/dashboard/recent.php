@@ -93,7 +93,7 @@ class ControllerExtensionDashboardRecent extends Controller {
 
 		$filter_data = array(
 			'sort'  => 'o.date_added',
-			'order' => 'DESC',
+			'order' => 'ASC',
 			'start' => 0,
 			'filter_order_status'=>'1',//ver tablita de pendientes
 			'limit' => 100
@@ -119,8 +119,8 @@ class ControllerExtensionDashboardRecent extends Controller {
             {
 				$comida="Retiro en local";
 			}
-//var_dump($comida);
 
+			$tienda=$result["store_name"];
 			$data['orders'][] = array(
 				'order_id'   => $result['order_id'],
 				'customer'   => $result['customer'],
@@ -128,7 +128,8 @@ class ControllerExtensionDashboardRecent extends Controller {
 				'date_added' => date($this->language->get('date_format_short'), strtotime($result['date_added'])),
 				'total'      => $this->currency->format($result['total'], $result['currency_code'], $result['currency_value']),
 				'view'       => $this->url->link('sale/order/info', 'user_token=' . $this->session->data['user_token'] . '&order_id=' . $result['order_id'], true),
-				'comida' => $comida,
+				'comida' => @$comida,
+				'local'=>@$tienda,
 
 			);
 		}
