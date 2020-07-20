@@ -1354,13 +1354,13 @@ display:none;
 	}
 
 	.logoWeb2 {
-		margin: 0;
+		margin: 11px;
 		float: left;
 		width: auto;
-		max-width: 83px;
+		max-width: 69px;
+		max-height: 40px;
 		position: absolute;
 	}
-
 
 	.navbar-nav {
 		float: left;
@@ -1447,7 +1447,7 @@ display:none;
 	.alert {
 		padding: 4px 21px 13px 12px;
 		margin-top: -13px;
-		margin-left: 53px;
+		margin-left: 0px;
 		/* position: absolute; */
 		z-index: 890;
 		/* float: right; */
