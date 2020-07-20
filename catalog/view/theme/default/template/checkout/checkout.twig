@@ -173,7 +173,7 @@ $(document).ready(function() {
         }
     });
 
-let timerId = setInterval(() => console.log('tick'), 2000);
+let timerId = setInterval(() => console.log('tick'), 3000);
 
 // si no estoy logeado mando esto ();
 
@@ -214,14 +214,9 @@ $(document).ready(function() {
 
 			$('a[href=\'#collapse-payment-address\']').trigger('click');
             $('#button-payment-address').trigger('click');
+            console.log('ternime de cargar');
 
-        },
-        error: function(xhr, ajaxOptions, thrownError) {
-            alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
-        }
-    });
-
-let timerId = setInterval(() => console.log('tick'), 4000);
+let timerId = setInterval(() => console.log('tick'), 3000);
 
 // si no estoy logeado mando esto ();
 
@@ -244,9 +239,14 @@ setTimeout(function(){ $('#button-shipping-address').click()}, 1000);
 
 
 // $("#loading_oculto").css({"display":"none"});
-}, 4000)
+}, 3000)
 
 
+        },
+        error: function(xhr, ajaxOptions, thrownError) {
+            alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
+        }
+    });
 
 });
 {% endif %}

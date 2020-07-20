@@ -1337,13 +1337,13 @@ display:none;
 {
      
 		.username {
-			margin-left: 925px;
+			margin-left: 940px;
 			margin-top: 11px;
 			float: right;
 		}
 
 	.logoWeb {
-		margin-left: 885px;
+		margin-left: 901px;
 		margin-top: 0px;
 		float: right;
 		width: auto;
@@ -1419,12 +1419,10 @@ display:none;
 	.img-thumbnail {
 		display: inline-block;
 		max-width: 853px;
-		height: 210px;
+		height: 266px;
 		/* padding: 4px; */
 		line-height: 1.42857143;
-		background-color: #fff;
-		border: 1px solid #ddd;
-		border-radius: 4px;
+		
 		-webkit-transition: all .2s ease-in-out;
 		-o-transition: all .2s ease-in-out;
 		transition: all .2s ease-in-out;
