@@ -1,6 +1,11 @@
 <div class="panel panel-default">
   <div class="panel-heading">
     <h3 class="panel-title"><i class="fa fa-shopping-cart"></i> {{ heading_title }}</h3>
+    <button data-toggle="tooltip" id="btn_lospuestos" title="" class="btn btn-info btn-xs" data-original-title="Comercio" aria-describedby="tooltip673561">LOS PUESTOS<i class="fa fa-shopping-cart fa-fw"></i></button>
+    <button data-toggle="tooltip"  id="btn_tilcara" title="" class="btn btn-info btn-xs" data-original-title="Comercio" aria-describedby="tooltip673561">LOS PUESTOS TILCARA<i class="fa fa-shopping-cart fa-fw"></i></button>
+    <button data-toggle="tooltip"id="btn_killa"  title="" class="btn btn-info btn-xs" data-original-title="Comercio" aria-describedby="tooltip673561">KILLA<i class="fa fa-shopping-cart fa-fw"></i></button>
+    <button data-toggle="tooltip"id="btn_todos"  title="" class="btn btn-info btn-xs" data-original-title="Comercio" aria-describedby="tooltip673561">Todos<i class="fa fa-shopping-cart fa-fw"></i></button>
+
   </div>
   <div class="table-responsive">
     <table class="table">
@@ -40,3 +45,42 @@
     </table>
   </div>
 </div>
+<script type="text/javascript" src="js/jquery.js"></script>    
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $('#btn_lospuestos').click(function(){
+              var t = $('#menu-dashboard').children().attr('href'); 
+               var url =t;
+               url=url+"&store=LOS PUESTOS"
+                window.location.replace(url);
+
+            });
+
+ $('#btn_tilcara').click(function(){
+            var t = $('#menu-dashboard').children().attr('href'); 
+               var url =t;
+               url=url+"&store=TILCARA"
+                window.location.replace(url);
+
+            });
+
+$('#btn_killa').click(function(){
+              var t = $('#menu-dashboard').children().attr('href'); 
+               var url =t;
+               url=url+"&store=KILLA"
+                window.location.replace(url);
+
+            });
+
+            $('#btn_todos').click(function(){
+              var t = $('#menu-dashboard').children().attr('href'); 
+               var url =t;
+                window.location.replace(url);
+
+            });
+
+
+
+        });
+    </script>
+
