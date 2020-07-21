@@ -1331,10 +1331,28 @@ select option {
 display:none;
 }
 
+#facebook{
+border:none;
+overflow:hidden;
+position: absolute;
+margin-top: 400px;
+margin-left: -44px;
+}
+
+
 /* media query pc */
 
 @media (min-width: 768px)
 {
+
+
+	#facebook {
+		border: none;
+		overflow: hidden;
+		position: absolute;
+		margin-top: 415px;
+		margin-left: -61px;
+	}
      
 		.username {
 			margin-left: 940px;
