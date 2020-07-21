@@ -44,12 +44,13 @@ th.precio {
     text-align: center;
     align-content: center;
     margin-left: 65px;
+    font-size:9px;
 
 }
 
 .ticket {
-    width: 155px;
-    max-width: 155px;
+    width: 193px;
+    max-width: 200px;
 }
 
 img {
@@ -106,7 +107,7 @@ img {
         </tr>
       </tbody>
     </table>
-    <table class="table table-bordered">
+    <table class="table table-bordered deleted">
       <thead>
         <tr>
           <td style="width: 50%;"><b>{{ text_payment_address }}</b></td>
@@ -128,8 +129,9 @@ img {
 
     <div class="ticket">
     <img src="../image/logo_negro.png" alt="Logotipo">
-  <p class="centrado">Los Puestos
-                <br>Jujuy
+  <p class="centrado"> {{order.store_name}}
+                      <br>{{order.store_address}}<br>
+                      {{order.store_telephone}}
                 <br>{{order.date_added}}<br>
                 Ticket N°{{order.order_id}}</p>
 
@@ -175,8 +177,12 @@ img {
         {% endfor %}
       </tbody>
     </table>
-    <p class="centrado">¡GRACIAS POR SU COMPRA!
-    <br></p>
+    <p class="centrado">
+     {{order.store_url}}<br>
+    ¡GRACIAS POR SU COMPRA!
+    
+
+    </p>
 
     {% if order.comment %}
     <table class="table table-bordered deleted">

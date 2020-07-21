@@ -1638,6 +1638,16 @@ class ControllerSaleOrder extends Controller {
 				$totals = $this->model_sale_order->getOrderTotals($order_id);
 
 				foreach ($totals as $total) {
+					$total['title']=preg_replace("/\((.*?)\)/i", "", $total['title']);
+
+					if ( $total['title']=="ESTOY EN EL RESTAURANT  "){
+						$total['title']="Otros Cargos";
+					}
+
+					if ( $total['title']=="LO RETIRO EN EL RESTAURANTE  "){
+						$total['title']="Retiro en Local";
+					}
+
 					$total_data[] = array(
 						'title' => $total['title'],
 						'text'  => $this->currency->format($total['value'], $order_info['currency_code'], $order_info['currency_value'])
@@ -1671,7 +1681,6 @@ class ControllerSaleOrder extends Controller {
 		ini_set('xdebug.var_display_max_children', '256');
 		ini_set('xdebug.var_display_max_data', '1024');
 
-		//var_dump($data);
 
 		$this->response->setOutput($this->load->view('sale/order_invoice', $data));
 	}
