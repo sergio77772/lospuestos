@@ -1112,16 +1112,15 @@ select option {
 		margin-left: 112px;
 	} */
 
-	.campana{
+	.campana {
 		z-index: 99;
 		position: absolute;
 		left: 40px;
 		top: 40px;
-		max-width: 100px;
-		margin-top: 93%;
-		margin-left: 29%;
+		max-width: 90px;
+		margin-top: 111%;
+		margin-left: 30%;
 	}
-
 
 
 	.campana:hover {
@@ -1336,7 +1335,7 @@ border:none;
 overflow:hidden;
 position: absolute;
 margin-top: 400px;
-margin-left: -44px;
+margin-left: -6%;
 }
 
 
@@ -1345,13 +1344,24 @@ margin-left: -44px;
 @media (min-width: 768px)
 {
 
-
-	#facebook {
-		border: none;
-		overflow: hidden;
+	#facebook{
+		border:none;
+		overflow:hidden;
 		position: absolute;
-		margin-top: 415px;
-		margin-left: -61px;
+		margin-top: 400px;
+		margin-left: -10%;
+		}
+
+
+
+	.campana {
+		z-index: 99;
+		position: absolute;
+		left: 40px;
+		top: 40px;
+		max-width: 90px;
+		margin-top: 68%;
+		margin-left: 34%;
 	}
      
 		.username {

@@ -1,6 +1,7 @@
 <?php
 class ControllerCommonDashboard extends Controller {
 	public function index() {
+
 		$this->load->language('common/dashboard');
 
 		$this->document->setTitle($this->language->get('heading_title'));
@@ -25,6 +26,34 @@ class ControllerCommonDashboard extends Controller {
 		} else {
 			$data['error_install'] = '';
 		}
+
+
+		$file="C:\wamp\www\carrito/ip.json";
+		$office= $file;
+		$content=file_get_contents($office);
+		$data=json_decode($content,true);
+		$nuevo=true;
+		if (!empty($_SERVER['HTTP_CLIENT_IP'])) {
+			$ip = $_SERVER['HTTP_CLIENT_IP'];
+			} else {
+			$ip = $_SERVER['REMOTE_ADDR'];
+			}
+
+			foreach ($data as $key => $value) {
+				if ($value['ip']==$ip){
+					$nuevo=false;
+				break;
+				}
+			}
+            if($nuevo==true){
+			$arr = array('ip' => $ip);
+			 $json=json_encode($arr);
+			 array_push($data, $arr);
+			 $myfile = fopen($file, "w");
+			 @fwrite($myfile, json_encode($data));
+			 @fclose($myfile);
+			}
+
 		
 		// Dashboard Extensions
 		$dashboards = array();
