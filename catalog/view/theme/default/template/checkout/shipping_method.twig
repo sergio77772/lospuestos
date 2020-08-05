@@ -1,6 +1,10 @@
 {% if error_warning %}
 <div class="alert alert-warning alert-dismissible"><i class="fa fa-exclamation-circle"></i> {{ error_warning }}</div>
 {% endif %}
+{% if logged %}
+<input  type ="hidden" name="hidden_correo" value="{{email}}" id="hidden_correo" class="form-control subrayado"></input>
+<input  type ="hidden" name="hidden_telefono" value="{{telefono}}" id="hidden_telefono" class="form-control subrayado"></input>
+{% endif %}
 {% if shipping_methods %}
 <p>{{ text_shipping_method }}</p>
 {% for shipping_method in shipping_methods %}
@@ -46,10 +50,82 @@
   </div>
 </div>
 <script type="text/javascript">
+
+{% if not logged %}
 	$(document).ready(function()
 		{
        $("#loading_oculto").css({"display":"none"});
             $("#comment").val("");
+
+         setTimeout(function(){ $('.radio').click()}, 100);
+
+
+		$('.radio').click(function () {
+            let check=$('input:radio[name=shipping_method]:checked').val()
+            if (check=="weight.weight_5") //estoy en el restaurante
+            {
+              document.getElementById('lblcomentario').innerHTML = "N° de Mesa";
+              $("#comment").attr("placeholder", "ingrese el numero de mesa");
+              $("#lbldireccion").hide();
+              $("#new_direccion").hide();
+              $("#new_direccion").val("consumo en local comercial");
+              $("#lblcorreo").hide();
+              $("#new_correo").hide();
+              $("#lbltelefono").hide();
+              $("#new_tel").hide(); 
+              $("#comment").val("");
+              $("#new_correo").val("");
+              $("#new_correo").val("enlocal@cartadigitaljuy.com.ar");
+              $('#comment').on('input', function () { 
+              this.value = this.value.replace(/[^0-9]/g,'');
+});
+
+            }
+
+           if (check=="weight.weight_7") //delivery
+            {
+              document.getElementById('lblcomentario').innerHTML = "Punto de Referencia";
+              $("#comment").attr("placeholder", "*referencia para el delivery");
+               $("#new_correo").val("");
+              $("#new_direccion").val("");
+              $("#lbldireccion").show();
+              $("#new_direccion").show();
+              $("#lblcorreo").show();
+              $("#new_correo").show();
+              $("#lbltelefono").show();
+              $("#new_tel").show();
+              $("#comment").val("");
+              $("#comment").unbind("input");
+            }
+            
+             if (check=="weight.weight_6")//retiro en local
+            {
+              document.getElementById('lblcomentario').innerHTML = "Hora Estimada";
+              $("#comment").attr("placeholder", "--:--");
+               $("#comment").val(""); 
+               $("#new_direccion").val("");
+              $("#lbldireccion").hide();
+              $("#new_direccion").hide()
+              $("#new_direccion").val("Retiro en Local Comercial");
+              $("#lblcorreo").show();
+              $("#new_correo").show();
+              $("#lbltelefono").show();
+              $("#new_tel").show();
+              $("#comment").unbind("input");
+            }
+
+            //document.getElementById('price').innerHTML = $(this).val();
+
+       });
+    
+    });
+
+{% else %}
+$(document).ready(function()
+		{
+      console.log('estoy logeado  ');
+       $("#loading_oculto").css({"display":"none"});
+        $("#comment").val("");
 
          setTimeout(function(){ $('.radio').click()}, 100);
 
@@ -83,8 +159,10 @@
               $("#new_correo").show();
               $("#lbltelefono").show();
               $("#new_tel").show();
-               $("#comment").val("");
-                 $("#comment").unbind("input");
+              $("#comment").val("");
+              $("#comment").unbind("input");
+              $("#new_correo").val($("#hidden_correo").val())
+              $("#new_tel").val($("#hidden_telefono").val());
             }
             
              if (check=="weight.weight_6")
@@ -109,4 +187,7 @@
        });
     
     });
+
+{% endif %}
+
 </script>

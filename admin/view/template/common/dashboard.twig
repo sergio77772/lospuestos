@@ -52,7 +52,11 @@ $('#button-setting').on('click', function() {
 			alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
 		}
 	});	
-});	
+});
+setTimeout(function(){
+window.location.reload(1);
+}, 60000);
+
 //--></script> 
 </div>
 {{ footer }}

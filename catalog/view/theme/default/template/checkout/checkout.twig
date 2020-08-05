@@ -41,7 +41,6 @@ background-color:rgb(248, 248, 248);
 
 </style>
 
-
 <div id="checkout-checkout" class="container">
 <div id="loading_oculto"><img src="../image/ajax_loader.gif" class="loader_gif_img"/></div>
 
@@ -133,7 +132,6 @@ background-color:rgb(248, 248, 248);
 </div>
 <script type="text/javascript"><!--
 $(document).on('change', 'input[name=\'account\']', function() {
-    console.log("y ahora ?")
 	if ($('#collapse-payment-address').parent().find('.panel-heading .panel-title > *').is('a')) {
 		if (this.value == 'register') {
 			$('#collapse-payment-address').parent().find('.panel-heading .panel-title').html('<a href="#collapse-payment-address" data-toggle="collapse" data-parent="#accordion" class="accordion-toggle">{{ text_checkout_account }} <i class="fa fa-caret-down"></i></a>');
@@ -184,9 +182,9 @@ $(".paso3").css("display", "none");
 $(".olvidado").css("display", "none");
 $("#input-payment-firstname").val('Consumidor');
 $("#input-payment-lastname").val('Final');
-$("#input-payment-email").val('sergio77772@gmail.com');
-$("#input-payment-telephone").val('0388');
-$("#input-payment-address-1").val('local');
+$("#input-payment-email").val('enlocal@cartadigitaljuy.com.ar');
+$("#input-payment-telephone").val('3888');
+$("#input-payment-address-1").val('Consumo en Local');
 $("#input-payment-city").val('JUJUY');
 $("#input-payment-postcode").val('4600');
 $("#input-payment-zone").val(165);
@@ -204,6 +202,7 @@ setTimeout(function(){ $('#button-guest').click()}, 100);
 });
 {% else %}
 $(document).ready(function() {
+    //console.log('logeado');
     $.ajax({
         url: 'index.php?route=checkout/payment_address',
         dataType: 'html',
@@ -214,7 +213,7 @@ $(document).ready(function() {
 
 			$('a[href=\'#collapse-payment-address\']').trigger('click');
             $('#button-payment-address').trigger('click');
-            console.log('ternime de cargar');
+            //console.log('ternime de cargar');
 
 let timerId = setInterval(() => console.log('tick'), 3000);
 
@@ -227,9 +226,9 @@ $(".paso3").css("display", "none");
 
 $("#input-payment-firstname").val('Consumidor');
 $("#input-payment-lastname").val('Final');
-$("#input-payment-email").val('sergio77772@gmail.com');
+$("#input-payment-email").val('enlocal@cartadigitaljuy.com.ar');
 $("#input-payment-telephone").val('0388');
-$("#input-payment-address-1").val('local');
+$("#input-payment-address-1").val('Consumo en local');
 $("#input-payment-city").val('JUJUY');
 $("#input-payment-postcode").val('4600');
 $("#input-payment-zone").val(165);
@@ -836,19 +835,17 @@ $(document).delegate('#button-guest-shipping', 'click', function() {
  //paso 4
 $(document).delegate('#button-shipping-method', 'click', function() {
 
- let check=$('input:radio[name=shipping_method]:checked').val();
- console.log("que valor hay:?"+check);
+let check=$('input:radio[name=shipping_method]:checked').val();
+//console.log("que valor hay:?"+check);
 let direccion =$("#new_direccion").val();
 let correo =$("#new_correo").val();
 let tel =$("#new_tel").val();
+let comment= $("#comment").val();
 let fail=false;
 if (direccion ==="" || correo ==="" || tel==="" )
 {
     fail=true;
 }
-
-  
-
 
  if (check=="weight.weight_7" && fail===true)
 {
@@ -875,22 +872,36 @@ if($("#new_correo").val().indexOf('@', 0) == -1 || $("#new_correo").val().indexO
         }
 }
 
+ 
+
+
+
+if (check=="weight.weight_6"){
+
+if($("#new_correo").val().indexOf('@', 0) == -1 || $("#new_correo").val().indexOf('.', 0) == -1 ) {
+            Swal.fire({
+  icon: 'error',
+  title: 'Oops...',
+  text: 'Correo no valido!',
+  
+})
+            return false;
+        }
+}
+
+
+
+
+
 
 if (check=="weight.weight_7" && fail===false)
 {
+ $("#loading_oculto").css({"display":"block"});
 
 $(".paso4").css("display", "none");
-
 $("#input-payment-email").val(correo);
 $("#input-payment-telephone").val(tel);
 $("#input-payment-address-1").val(direccion);
-let timerId = setInterval(() => console.log("cosas")
-, 1000);
-
-setTimeout(() => { clearInterval(timerId); ; 
-
-}, 3000);
-
 
 fetch("../index.php?route=checkout/guest/save", {
   "headers": {
@@ -912,6 +923,66 @@ fetch("../index.php?route=checkout/guest/save", {
 }
 
 
+if (check=="weight.weight_6" && fail===false)
+{
+ $("#loading_oculto").css({"display":"block"});
+
+$(".paso4").css("display", "none");
+$("#input-payment-email").val(correo);
+$("#input-payment-telephone").val(tel);
+$("#input-payment-address-1").val(direccion);
+
+fetch("../index.php?route=checkout/guest/save", {
+  "headers": {
+    "accept": "application/json, text/javascript, */*; q=0.01",
+    "accept-language": "es-ES,es;q=0.9,en;q=0.8,gl;q=0.7,ca;q=0.6,pt;q=0.5",
+    "cache-control": "no-cache",
+    "content-type": "application/x-www-form-urlencoded; charset=UTF-8",
+    "pragma": "no-cache",
+    "x-requested-with": "XMLHttpRequest"
+  },
+  "referrer": "",
+  "referrerPolicy": "no-referrer-when-downgrade",
+  "body": "customer_group_id=1&firstname=Consumidor&lastname=Final&email="+correo+"&telephone="+tel+"&company=&address_1="+direccion+"&address_2=&city=JUJUY&postcode=4600&country_id=10&zone_id=165&shipping_address=1",
+  "method": "POST",
+  "mode": "cors",
+  "credentials": "include"
+});
+
+}
+
+
+if (check=="weight.weight_5")
+{
+//console.log('pedido dentro del restaurante');
+ $("#loading_oculto").css({"display":"block"});
+
+$(".paso4").css("display", "none");
+$("#input-payment-email").val(correo);
+$("#input-payment-telephone").val(tel);
+$("#input-payment-address-1").val(direccion);
+
+fetch("../index.php?route=checkout/guest/save", {
+  "headers": {
+    "accept": "application/json, text/javascript, */*; q=0.01",
+    "accept-language": "es-ES,es;q=0.9,en;q=0.8,gl;q=0.7,ca;q=0.6,pt;q=0.5",
+    "cache-control": "no-cache",
+    "content-type": "application/x-www-form-urlencoded; charset=UTF-8",
+    "pragma": "no-cache",
+    "x-requested-with": "XMLHttpRequest"
+  },
+  "referrer": "",
+  "referrerPolicy": "no-referrer-when-downgrade",
+  "body": "customer_group_id=1&firstname=Consumidor&lastname=Final&email="+correo+"&telephone="+tel+"&company=&address_1="+direccion+"&address_2=&city=JUJUY&postcode=4600&country_id=10&zone_id=165&shipping_address=1",
+  "method": "POST",
+  "mode": "cors",
+  "credentials": "include"
+});
+
+}
+
+setTimeout(function() {
+//console.log('confirma pedido');
     $.ajax({
         url: 'index.php?route=checkout/shipping_method/save',
         type: 'post',
@@ -922,6 +993,7 @@ fetch("../index.php?route=checkout/guest/save", {
 		},
         success: function(json) {
             $('.alert-dismissible, .text-danger').remove();
+ $("#loading_oculto").css({"display":"none"});
 
             if (json['redirect']) {
                 location = json['redirect'];
@@ -957,6 +1029,9 @@ fetch("../index.php?route=checkout/guest/save", {
             alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
         }
     });
+
+ }, 3000);
+
 });
 
 $(document).delegate('#button-payment-method', 'click', function() {

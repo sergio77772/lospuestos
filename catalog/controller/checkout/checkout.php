@@ -79,6 +79,8 @@ class ControllerCheckoutCheckout extends Controller {
 
 		if (isset($this->session->data['account'])) {
 			$data['account'] = $this->session->data['account'];
+            
+
 		} else {
 			$data['account'] = '';
 		}

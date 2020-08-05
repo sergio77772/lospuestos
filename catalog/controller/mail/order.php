@@ -243,13 +243,26 @@ class ControllerMailOrder extends Controller {
 		$data['totals'] = array();
 		
 		$order_totals = $this->model_checkout_order->getOrderTotals($order_info['order_id']);
-
 		foreach ($order_totals as $order_total) {
+
+					$order_total['title']=preg_replace("/\((.*?)\)/i", "", $order_total['title']);
+
+			if ( $order_total['title']=="ESTOY EN EL RESTAURANT"){
+				$order_total['title']="Otros Cargos";
+			}
+	
+			if ( $order_total['title']=="LO RETIRO EN EL RESTAURANTE"){
+				$order_total['title']="Otros Cargos";
+			}
+
+
 			$data['totals'][] = array(
 				'title' => $order_total['title'],
 				'text'  => $this->currency->format($order_total['value'], $order_info['currency_code'], $order_info['currency_value']),
 			);
 		}
+
+
 	
 		$this->load->model('setting/setting');
 		
@@ -270,9 +283,9 @@ class ControllerMailOrder extends Controller {
 		$mail->setTo($order_info['email']);
 		$mail->setFrom($from);
 		$mail->setSender(html_entity_decode($order_info['store_name'], ENT_QUOTES, 'UTF-8'));
-		$mail->setSubject(html_entity_decode(sprintf($language->get('text_subject'), $order_info['store_name'], $order_info['order_id']), ENT_QUOTES, 'UTF-8'));
+		$mail->setSubject(html_entity_decode(sprintf($language->get('text_subject'), $order_info['store_name'], $order_info['order_id']), ENT_QUOTES, 'UTF-8'));		
 		$mail->setHtml($this->load->view('mail/order_add', $data));
-		$mail->send();
+		$mail->send();//VEER AQUI
 		
 	}
 	

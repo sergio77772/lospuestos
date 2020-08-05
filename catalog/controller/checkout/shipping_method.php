@@ -44,6 +44,14 @@ class ControllerCheckoutShippingMethod extends Controller {
 			$this->session->data['shipping_methods'] = $method_data;
 		}
 
+
+		if ($this->customer->isLogged()) {
+			$this->load->model('account/wishlist');
+			$data['email']=$this->customer->getEmail(); 
+			$data['telefono']=$this->customer->getTelephone(); 
+			$data['logged'] = $this->customer->isLogged();
+		}
+
 		if (empty($this->session->data['shipping_methods'])) {
 			$data['error_warning'] = sprintf($this->language->get('error_no_shipping'), $this->url->link('information/contact'));
 		} else {
