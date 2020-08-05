@@ -50,14 +50,16 @@
         </tr>
       </tbody>
     </table>
-    <table class="table table-bordered">
+     <table class="table table-bordered">
       <thead>
         <tr>
+          <td style="width: 50%;"><b>{{ text_shipping_address }}</b></td>
           <td style="width: 50%;"><b>{{ text_contact }}</b></td>
         </tr>
       </thead>
       <tbody>
         <tr>
+          <td>{{ order.shipping_address }}</td>
           <td>{{ order.email }}<br/>
             {{ order.telephone }}</td>
         </tr>
