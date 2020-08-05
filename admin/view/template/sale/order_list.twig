@@ -29,7 +29,7 @@
     <div id="filter-order" class="col-md-3 col-md-push-9 col-sm-12 hidden-sm hidden-xs">
       <div class="panel panel-default">
         <div class="panel-heading">
-          <h3 class="panel-title"><i class="fa fa-filter"></i> {{ text_filter }}</h3>
+          <h3 class="panel-title"><i class="fa fa-filter"></i> {{ text_filter }} :o</h3>
         </div>
         <div class="panel-body">
           <div class="form-group">
@@ -97,7 +97,11 @@
     <div class="col-md-9 col-md-pull-3 col-sm-12">
       <div class="panel panel-default">
         <div class="panel-heading">
-          <h3 class="panel-title"><i class="fa fa-list"></i> {{ text_list }}</h3>
+          <h3 class="panel-title"><i class="fa fa-list"></i> {{ text_list }} </h3>
+           <button data-toggle="tooltip" id="btn_lospuestos" title="" class="btn btn-info btn-xs" data-original-title="Comercio">LOS PUESTOS<i class="fa fa-shopping-cart fa-fw"></i></button>
+    <button data-toggle="tooltip" id="btn_tilcara" title="" class="btn btn-info btn-xs" data-original-title="Comercio" aria-describedby="tooltip673561">LOS PUESTOS TILCARA<i class="fa fa-shopping-cart fa-fw"></i></button>
+    <button data-toggle="tooltip" id="btn_killa" title="" class="btn btn-info btn-xs" data-original-title="Comercio" aria-describedby="tooltip673561">KILLA<i class="fa fa-shopping-cart fa-fw"></i></button>
+    <button data-toggle="tooltip" id="btn_todos" title="" class="btn btn-info btn-xs" data-original-title="Comercio" aria-describedby="tooltip673561">Todos<i class="fa fa-shopping-cart fa-fw"></i></button>
         </div>
         <div class="panel-body">
           <form method="post" action="" enctype="multipart/form-data" id="form-order">
@@ -285,6 +289,48 @@ $('#form-order li:last-child a').on('click', function(e) {
 		});
 	}
 });
+
+
+
+
+        $(document).ready(function() {
+            $('#btn_lospuestos').click(function(){
+              var t = document.querySelector("#content > div.page-header > div > ul > li:nth-child(2) > a").href 
+               var url =t;
+               url=url+"&store=LOS PUESTOS"
+                window.location.replace(url);
+
+            });
+
+ $('#btn_tilcara').click(function(){
+            var t = document.querySelector("#content > div.page-header > div > ul > li:nth-child(2) > a").href 
+               var url =t;
+               url=url+"&store=LOS%20PUESTOS%20TILCARA"
+                window.location.replace(url);
+
+            });
+
+$('#btn_killa').click(function(){
+              var t = document.querySelector("#content > div.page-header > div > ul > li:nth-child(2) > a").href
+               var url =t;
+               url=url+"&store=KILLA"
+                window.location.replace(url);
+
+            });
+
+            $('#btn_todos').click(function(){
+              var t = document.querySelector("#content > div.page-header > div > ul > li:nth-child(2) > a").href
+               var url =t;
+                window.location.replace(url);
+
+            });
+
+
+
+        });
+    
+
+
 //--></script> 
   <script src="view/javascript/jquery/datetimepicker/bootstrap-datetimepicker.min.js" type="text/javascript"></script>
   <link href="view/javascript/jquery/datetimepicker/bootstrap-datetimepicker.min.css" type="text/css" rel="stylesheet" media="screen" />
