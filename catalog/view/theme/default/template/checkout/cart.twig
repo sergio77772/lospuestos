@@ -1,4 +1,6 @@
 {{ header }}
+{% set m = '?main=off' %}
+
 <style>
 #order_img{
   display:none;
@@ -123,7 +125,7 @@
         </div>
       </div>
       <div class="buttons clearfix">
-        <div class="pull-left"><a href="{{ continue }}" class="btn btn order">{{ button_shopping }}</a></div>
+        <div class="pull-left"><a href="{{ continue ~ m }}" class="btn btn order">{{ button_shopping }}</a></div>
         <div class="pull-right"><a href="{{ checkout }}" class="btn btn order">{{ button_checkout }}</a></div>
         <div class="pull-right"><a href="#" id="a_eliminar" class="btn btn order">Eliminar Orden</a></div>
       </div>
