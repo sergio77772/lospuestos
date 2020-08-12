@@ -53,7 +53,9 @@
 
 {% if not logged %}
 	$(document).ready(function()
-		{
+		{      $('input[type="radio"][name="shipping_method"]').eq(1).prop('checked',true);
+            $('input[type="radio"][name="shipping_method"]').eq(0).attr('disabled', true);
+
        $("#loading_oculto").css({"display":"none"});
             $("#comment").val("");
 

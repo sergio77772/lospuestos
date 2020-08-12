@@ -234,7 +234,7 @@ $("#input-payment-postcode").val('4600');
 $("#input-payment-zone").val(165);
 //$('#button-shipping-address').trigger('click');
 setTimeout(function(){ $('#button-payment-address').click()}, 500);
-setTimeout(function(){ $('#button-shipping-address').click()}, 1000);
+setTimeout(function(){ $('#button-shipping-address').click()}, 2000);
 
 
 // $("#loading_oculto").css({"display":"none"});
@@ -903,6 +903,7 @@ $("#input-payment-email").val(correo);
 $("#input-payment-telephone").val(tel);
 $("#input-payment-address-1").val(direccion);
 
+{% if not logged %}
 fetch("../index.php?route=checkout/guest/save", {
   "headers": {
     "accept": "application/json, text/javascript, */*; q=0.01",
@@ -919,6 +920,9 @@ fetch("../index.php?route=checkout/guest/save", {
   "mode": "cors",
   "credentials": "include"
 });
+{% endif %}
+
+
 
 }
 
