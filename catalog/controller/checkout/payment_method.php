@@ -78,6 +78,12 @@ class ControllerCheckoutPaymentMethod extends Controller {
 			$this->session->data['payment_methods'] = $method_data;
 		}
 
+		if ($this->customer->isLogged()) {
+			$this->load->model('account/wishlist');
+			$data['logged'] = $this->customer->isLogged();
+		}
+
+
 		if (empty($this->session->data['payment_methods'])) {
 			$data['error_warning'] = sprintf($this->language->get('error_no_payment'), $this->url->link('information/contact'));
 		} else {

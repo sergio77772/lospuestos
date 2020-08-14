@@ -47,19 +47,22 @@
 		{
        let  coment=$("#comment2").val();
        let check=$('input:radio[name=shipping_method]:checked').val()
-                    $("input[value='cod2']").prop('disabled', true)
+        $("input[value='cod2']").prop('disabled', true)
 
            // console.log(check);
             if (check=="weight.weight_7")
             {
-
               $("#comment2").val(" Punto de Referencia :" +coment);
-               $("input[value='cod']").css('display','none');
+             $("input[value='cod']").css('display','none');
              // $('.black').css("color" , "aliceblue"); #}
              $("input[value='cod']").prop('disabled', true);
              $("input[value='cod1']").prop('disabled', true);
              $("input[value='cod']").css('display','block');
              $('input:radio[name=payment_method][value=mp_standard]').click();
+
+             {% if logged %}
+               $("input[value='cod']").prop('disabled', false);
+               {% endif %}
 
             }
                if (check=="weight.weight_5")
@@ -102,6 +105,7 @@
             //document.getElementById('price').innerHTML = $(this).val();
 
        });*/
-    
+
+
     });
 </script>
