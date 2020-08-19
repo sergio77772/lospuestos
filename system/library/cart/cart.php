@@ -280,8 +280,18 @@ class Cart {
 	}
 
 	public function update($cart_id, $quantity) {
+		
 		$this->db->query("UPDATE " . DB_PREFIX . "cart SET quantity = '" . (int)$quantity . "' WHERE cart_id = '" . (int)$cart_id . "' AND api_id = '" . (isset($this->session->data['api_id']) ? (int)$this->session->data['api_id'] : 0) . "' AND customer_id = '" . (int)$this->customer->getId() . "' AND session_id = '" . $this->db->escape($this->session->getId()) . "'");
 	}
+
+     public function updateOption($id_carrito,$value,$id_opcion) {
+        $option=array($id_opcion=>$value);
+		//array_push($option,$id_opcion,$value);
+		//echo ("update oc_cart SET option = '" . (string)$this->db->escape(json_encode($option)) . "'  WHERE cart_id = '" . (int)$id_carrito . "' AND api_id = '" . (isset($this->session->data['api_id']) ? (int)$this->session->data['api_id'] : 0) . "' AND customer_id = '" . (int)$this->customer->getId() . "' AND session_id = '" . $this->db->escape($this->session->getId()) . "'");die();
+		$this->db->query("UPDATE " . DB_PREFIX . "cart SET oc_cart.option = '" .$this->db->escape(json_encode($option))  . "'  WHERE cart_id = '" . (int)$id_carrito . "' AND api_id = '" . (isset($this->session->data['api_id']) ? (int)$this->session->data['api_id'] : 0) . "' AND customer_id = '" . (int)$this->customer->getId() . "' AND session_id = '" . $this->db->escape($this->session->getId()) . "'");
+	}
+
+
 
 	public function remove($cart_id) {
 		$this->db->query("DELETE FROM " . DB_PREFIX . "cart WHERE cart_id = '" . (int)$cart_id . "' AND api_id = '" . (isset($this->session->data['api_id']) ? (int)$this->session->data['api_id'] : 0) . "' AND customer_id = '" . (int)$this->customer->getId() . "' AND session_id = '" . $this->db->escape($this->session->getId()) . "'");

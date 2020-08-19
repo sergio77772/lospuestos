@@ -16,6 +16,22 @@
     border-color: #262626;
 }
 
+.table-bordered {
+    border: 1px solid #ddd !important;
+}
+table, td{
+   border: 1px solid #ddd !important;
+}
+.swal2-popup {
+      width: 48em;
+}
+
+.form-control[readonly] {
+    background-color: #262626;
+    opacity: 1;
+    color:white;
+}
+
 </style>
 
 <div id="checkout-cart" class="container">
@@ -68,7 +84,8 @@
               <td class="text-left"><a href="{{ product.href }}">{{ product.name }}</a> {% if not product.stock %} <span class="text-danger">***</span> {% endif %}
                 {% if product.option %}
                 {% for option in product.option %} <br />
-                <small>{{ option.name }}: {{ option.value }}</small> {% endfor %}
+                <div class="input-group btn-block" style="max-width: 200px;">
+                <small>{{ option.name }}:<input type="text" name="options[{{ option.id_option ~ "/" ~ product.cart_id }}]" value="{{ option.value }}" size="1"  class="form-control subrayado" {{option.disable}} /> </div>    {% endfor %}
                 {% endif %}
                 {% if product.reward %} <br />
                 <small>{{ product.reward }}</small> {% endif %}
@@ -141,6 +158,32 @@ $("#a_eliminar").click(function(event) {
   $( "#cart .btn" ).trigger( "click" ); 
   
 });
+
+
+$(document).ready(function() {
+       var isshow = localStorage.getItem('isshownew2020');
+       if (isshow== null) {
+           localStorage.setItem('isshownew2020', 1);
+
+              const swalWithBootstrapButtons = Swal.mixin({
+  customClass: {
+    confirmButton: 'btn btn-success order',
+    cancelButton: 'btn btn-danger order'
+  },
+  buttonsStyling: false
+})
+
+swalWithBootstrapButtons.fire({
+  title: 'Atencion!',icon: 'info',
+  text: 'Puede especificar detalles de sus pedidos en los campos que muestra la imagen.',
+  imageUrl: '../image/anuncio.png',
+  imageWidth: 400,
+  imageHeight: 147,
+  imageAlt: 'Custom image',
+})
+       }
+});
+
 
 </script>
 

@@ -90,10 +90,20 @@ class ControllerCheckoutCart extends Controller {
 							$value = '';
 						}
 					}
-
+                     $disable="";
+					if ($option['type']=="select")
+					{
+						$disable="readonly";
+					}
+					else{
+						$disable="";
+					}
 					$option_data[] = array(
 						'name'  => $option['name'],
-						'value' => (utf8_strlen($value) > 20 ? utf8_substr($value, 0, 20) . '..' : $value)
+						'value' => (utf8_strlen($value) > 20 ? utf8_substr($value, 0, 20) . '..' : $value),
+						'id_option'=>$option['product_option_id'],
+						'disable'=>$disable
+
 					);
 				}
 
@@ -129,7 +139,7 @@ class ControllerCheckoutCart extends Controller {
 						$recurring .= sprintf($this->language->get('text_payment_cancel'), $this->currency->format($this->tax->calculate($product['recurring']['price'] * $product['quantity'], $product['tax_class_id'], $this->config->get('config_tax')), $this->session->data['currency']), $product['recurring']['cycle'], $frequencies[$product['recurring']['frequency']], $product['recurring']['duration']);
 					}
 				}
-
+ 
 				$data['products'][] = array(
 					'cart_id'   => $product['cart_id'],
 					'thumb'     => $image,
@@ -145,6 +155,7 @@ class ControllerCheckoutCart extends Controller {
 					'href'      => $this->url->link('product/product', 'product_id=' . $product['product_id'])
 				);
 			}
+			
 
 			// Gift Voucher
 			$data['vouchers'] = array();
@@ -386,11 +397,24 @@ class ControllerCheckoutCart extends Controller {
 		$json = array();
 
 		// Update
+
 		if (!empty($this->request->post['quantity'])) {
 			foreach ($this->request->post['quantity'] as $key => $value) {
 				$this->cart->update($key, $value);
-			}
 
+			}//
+
+
+			if (!empty($this->request->post['options'])) {
+			 	foreach ($this->request->post['options'] as $key => $value) {
+
+					$id=explode("/",$key);
+					$id_carrito=$id[1];
+					$id_opcion=$id[0];
+			 		$this->cart->updateOption($id_carrito, $value,$id_opcion);
+			 	}//
+
+			}
 			$this->session->data['success'] = $this->language->get('text_remove');
 
 			unset($this->session->data['shipping_method']);
@@ -401,7 +425,6 @@ class ControllerCheckoutCart extends Controller {
 
 			$this->response->redirect($this->url->link('checkout/cart'));
 		}
-
 		$this->response->addHeader('Content-Type: application/json');
 		$this->response->setOutput(json_encode($json));
 	}
