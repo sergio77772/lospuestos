@@ -957,15 +957,16 @@ h2.price {
 
   .order ,.btn-primary{
 
-	background-color: #DB8700 !important;
+	background-color: #84C638 !important;
 	border-radius: 40px;
 	margin-top: 5px;
   }
 
   
   .order:hover{
-	background-color: rgb(255, 255, 255) !important;
-	color:#DB8700;
+	background-color: #303030 !important;
+	color:#ffffff;
+	border-color: #84C638;
 
   }
   #button-register:active{
@@ -1069,7 +1070,7 @@ select option {
 
 	.float {
 		position: absolute;
-		margin-top: 82%;
+		margin-top: 108%;
 		margin-left: 55%;
 		width: 71%;
 		transform: translate(-50%, -50%);
@@ -1118,9 +1119,22 @@ select option {
 		left: 40px;
 		top: 40px;
 		max-width: 90px;
-		margin-top: 111%;
+		margin-top: 118%;
 		margin-left: 30%;
 	}
+
+
+	.principal_logo {
+		z-index: 99;
+		position: absolute;
+		left: 40px;
+		top: 40px;
+		max-width: 253px;
+		margin-top: 30%;
+		margin-left: 10%;
+	}
+
+
 
 
 	.campana:hover {
@@ -1194,7 +1208,8 @@ select option {
 
 	  .modal-header
 	  {
-		border-bottom:none
+		border-bottom:none;
+		display:none;
 	  }
 
 	  .modal-header .close
@@ -1358,9 +1373,22 @@ margin-left: -10%;
 		left: 40px;
 		top: 40px;
 		max-width: 90px;
-		margin-top: 68%;
+		margin-top: 73%;
 		margin-left: 34%;
 	}
+
+	.principal_logo {
+		z-index: 99;
+		position: absolute;
+		left: 40px;
+		top: 40px;
+		max-width: 300px;
+		margin-top: 10%;
+		margin-left: 19%;
+	}
+     
+
+
      
 		.username {
 			margin-left: 940px;
@@ -1479,7 +1507,7 @@ margin-left: -10%;
 
 	.float {
 		position: absolute;
-		margin-top: 50%;
+		margin-top: 67%;
 		margin-left: 50%;
 		width: 71%;
 		transform: translate(-50%, -50%);
