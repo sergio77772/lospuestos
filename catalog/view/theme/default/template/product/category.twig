@@ -16,7 +16,7 @@ background-color:rgb(248, 248, 248);
     margin-top: 49%!important;
 }
 a:focus, a:hover {
-    color: #FFC107;
+    color: #84C638;
     text-decoration: underline;
 }
 
@@ -39,6 +39,11 @@ background-color:rgb(248, 248, 248);
 }
 }
 
+body {
+	background: url(/../image/categoria.png) no-repeat;
+	background-size: cover;
+}
+
 
 </style>
 <div id="product-category" class="container">
@@ -59,15 +64,15 @@ background-color:rgb(248, 248, 248);
     {% set class = 'col-sm-12' %}
     {% endif %}
     <div id="content" class="{{ class }}">{{ content_top }}
-      <h2 class="deleted">{{ heading_title }}</h2>
+      <h2 class="titleh1">{{ heading_title }}</h2>
       {% if thumb or description %}
       <div class="row"> {% if thumb %}
-        <div class="col-sm-2"><img src="{{ thumb }}" alt="{{ heading_title }}" title="{{ heading_title }}" class="img-thumbnail" /></div>
+        <div class="col-sm-2 deleted"><img src="{{ thumb }}" alt="{{ heading_title }}" title="{{ heading_title }}" class="img-thumbnail" /></div>
         {% endif %}
         {% if description %}
-        <div class="col-sm-10">{{ description }}</div>
+        <div class="col-sm-10 deleted ">{{ description }}</div>
         {% endif %}</div>
-      <hr>
+     {#  <hr> #}
       {% endif %}
       {% if categories %}
       <h3>{{ text_refine }}</h3>
@@ -230,7 +235,7 @@ $("#list-view").trigger("click");
 
 if (menu=="34" || menu=="34_42"|| menu=="34_61" || menu=="34_62" || menu=="34_64"|| menu=="34_65"){
   $(".img-thumbnail").attr("src","../image/menu/bebidas.png");
-    $('.esterow').css("background-image", "url(../image/platos/bebidas.png)");  
+    //$('.esterow').css("background-image", "url(../image/platos/bebidas.png)");  
 
   setTimeout(function(){
   $("#loading_oculto").css({"display":"none"});
@@ -239,7 +244,7 @@ if (menu=="34" || menu=="34_42"|| menu=="34_61" || menu=="34_62" || menu=="34_64
 
 if (menu=="20"){
   $(".img-thumbnail").attr("src","../image/menu/entradas.png");
-  $('.esterow').css("background-image", "url(../image/platos/entrada.png)");  
+  //$('.esterow').css("background-image", "url(../image/platos/entrada.png)");  
 
   setTimeout(function(){
   $("#loading_oculto").css({"display":"none"});
@@ -247,7 +252,7 @@ if (menu=="20"){
 }
 if (menu=="57"){
   $(".img-thumbnail").attr("src","../image/menu/parrilla.png");
-    $('.esterow').css("background-image", "url(../image/platos/parrilla.png)");  
+    //$('.esterow').css("background-image", "url(../image/platos/parrilla.png)");  
 
   setTimeout(function(){
   $("#loading_oculto").css({"display":"none"});
@@ -256,7 +261,7 @@ if (menu=="57"){
 
 if (menu=="17"){
   $(".img-thumbnail").attr("src","../image/menu/pastas.png");
-  $('.esterow').css("background-image", "url(../image/platos/parrilla.png)");  
+  //$('.esterow').css("background-image", "url(../image/platos/parrilla.png)");  
 
   setTimeout(function(){
   $("#loading_oculto").css({"display":"none"});
@@ -265,7 +270,7 @@ if (menu=="17"){
 
 if (menu=="60"){
   $(".img-thumbnail").attr("src","../image/menu/principales.png");
-    $('.esterow').css("background-image", "url(../image/platos/entrada.png)");  
+    //$('.esterow').css("background-image", "url(../image/platos/entrada.png)");  
 
   setTimeout(function(){
   $("#loading_oculto").css({"display":"none"});
@@ -275,7 +280,7 @@ if (menu=="60"){
 
 if (menu=="24"){
   $(".img-thumbnail").attr("src","../image/menu/pizza.png");
-  $('.esterow').css("background-image", "url(../image/platos/pizza.png)");  
+  //$('.esterow').css("background-image", "url(../image/platos/pizza.png)");  
 
   setTimeout(function(){
   $("#loading_oculto").css({"display":"none"});
@@ -284,7 +289,7 @@ if (menu=="24"){
 
 if (menu=="33"){
   $(".img-thumbnail").attr("src","../image/menu/especial.png");
-    $('.esterow').css("background-image", "url(../image/platos/especial.png)");  
+    //$('.esterow').css("background-image", "url(../image/platos/especial.png)");  
 
   setTimeout(function(){
   $("#loading_oculto").css({"display":"none"});

@@ -16,8 +16,8 @@ body {
 	font-size: 12px;
 	line-height: 20px;
 	width: 100%;
-	background-color: #262626;/* lo agregue */
-	
+	background: url(/../image/fondo.jpg) no-repeat;
+	background-size: cover;
 }
 h1, h2, h3, h4, h5, h6 {
 	/* default font size color: #444;*/
@@ -276,7 +276,7 @@ div.required .control-label:before {
 #menu .btn-navbar {
 	font-size: 15px;
 	font-stretch: expanded;
-	/* color: #FFF; */
+	color: #84c638; 
 	padding: 2px 18px;
 	float: left;
 	/* background-color: #e5ebee; */
@@ -287,8 +287,8 @@ div.required .control-label:before {
 	box-shadow: none;
 }
 #menu .btn-navbar:hover, #menu .btn-navbar:focus, #menu .btn-navbar:active, #menu .btn-navbar.disabled, #menu .btn-navbar[disabled] {
-	color: #ffffff;
-	background-color: #000000;
+	color: #84C638;
+	/* background-color: #000000; */
 }
 @media (min-width: 768px) {
 	#menu .dropdown:hover .dropdown-menu {
@@ -826,10 +826,10 @@ h2.price {
 }
 
 .logoWeb2 {
-    margin: -42px 31px;
+    margin: -42px 53px;
     float: left;
     width: auto;
-    max-width: 83px;
+    max-width: 55px;
 }
 
 .username
@@ -1326,8 +1326,12 @@ select option {
     margin-right: 5px;
 
 }
+#order_img{
+	display:none;
+}
 
-.esterow {
+
+/* .esterow {
     background: url(/../image/plato.png) no-repeat;
     margin-right: -15px;
     margin-left: -15px;
@@ -1336,7 +1340,7 @@ select option {
     background-position-x: 50%;
     background-position-y: 100%;
     padding-bottom: 24%;
-}
+} */
 #button-finish{
 	display: none;
 }

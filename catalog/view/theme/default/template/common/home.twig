@@ -60,7 +60,7 @@ background-color:rgb(248, 248, 248);
   </div>
   <div class="social">
 
-   <img id="mozo" class="principal_logo" src="../image/mercado.png"  data-toggle="tooltip" data-placement="bottom" title="Tooltip on bottom"><img>
+   <img  class="principal_logo" src="../image/mercado.png"  data-toggle="tooltip" data-placement="bottom" title="Tooltip on bottom"><img>
 
 
 
@@ -72,7 +72,7 @@ background-color:rgb(248, 248, 248);
 
 	  <img src="../image/inicio.png" style="height: 920px; width: 525px;"><img>
 
-<img id="mozo" class="campana" src="../image/wp.png"  data-toggle="tooltip" data-placement="bottom" title="Tooltip on bottom" style="display:{{mostrar}}"><img>
+<img id="mozo" name="mozo" class="campana" src="../image/wp.png"  data-toggle="tooltip" data-placement="bottom" title="Tooltip on bottom" style="display:{{mostrar}}"><img>
 {# <p>LLamar al mozo</p> #}
 
 	</div>
@@ -97,41 +97,8 @@ background-color:rgb(248, 248, 248);
 
 $( "#mozo" ).on( "click", function() {
   
-  const swalWithBootstrapButtons = Swal.mixin({
-  customClass: {
-    confirmButton: 'btn btn-success order',
-    cancelButton: 'btn btn-danger order'
-  },
-  buttonsStyling: false
-})
-
-const ipAPI = '//api.ipify.org?format=json'
-
-const inputValue = fetch(ipAPI)
-  .then(response => response.json())
-  .then(data => '')
-
-const { value: ipAddress } =  swalWithBootstrapButtons.fire({
-  title: 'Numero de Mesa',
-  input: 'number',  
-  inputValue: inputValue,
-  showCancelButton: true,
-  inputValidator: (value) => {
-    console.log(111);
-    if (!value) {
-      return 'You need to write something!'
-    }
-    else{
-      window.open(`https://api.whatsapp.com/send?phone=543884564588&text=hola,%20necesito%20un%20mesero%20mesa: ${value}`, '_blank');
-    }
-  }
-})
-
-if (ipAddress) {
-  console.log(' 222');
-  swalWithBootstrapButtons.fire(`Your IP address is ${ipAddress}`)
-}
-
+      window.open(`https://api.whatsapp.com/send?phone=543885888781&text=Hola,%20necesito%20consultar%20sobre%20:`, '_blank');
+  
 
 });
     
