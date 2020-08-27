@@ -9,23 +9,23 @@ class ControllerCommonHome extends Controller {
 			$this->document->addLink($this->config->get('config_url'), 'canonical');
 		}
 
-		$file="C:\wamp\www\carrito/ip.json";
-		$office= $file;
-		$content=file_get_contents($office);
-		$data=json_decode($content,true);
-		$mostrar="none";
-		if (!empty($_SERVER['HTTP_CLIENT_IP'])) {
-			$ip = $_SERVER['HTTP_CLIENT_IP'];
-			} else {
-			$ip = $_SERVER['REMOTE_ADDR'];
-			}
+		// $file="C:\wamp\www\carrito/ip.json";
+		// $office= $file;
+		// $content=file_get_contents($office);
+		// $data=json_decode($content,true);
+		// $mostrar="none";
+		// if (!empty($_SERVER['HTTP_CLIENT_IP'])) {
+		// 	$ip = $_SERVER['HTTP_CLIENT_IP'];
+		// 	} else {
+		// 	$ip = $_SERVER['REMOTE_ADDR'];
+		// 	}
 
-			foreach ($data as $key => $value) {
-				if ($value['ip']==$ip){
-					$mostrar='block';
-				break;
-				}
-			}
+		// 	foreach ($data as $key => $value) {
+		// 		if ($value['ip']==$ip){
+		// 			$mostrar='block';
+		// 		break;
+		// 		}
+		// 	}
            
 		$data['column_left'] = $this->load->controller('common/column_left');
 		$data['column_right'] = $this->load->controller('common/column_right');
