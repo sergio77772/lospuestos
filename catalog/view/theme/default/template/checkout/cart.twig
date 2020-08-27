@@ -5,8 +5,8 @@
 #order_img{
   display:none;
 }
-.order, .btn-primary {
-    background-color: #DB8700 !important;
+ .order, .btn-primary {
+   
     border-left: 40px !important;
     margin-top: 0px;
 }
@@ -14,6 +14,11 @@
 .btn-danger {
     border-radius: 40px;
     border-color: #262626;
+}
+
+body
+{
+  color:rgb(0 0 0);
 }
 
 </style>
@@ -65,7 +70,7 @@
             
             {% for product in products %}
             <tr>
-              <td class="text-left"><a href="{{ product.href }}">{{ product.name }}</a> {% if not product.stock %} <span class="text-danger">***</span> {% endif %}
+              <td class="text-left"><a href="{{ product.href }}"style ="color:#060606;">{{ product.name }}</a> {% if not product.stock %} <span class="text-danger">***</span> {% endif %}
                 {% if product.option %}
                 {% for option in product.option %} <br />
                 <small>{{ option.name }}: {{ option.value }}</small> {% endfor %}
