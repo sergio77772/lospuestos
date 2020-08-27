@@ -28,31 +28,31 @@ class ControllerCommonDashboard extends Controller {
 		}
 
 
-		$file="C:\wamp\www\carrito/ip.json";
-		$office= $file;
-		$content=file_get_contents($office);
-		$data=json_decode($content,true);
-		$nuevo=true;
-		if (!empty($_SERVER['HTTP_CLIENT_IP'])) {
-			$ip = $_SERVER['HTTP_CLIENT_IP'];
-			} else {
-			$ip = $_SERVER['REMOTE_ADDR'];
-			}
+		// $file="C:\wamp\www\carrito/ip.json";
+		// $office= $file;
+		// $content=file_get_contents($office);
+		// $data=json_decode($content,true);
+		// $nuevo=true;
+		// if (!empty($_SERVER['HTTP_CLIENT_IP'])) {
+		// 	$ip = $_SERVER['HTTP_CLIENT_IP'];
+		// 	} else {
+		// 	$ip = $_SERVER['REMOTE_ADDR'];
+		// 	}
 
-			foreach ($data as $key => $value) {
-				if ($value['ip']==$ip){
-					$nuevo=false;
-				break;
-				}
-			}
-            if($nuevo==true){
-			$arr = array('ip' => $ip);
-			 $json=json_encode($arr);
-			 array_push($data, $arr);
-			 $myfile = fopen($file, "w");
-			 @fwrite($myfile, json_encode($data));
-			 @fclose($myfile);
-			}
+		// 	foreach ($data as $key => $value) {
+		// 		if ($value['ip']==$ip){
+		// 			$nuevo=false;
+		// 		break;
+		// 		}
+		// 	}
+        //     if($nuevo==true){
+		// 	$arr = array('ip' => $ip);
+		// 	 $json=json_encode($arr);
+		// 	 array_push($data, $arr);
+		// 	 $myfile = fopen($file, "w");
+		// 	 @fwrite($myfile, json_encode($data));
+		// 	 @fclose($myfile);
+		// 	}
 
 		
 		// Dashboard Extensions
