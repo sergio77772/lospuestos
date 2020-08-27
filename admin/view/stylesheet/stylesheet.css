@@ -26,6 +26,10 @@ h1, h2, h3, h4, h5, h6, p {
 	text-shadow: 0 1px #fff;
 }
 
+#btn_lospuestos,#btn_tilcara,#btn_killa,#btn_todos{
+	display:none;
+}
+
 @media print {
     @page { margin: 0;
      size: auto; }
