@@ -848,12 +848,11 @@ h2.price {
 {
 	display: none !important;
 }
-.detalle_desc
-{
+.detalle_desc {
     clear: left;
     float: left;
-	max-width: 79%;
-	padding: 2px;
+    max-width: 63%;
+    padding: 2px;
 }
 
 .btn_disable
@@ -1456,9 +1455,9 @@ margin-left: -10%;
 
 
 	#menu {
-		background-color: rgb(38, 38, 38);
+		background-color: rgb(125 125 125);
 		background-repeat: repeat-x;
-		min-height: 40px;
+		min-height: 60px;
 		position: relative;
 		z-index: 9999;
 		width: 100%;
@@ -1470,10 +1469,8 @@ margin-left: -10%;
 		text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
 		padding: 10px 15px 10px 15px;
 		min-height: 15px;
-		background-color: #262626;
-
+		background-color: #7d7d7d;
 	}
-
 	.img-thumbnail {
 		display: inline-block;
 		max-width: 853px;
