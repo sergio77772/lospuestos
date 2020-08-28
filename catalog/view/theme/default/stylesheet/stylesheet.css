@@ -621,11 +621,19 @@ h2.price {
 	margin: 0;
 }
 .product-thumb .price {
-	/*color: #444;*/
-	float: right;
-	clear: right;
-	margin: 5px;
+    /* color: #444; */
+    float: right;
+    clear: right;
+    margin: 5px;
+    margin-right: 29px;
 }
+
+.price3
+{
+		float: right;
+		margin-right: -85px;
+}
+
 .product-thumb .price-new {
 	font-weight: 600;
 }
@@ -1356,6 +1364,10 @@ margin-left: -10%;
 
 
 /* media query pc */
+.bolsa1{
+	vertical-align: baseline;
+max-width: 25px;}
+
 
 @media (min-width: 768px)
 {
