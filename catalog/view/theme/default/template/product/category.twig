@@ -198,7 +198,7 @@ body {
                   {% if product.rating < i %} <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-2x"></i></span> {% else %} <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i><i class="fa fa-star-o fa-stack-2x"></i></span>{% endif %}
                   {% endfor %} </div>
                 {% endif %} </a>
-                 <p class="price3"><img  class="bolsa1" src="../image/bolsa1.png"></img></p>
+                 <p class="price3"><img  class="bolsa1" src="../image/bolsa1.png" onclick="comprar('{{ product.product_id }}','{{ product.name}}')"></img></p>
                 
                 </div>
               <div class="button-group btn_disable">
@@ -310,6 +310,16 @@ function getParameterByName(name) {
     return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
 }
 
+
+
+
+function comprar(id,name)
+{
+alert('voya a comrpar '+name);
+
+
+
+}
 
 </script>
 {{ footer }} 

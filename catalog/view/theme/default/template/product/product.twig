@@ -446,38 +446,6 @@ var menu = getParameterByName('path');
  if (menu!=34 && bandera==false){
        bandera=true;
  
-
-       const swalWithBootstrapButtons = Swal.mixin({
-  customClass: {
-    confirmButton: 'btn btn-success order',
-    cancelButton: 'btn btn-danger order'
-  },
-  buttonsStyling: false
-})
-
-swalWithBootstrapButtons.fire({
-  title: 'Desea Agregar una Bebida?',
-  text: "",
-  icon: 'warning',
-  showCancelButton: true,
-  confirmButtonText: 'Si',
-  cancelButtonText: 'No',
-  reverseButtons: true
-}).then((result) => {
-  if (result.value) {
- 
-   window.location.replace("../index.php?route=product/category&path=34");
-  } else if (
-    /* Read more about handling dismissals below */
-    result.dismiss === Swal.DismissReason.cancel
-  ) {
-    /*swalWithBootstrapButtons.fire(
-      'Cancelled',
-      'Your imaginary file is safe :)',
-      'error'
-    )*/
-  }
-})
  }
        $('.finaliti').show();
 
