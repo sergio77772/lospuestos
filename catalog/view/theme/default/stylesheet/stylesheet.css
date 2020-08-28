@@ -1365,8 +1365,10 @@ margin-left: -10%;
 
 /* media query pc */
 .bolsa1{
-	vertical-align: baseline;
-max-width: 25px;}
+vertical-align: baseline;
+max-width: 25px;
+
+}
 
 
 @media (min-width: 768px)
