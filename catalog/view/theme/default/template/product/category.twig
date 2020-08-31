@@ -44,7 +44,9 @@ body {
 	background-size: cover;
 }
 
-
+.swal2-title {
+    border-bottom: 5px solid #84C638;
+}
 </style>
 <div id="product-category" class="container">
 <div id="loading_oculto"><img src="../image/ajax_loader.gif" class="loader_gif_img"/></div>
@@ -198,7 +200,7 @@ body {
                   {% if product.rating < i %} <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-2x"></i></span> {% else %} <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i><i class="fa fa-star-o fa-stack-2x"></i></span>{% endif %}
                   {% endfor %} </div>
                 {% endif %} </a>
-                 <p class="price3"><img  class="bolsa1" src="../image/bolsa1.png" onclick="comprar('{{ product.product_id }}','{{ product.name}}')"></img></p>
+                 <p class="price3"><img  class="bolsa1" id="{{ product.product_id }}" src="../image/bolsa1.png" onclick="comprar('{{ product.product_id }}','{{ product.name}}')"></img></p>
                 
                 </div>
               <div class="button-group btn_disable">
@@ -315,10 +317,9 @@ function getParameterByName(name) {
 
 function comprar(id,name)
 {
-alert('voya a comrpar '+name);
 
-
-
+ cart.add(id,name);
+ $("#"+id).attr("src", "../image/bolsa2.png");
 }
 
 </script>
