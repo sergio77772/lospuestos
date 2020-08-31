@@ -1368,17 +1368,32 @@ margin-left: -10%;
 }
 
 
-/* media query pc */
+
 .bolsa1{
 vertical-align: baseline;
 max-width: 25px;
 
 }
 
+.container {
+    /* padding-right: 15px; */
+    /* padding-left: 15px; */
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.bolsa3{
+	width: 34px;
+    /* height: 10px; */
+    margin-bottom: -15px;
+    margin-top: -5px;
+    margin-left: 4px;
+}
+
 
 @media (min-width: 768px)
 {
-
+/* media query pc */
 	#facebook{
 		border:none;
 		overflow:hidden;
