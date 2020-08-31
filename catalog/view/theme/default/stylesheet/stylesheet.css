@@ -967,7 +967,8 @@ h2.price {
 	background-color: #84C638 !important;
 	border-radius: 40px;
 	margin-top: 5px;
-  }
+	color: white;
+}
 
   
   .order:hover{
