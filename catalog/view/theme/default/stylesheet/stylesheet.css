@@ -971,6 +971,10 @@ h2.price {
 }
 
   
+.link_factura
+{
+	color: #303030;
+}
   .order:hover{
 	background-color: #303030 !important;
 	color:#ffffff;
