@@ -825,19 +825,19 @@ h2.price {
 }
 
 .logoWeb {
-    margin: 6px 77px;
+    margin: 5px 31px;
     float: right;
     width: auto;
-    max-width: 32px;
+    max-width: 44px;
     border-radius: 50%;
     background-color: #9f9f95;
 }
 
 .logoWeb2 {
-    margin: -42px 53px;
+    margin: 6px 47px;
     float: left;
     width: auto;
-    max-width: 55px;
+    max-width: 51px;
 }
 
 .username
@@ -1389,6 +1389,54 @@ max-width: 25px;
     margin-top: -5px;
     margin-left: 4px;
 }
+ /* navegation css new menu */
+
+.sidenav {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  overflow-x: hidden;
+  transition: 0.5s;
+  padding-top: 60px;
+  text-align:center;
+  background-image: url(/../../image/fondo.jpg);
+  color:#303030;
+}
+
+.sidenav a {
+  padding: 8px 8px 8px 32px;
+  text-decoration: none;
+  font-size: 25px;
+  color: #303030;
+  display: block;
+  transition: 0.3s;
+
+}
+
+.sidenav a:hover{
+  color: #f1f1f1;
+}
+
+.sidenav .closebtn {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 58px;
+  margin-top: 25px;
+  margin-left: 50px;
+  color: #84C638;
+}
+
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
+}
+
+
+ /* navegation css new menu  fin*/
 
 
 @media (min-width: 768px)

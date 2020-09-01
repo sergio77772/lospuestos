@@ -8,8 +8,18 @@
       <button type="button" class="btn btn-navbar navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse"><i class="fa fa-bars"></i></button>
 
 {# <a href="/index.php" class="topnav-icons fa fa-home w3-left w3-bar-item w3-button" title="Home"></a>
- #}    <a href={{base ~ login}} class="TTSLogo1"><img class="logoWeb" src={{base ~ img}}   title="user" alt="user"><strong class="username">{{name}}</strong></img>
-       
+ #}   
+  {# <a href={{base ~ login}} class="TTSLogo1"><img class="logoWeb" src={{base ~ img}}   title="user" alt="user"><strong class="username">{{name}}</strong></img> #}
+<img class="logoWeb" src="http://mercado.local/image/logo_menu.png" onclick="openNav()" title="user" alt="user">
+      <div id="mySidenav" class="sidenav">
+        <h2>Menu</h2>
+<hr>
+  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+  <a href={{base ~ login}}>REGISTRARSE</a>
+  <a href="../index.php?route=checkout/cart">MIS PEDIDOS</a>
+  <a href="../index.php?route=checkout/checkout">PAGAR</a>
+  <a href={{base ~ m}}>MERCADITO</a>
+</div>
  </a>
 {# <a href="../index.php?route=checkout/cart" class="fa fa-cutlery" title="Mis Pedidos" style="
     padding-left: 17px;
@@ -57,5 +67,13 @@ $( "#menu" ).css( "display","none" );
 setTimeout(function(){ $('#boton_carrito').click(),$( "#cart" ).append( '<div class="dropdown-backdrop"></div>' );}, 1000);
 
 });
+
+function openNav() {
+  document.getElementById("mySidenav").style.width = "100%";
+}
+
+function closeNav() {
+  document.getElementById("mySidenav").style.width = "0";
+}
 
 </script>
