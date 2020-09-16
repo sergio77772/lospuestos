@@ -5,7 +5,7 @@
 <div class="container">
   <nav id="menu" class="navbar">
     <div class="navbar-header"><span id="category" class="visible-xs">{{ text_category }}</span>
-      <button type="button" class="btn btn-navbar navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse"><i class="fa fa-bars"></i></button>
+      <button type="button" id ="menu_display" onclick="openNav2()"  class="btn btn-navbar navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse"><i class="fa fa-bars"></i></button>
 
 {# <a href="/index.php" class="topnav-icons fa fa-home w3-left w3-bar-item w3-button" title="Home"></a>
  #}   
@@ -20,18 +20,34 @@
   <a href="../index.php?route=checkout/checkout">PAGAR</a>
   <a href={{base ~ m}}>MERCADITO</a>
 </div>
- </a>
+
+
+ <div id="mySidenav2" class="sidenav2">
+ <img class="" src="../image/logo_ticket.png" onclick="" title="user" alt="user" style="
+    width: 30%;
+">
+    <h4>Hacer mi Pedido</h4>
+<hr>
+  <a href="javascript:void(0)" class="closebtn" onclick="closeNav2()">&times;</a>
+  {% for category in categories %}
+  <a href="{{ category.href }}">{{ category.name }}</a>
+  {% endfor %}
+</div>
+
+
+
+ {# </a> #}
 {# <a href="../index.php?route=checkout/cart" class="fa fa-cutlery" title="Mis Pedidos" style="
     padding-left: 17px;
 "></a> #}
     <a href={{base ~ m}} class="TTSLogo1"><img class="logoWeb2" src={{logo}} title="logo" alt="logo"></a>
 
     </div>
-    <div class="collapse navbar-collapse navbar-ex1-collapse">
+     <div class="collapse navbar-collapse navbar-ex1-collapse">
       <ul class="nav navbar-nav">
         {% for category in categories %}
         {% if category.children %}
-        <li class="dropdown"><a href="{{ category.href }}" class="dropdown-toggle" data-toggle="dropdown">{{ category.name }}</a>
+        <li class="dropdown"><a href="{{ category.href }}" class="dropdown-toggle" data-toggle="">{{ category.name }}</a>
           <div class="dropdown-menu">
             <div class="dropdown-inner"> {% for children in category.children|batch(category.children|length / category.column|round(1, 'ceil')) %}
               <ul class="list-unstyled">
@@ -75,5 +91,15 @@ function openNav() {
 function closeNav() {
   document.getElementById("mySidenav").style.width = "0";
 }
+
+
+function openNav2() {
+  document.getElementById("mySidenav2").style.width = "100%";
+}
+
+function closeNav2() {
+  document.getElementById("mySidenav2").style.width = "0";
+}
+
 
 </script>
