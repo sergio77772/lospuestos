@@ -1493,12 +1493,12 @@ max-width: 25px;
 	}
 
 	.logoWeb2 {
-		margin: 11px;
+		margin: 4px;
 		float: left;
 		width: auto;
 		max-width: 69px;
 		max-height: 40px;
-		position: absolute;
+		
 	}
 
 	.navbar-nav {
