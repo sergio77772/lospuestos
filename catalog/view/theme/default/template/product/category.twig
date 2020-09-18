@@ -9,6 +9,43 @@ width:100%;
 height: 100%;
 background-color:rgb(248, 248, 248);
 }
+
+.qty {
+    width: 100%;
+    border-radius: 40px;
+    background: none;
+    color: black;
+    text-align: center;
+    border-color: #fff0;
+    height: 50px;
+    font-size: 29px;
+}
+.minus {
+    position: absolute;
+    left: 0;
+    width: 64px;
+    border: none;
+    background: none;
+    border-radius: 30px;
+    font-size: 50px;
+    top: 15px;
+}
+
+.add {
+    position: absolute;
+    right: 0;
+    width: 64px;
+    border: none;
+    background: none;
+    border-radius: 30px;
+    font-size: 50px;
+    top: 15px;
+}
+
+
+
+
+
 .loader_gif_img {
     margin: auto!important;
     width: 333px!important;
@@ -186,7 +223,7 @@ body {
             <div class="image"><a href="{{ product.href }}"><img src="{{ product.thumb }}" alt="{{ product.name }}" title="{{ product.name }}" class="img-responsive deleted" /></a></div>
             <div>
               <div class="caption">
-              <a href="{{ product.href }}">
+              {# <a href="{{ product.href }}"> #}
                 <h4>{{ product.name }}</h4>
                 <p class="detalle_desc">{{ product.description }}</p>
                 {% if product.price %}
@@ -199,7 +236,9 @@ body {
                 <div class="rating"> {% for i in 1..5 %}
                   {% if product.rating < i %} <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-2x"></i></span> {% else %} <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i><i class="fa fa-star-o fa-stack-2x"></i></span>{% endif %}
                   {% endfor %} </div>
-                {% endif %} </a>
+                {% endif %} 
+                
+                {# </a> #}
                  <p class="price3"><img  class="bolsa1" id="{{ product.product_id }}" src="../image/bolsa1.png" onclick="comprar('{{ product.product_id }}','{{ product.name}}')"></img></p>
                 
                 </div>
@@ -232,8 +271,46 @@ body {
       {{ content_bottom }}</div>
     {{ column_right }}</div>
 </div>
+
+
+
+
 <script type="text/javascript">
+
+$(function(){
+   function sum()
+    {
+        var currentVal = parseInt($("#input-quantity").val());
+        if (currentVal != NaN)
+        { 
+         currentVal= parseInt(currentVal)+1
+
+            $("#input-quantity").val(currentVal);
+        } 
+    }
+
+     function minus()
+    {
+        var currentVal = parseInt($("#input-quantity").val());
+        if (currentVal != NaN && currentVal>0)
+        {
+           currentVal= parseInt(currentVal)-1
+            $("#input-quantity").val(currentVal);
+        }
+    }
+
+
+
+});
+
+
 $( document ).ready(function() {
+
+
+
+
+
+
   var menu = getParameterByName('path');
 $("#list-view").trigger("click");
     console.log( menu);
@@ -302,6 +379,8 @@ if (menu=="33"){
 }
 
 
+
+ 
  
 
 })
@@ -318,9 +397,59 @@ function getParameterByName(name) {
 function comprar(id,name)
 {
 
- cart.add(id,1);
+
+
+const swalWithBootstrapButtons = Swal.mixin({
+  customClass: {
+    confirmButton: 'btn  btn-lg btn-block order',
+    cancelButton: 'btn btn-danger order'
+  },
+  buttonsStyling: false
+})
+
+
+
+swalWithBootstrapButtons.fire({
+  title: '<strong><u>'+name+'</u></strong>',
+  icon: 'info',
+  html:
+    '<div class="form-group red">'+
+    '<label class="control-label" for="ORDER">Cantidad</label>'+
+       ' <input type="button" value="-" id="minus1" class="minus linea" onclick="minus()"> ' + 
+       ' <input type="text" name="quantity" id="input-quantity" value="1" class="qty linea" readonly="">'+
+        '<input type="button" value="+" id="add1" class="add linea" onclick="sum()"> ' +          
+       ' <br><br>'+
+        '</div>',
+  showCloseButton: true,
+  showCancelButton: false,
+  focusConfirm: false,
+  confirmButtonText:
+    'Agregar',
+  confirmButtonAriaLabel: 'Thumbs up, great!',
+}).then((result) => {
+  if (result.value) {
+    total = parseInt($("#input-quantity").val());
+  cart.add(id,total);
  $("#"+id).attr("src", "../image/bolsa2.png");
+   //window.location.replace("../index.php?route=product/category&path=34");
+  } else if (
+    /* Read more about handling dismissals below */
+    result.dismiss === Swal.DismissReason.cancel
+  ) {
+    /*swalWithBootstrapButtons.fire(
+      'Cancelled',
+      'Your imaginary file is safe :)',
+      'error'
+    )*/
+  }
+})
+
+
 }
 
 </script>
+
+
+
+
 {{ footer }} 
