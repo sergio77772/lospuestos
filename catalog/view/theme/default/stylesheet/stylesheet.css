@@ -1318,6 +1318,11 @@ select option {
 .titleh1
 {
 	margin-top: 53px;
+	
+
+}
+#error-not-found{
+	color: #060606;
 }
 
 .orden_succes{
