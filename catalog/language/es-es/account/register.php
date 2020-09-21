@@ -1,11 +1,11 @@
 <?php
 // Heading
-$_['heading_title']        = 'Registrar Cuenta';
+$_['heading_title']        = 'Registrarse';
 
 // Text
 $_['text_account']         = 'Cuenta';
 $_['text_register']        = 'Registrar';
-$_['text_account_already'] = 'Si ya tiene registrada una cuenta, acceder desde <a href="%s">aquí</a>.';
+$_['text_account_already'] = 'Si ya tiene registrada una cuenta, acceder desde <a  class="agree" href="%s">aquí</a>.';
 $_['text_your_details']    = 'Detalles Personales';
 $_['text_newsletter']      = 'Newsletter';
 $_['text_your_password']   = 'Contraseña';

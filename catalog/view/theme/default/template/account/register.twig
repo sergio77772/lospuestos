@@ -3,6 +3,18 @@
 #order_img{
   display:none;
 }
+body {
+    
+    color: rgb(0 0 0);
+   
+}
+hr {
+    border-top: 1px solid #040404;   
+     margin-top: 10px;
+
+}
+
+
 </style>
 <div id="account-register" class="container">
   <ul class="breadcrumb">
@@ -22,7 +34,11 @@
     {% set class = 'col-sm-12' %}
     {% endif %}
     <div id="content" class="{{ class }}">{{ content_top }}
-      <h1>{{ heading_title }}</h1>
+     <center> <h1 class="h1_tam2">{{ heading_title }}</h1></center>
+     <hr>
+
+<img class="register_logo" src="../image/usuario.png" title="user" alt="user">
+
       <p>{{ text_account_already }}</p>
       <form action="{{ action }}" method="post" enctype="multipart/form-data" class="form-horizontal">
         <fieldset id="account">

@@ -1330,7 +1330,7 @@ select option {
 }
 
 .agree{
-	color:#db8700 ;
+	color: #84c638;
 }
 
 #comenzar-pago-btn {
@@ -1494,6 +1494,14 @@ max-width: 25px;
 
 .navbar-nav{
 	display:none;
+}
+
+
+.register_logo{
+background-color: #84c638;
+border-radius: 70%;
+max-width: 200px;
+margin-left: 57px;
 }
 
  /* navegation css new menu  fin*/
