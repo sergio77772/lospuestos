@@ -62,7 +62,7 @@
 
 		$('.radio').click(function () {
             let check=$('input:radio[name=shipping_method]:checked').val()
-            if (check=="weight.weight_5") //estoy en el restaurante
+            if (check=="weight.weight_7") //estoy en el restaurante
             {
               document.getElementById('lblcomentario').innerHTML = "N° de Mesa";
               $("#comment").attr("placeholder", "ingrese el numero de mesa");
@@ -82,7 +82,7 @@
 
             }
 
-           if (check=="weight.weight_7") //delivery
+           if (check=="weight.weight_5") //delivery
             {
               document.getElementById('lblcomentario').innerHTML = "Punto de Referencia";
               $("#comment").attr("placeholder", "*referencia para el delivery");
@@ -149,7 +149,7 @@ $(document).ready(function()
 
             }
 
-           if (check=="weight.weight_7")
+           if (check=="weight.weight_5")
             {
               document.getElementById('lblcomentario').innerHTML = "Punto de Referencia";
               $("#comment").attr("placeholder", "*referencia para el delivery");
