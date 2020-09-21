@@ -277,7 +277,6 @@ body {
 
 <script type="text/javascript">
 
-$(function(){
    function sum()
     {
         var currentVal = parseInt($("#input-quantity").val());
@@ -301,7 +300,36 @@ $(function(){
 
 
 
+
+
+
+
+$(function()
+{
+    $(".add").click(function()
+    {
+        var currentVal = parseInt($("#input-quantity").val());
+        if (currentVal != NaN)
+        { 
+         currentVal= parseInt(currentVal)+1
+
+            $("#input-quantity").val(currentVal);
+        } 
+    });
+
+    $(".minus").click(function()
+    {
+        var currentVal = parseInt($("#input-quantity").val());
+        if (currentVal != NaN && currentVal>0)
+        {
+           currentVal= parseInt(currentVal)-1
+            $("#input-quantity").val(currentVal);
+        }
+    });
 });
+
+
+
 
 
 $( document ).ready(function() {
