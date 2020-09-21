@@ -83,7 +83,33 @@ body {
 
 .swal2-title {
     border-bottom: 5px solid #84C638;
+        padding: 16px;
 }
+
+.swal2-close {
+    position: absolute;
+    z-index: 2;
+    top: 0;
+    right: 0;
+    align-items: baseline;
+    justify-content: center;
+    width: 1.2em;
+    height: 1.2em;
+    padding: 4px;
+    overflow: hidden;
+    transition: color .1s ease-out;
+    border: none;
+    border-radius: 0;
+    background: 0 0;
+    color: #84c638;
+    font-family: serif;
+    font-size: 3.5em;
+    line-height: 1.2;
+    cursor: pointer;
+    margin-right: 280px;
+}
+
+
 </style>
 <div id="product-category" class="container">
 <div id="loading_oculto"><img src="../image/ajax_loader.gif" class="loader_gif_img"/></div>
@@ -438,8 +464,8 @@ const swalWithBootstrapButtons = Swal.mixin({
 
 
 swalWithBootstrapButtons.fire({
-  title: '<strong><u>'+name+'</u></strong>',
-  icon: 'info',
+  title: '<strong>'+name+'</strong>',
+  
   html:
     '<div class="form-group red">'+
     '<label class="control-label" for="ORDER">Cantidad</label>'+
