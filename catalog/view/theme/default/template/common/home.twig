@@ -158,6 +158,14 @@ $(document).ready(function() {
    $('#modal-agree').hide();
   }
 
+let  idioma= document.querySelector("#form-language > div > button > img").alt
+
+ console.log(idioma);
+
+ if (idioma=="English"){
+ document.querySelector("#form-language > div > ul > li:nth-child(1) > button").click();
+ }
+
 });
 
 </script>
