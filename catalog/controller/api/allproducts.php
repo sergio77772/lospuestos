@@ -54,6 +54,13 @@ class ControllerApiAllproducts extends Controller {
         }  
     }
 
+
+
+
+
+
+
+
     // Product info Page
     public function productInfo(){
 
@@ -72,6 +79,14 @@ class ControllerApiAllproducts extends Controller {
             $this->response->setOutput(json_encode($error));
         }
     }
+
+
+
+
+
+
+
+
 
     // Category Listing Page
     public function categories(){ 
@@ -283,5 +298,80 @@ public function autocomplete() {
         $this->response->addHeader('Content-Type: application/json');
         $this->response->setOutput(json_encode($json));
     }
-    
+
+
+
+public function filterbyCategories(){
+        $products = array();
+        $this->load->language('catalog/product');
+        $this->load->model('catalog/product');
+        $this->load->model('tool/image');
+
+
+       if (isset($this->request->get['categoria'])){
+
+    if (isset($this->request->get['categoria'])) {
+                $filter_category_id = $this->request->get['categoria'];
+
+            }
+
+        $error[]['no_json']= "No JSON";
+
+        $product_total = $this->model_catalog_product->getTotalProducts();
+        $filter_data = array(
+            'filter_category_id' => $filter_category_id,
+        );
+
+        $results = $this->model_catalog_product->getProducts($filter_data);
+        var_dump($results);die();
+
+        foreach ($results as $result) {
+            if (is_file(DIR_IMAGE . $result['image'])) {
+                $image = $this->model_tool_image->resize($result['image'], 40, 40);
+            } else {
+                $image = $this->model_tool_image->resize('no_image.png', 40, 40);
+            }
+                
+            $special = false;
+
+            $product_specials = $this->model_catalog_product->getProductSpecials($result['product_id']);
+
+            foreach ($product_specials  as $product_special) {
+                //if (($product_special['date_start'] == '0000-00-00' || strtotime($product_special['date_start']) < time()) && ($product_special['date_end'] == '0000-00-00' || strtotime($product_special['date_end']) > time())) {
+                    $special = $product_special['price'];
+
+                    //break;
+               // }
+            }
+       
+            $shop_products['shop_products'][] = array(
+                'product_id' => $result['product_id'],
+                'image'      => $image,
+                'name'       => $result['name'],
+                'descripcion'=>$result['description'],
+                'model'      => $result['model'],
+                'price'      => $result['price'],
+                'special'    => $special,
+                'quantity'   => $result['quantity'],
+                'status'     => $result['status']
+            );
+        }
+
+        if (isset($this->request->get['json'])) {
+            echo json_encode($shop_products);die;
+        } else {
+            $this->response->setOutput(json_encode($error));
+        }  
+
+
+    }else{
+         $error[]['no_json']= "No se envio categoria";
+        $this->response->setOutput(json_encode($error));
+    }
+    }
+
+
+
+
+
 }
