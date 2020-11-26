@@ -216,6 +216,7 @@ class ControllerApiAllproducts extends Controller {
 
 public function autocomplete() {
         $json = array();
+         $this->load->model('tool/image');
 
         if (isset($this->request->get['filter_name']) || isset($this->request->get['filter_model'])) {
             $this->load->model('catalog/product');
@@ -250,6 +251,12 @@ public function autocomplete() {
 
             foreach ($results as $result) {
                 $option_data = array();
+
+                if (is_file(DIR_IMAGE . $result['image'])) {
+                $image = $this->model_tool_image->resize($result['image'], 40, 40);
+            } else {
+                $image = $this->model_tool_image->resize('no_image.png', 40, 40);
+            }
 
                 $product_options = $this->model_catalog_product->getProductOptions($result['product_id']);
 
@@ -288,8 +295,10 @@ public function autocomplete() {
                 $json[] = array(
                     'product_id' => $result['product_id'],
                     'name'       => strip_tags(html_entity_decode($result['name'], ENT_QUOTES, 'UTF-8')),
+                    'descripcion'=>$result['description'],
                     'model'      => $result['model'],
                     'option'     => $option_data,
+                    'image'=>$image,
                     'price'      => $result['price']
                 );
             }
