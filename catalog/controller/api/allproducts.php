@@ -318,11 +318,12 @@ public function filterbyCategories(){
         $error[]['no_json']= "No JSON";
 
         $product_total = $this->model_catalog_product->getTotalProducts();
-        $filter_data = array(
+        $data = array(
             'filter_category_id' => $filter_category_id,
         );
 
-        $results = $this->model_catalog_product->getProducts($filter_data);
+        $results = $this->model_catalog_product->getProducts($data);
+
         foreach ($results as $result) {
             if (is_file(DIR_IMAGE . $result['image'])) {
                 $image = $this->model_tool_image->resize($result['image'], 40, 40);
