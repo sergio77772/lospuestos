@@ -149,11 +149,11 @@ class ControllerApiCart extends Controller {
 
 
 
-				 // if (is_file(DIR_IMAGE . $product['image'])) {
-     //            $image = $this->model_tool_image->resize($product['image'], 40, 40);
-     //        } else {
-     //            $image = $this->model_tool_image->resize('no_image.png', 40, 40);
-     //        }
+				 if (is_file(DIR_IMAGE . $product['image'])) {
+                $image = $this->model_tool_image->resize($product['image'], 40, 40);
+           } else {
+                $image = $this->model_tool_image->resize('no_image.png', 40, 40);
+            }
 
 
 				foreach ($products as $product_2) {
@@ -178,11 +178,19 @@ class ControllerApiCart extends Controller {
 					);
 				}
 
+ if (is_file(DIR_IMAGE . $product['image'])) {
+                $image = $this->model_tool_image->resize($product['image'], 40, 40);
+           } else {
+                $image = $this->model_tool_image->resize('no_image.png', 40, 40);
+            }
+
+
+
 				$json['products'][] = array(
 					'cart_id'    => $product['cart_id'],
 					'product_id' => $product['product_id'],
 					'name'       => $product['name'],
-					'image' =>$product['image'],
+					'image' =>$image,
 					'model'      => $product['model'],
 					'option'     => $option_data,
 					'quantity'   => $product['quantity'],
