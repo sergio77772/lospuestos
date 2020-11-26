@@ -126,6 +126,8 @@ class ControllerApiCart extends Controller {
 
 	public function products() {
 		$this->load->language('api/cart');
+		$this->load->model('tool/image');
+
 
 		$json = array();
 
