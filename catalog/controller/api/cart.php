@@ -145,6 +145,15 @@ class ControllerApiCart extends Controller {
 			foreach ($products as $product) {
 				$product_total = 0;
 
+
+
+				 if (is_file(DIR_IMAGE . $product['image'])) {
+                $image = $this->model_tool_image->resize($product['image'], 40, 40);
+            } else {
+                $image = $this->model_tool_image->resize('no_image.png', 40, 40);
+            }
+
+
 				foreach ($products as $product_2) {
 					if ($product_2['product_id'] == $product['product_id']) {
 						$product_total += $product_2['quantity'];
@@ -171,6 +180,7 @@ class ControllerApiCart extends Controller {
 					'cart_id'    => $product['cart_id'],
 					'product_id' => $product['product_id'],
 					'name'       => $product['name'],
+					'image' =>$image,
 					'model'      => $product['model'],
 					'option'     => $option_data,
 					'quantity'   => $product['quantity'],
