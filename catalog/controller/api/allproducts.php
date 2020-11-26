@@ -323,8 +323,6 @@ public function filterbyCategories(){
         );
 
         $results = $this->model_catalog_product->getProducts($filter_data);
-        var_dump($results);die();
-
         foreach ($results as $result) {
             if (is_file(DIR_IMAGE . $result['image'])) {
                 $image = $this->model_tool_image->resize($result['image'], 40, 40);
