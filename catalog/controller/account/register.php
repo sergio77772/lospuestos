@@ -3,7 +3,7 @@ class ControllerAccountRegister extends Controller {
 	private $error = array();
 
 	public function index() {
-		if ($this->customer->isLogged()) {
+		if ($this->customer->isLogged() && !isset($this->request->post['api'])) {
 			$this->response->redirect($this->url->link('account/account', '', true));
 		}
 
@@ -28,7 +28,7 @@ class ControllerAccountRegister extends Controller {
 
 			unset($this->session->data['guest']);
 
-			$this->response->redirect($this->url->link('account/success'));
+			//$this->response->redirect($this->url->link('account/success'));
 		}
 
 		$data['breadcrumbs'] = array();
@@ -51,6 +51,12 @@ class ControllerAccountRegister extends Controller {
 
 		if (isset($this->error['warning'])) {
 			$data['error_warning'] = $this->error['warning'];
+			if (isset($this->request->post['api']))
+			{
+          $error[]['Error']= $this->error['warning'];
+         echo json_encode($error);die;
+			}
+
 		} else {
 			$data['error_warning'] = '';
 		}
@@ -205,6 +211,12 @@ class ControllerAccountRegister extends Controller {
 			$data['agree'] = $this->request->post['agree'];
 		} else {
 			$data['agree'] = false;
+		}
+
+		if(isset($this->request->post['api']))
+		{
+			$error[]['Succes']= "Usuario Registrado con exito";
+         echo json_encode($error);die;
 		}
 
 		$data['column_left'] = $this->load->controller('common/column_left');
