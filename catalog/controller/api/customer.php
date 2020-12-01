@@ -87,7 +87,8 @@ class ControllerApiCustomer extends Controller {
 					'custom_field'      => isset($this->request->post['custom_field']) ? $this->request->post['custom_field'] : array()
 				);
 
-				$json['success'] = $this->session->data['customer'];
+				$json['success'] = $this->language->get('text_success');
+				$json['data']=$this->request->post;
 			}
 		}
 		
