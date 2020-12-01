@@ -216,6 +216,7 @@ class ControllerAccountRegister extends Controller {
 		if(isset($this->request->post['api']))
 		{
 			$error[]['Succes']= "Usuario Registrado con exito";
+			$error[]['data']=$this->request->post;
          echo json_encode($error);die;
 		}
 
