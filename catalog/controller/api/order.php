@@ -6,6 +6,7 @@ class ControllerApiOrder extends Controller {
 		$json = array();
 
 		if (!isset($this->session->data['api_id'])) {
+
 			$json['error'] = $this->language->get('error_permission');
 		} else {
 			// Customer
@@ -802,4 +803,26 @@ class ControllerApiOrder extends Controller {
 		$this->response->addHeader('Content-Type: application/json');
 		$this->response->setOutput(json_encode($json));
 	}
+
+public function finish() {
+
+
+//1 direccion de envio
+//2 direccion de pago
+// 3 metodo de envio
+//4 metodo de pago obtener
+	
+
+
+
+		
+		$this->response->addHeader('Content-Type: application/json');
+		$this->response->setOutput(json_encode($json));
+	}
+
+
+
+
+
+
 }

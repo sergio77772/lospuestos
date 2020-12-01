@@ -4,9 +4,9 @@ class ControllerApiPayment extends Controller {
 		$this->load->language('api/payment');
 
 		// Delete old payment address, payment methods and method so not to cause any issues if there is an error
-		unset($this->session->data['payment_address']);
-		unset($this->session->data['payment_methods']);
-		unset($this->session->data['payment_method']);
+		//unset($this->session->data['payment_address']);
+		//unset($this->session->data['payment_methods']);
+		//unset($this->session->data['payment_method']);
 
 		$json = array();
 
