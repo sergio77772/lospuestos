@@ -9,6 +9,7 @@ class ControllerApiOrder extends Controller {
 
 			$json['error'] = $this->language->get('error_permission');
 		} else {
+			var_dump($this->session->data);die();
 			// Customer
 			if (!isset($this->session->data['customer'])) {
 				$json['error'] = $this->language->get('error_customer');
@@ -811,7 +812,7 @@ public function finish() {
 //2 direccion de pago
 // 3 metodo de envio
 //4 metodo de pago obtener
-	
+// 5 cargar metodo de pago
 
 
 
