@@ -365,9 +365,9 @@ public function filterbyCategories(){
             );
         }
 
-        //  if (!isset($shop_products)) {
-        //     $shop_products['shop_products']=array();
-        // } 
+         if (!isset($shop_products)) {
+            $shop_products['shop_products']=array();
+         } 
 
 
         if (isset($this->request->get['json'])) {
