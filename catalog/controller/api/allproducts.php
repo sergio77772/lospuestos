@@ -363,13 +363,14 @@ public function filterbyCategories(){
                 'quantity'   => $result['quantity'],
                 'status'     => $result['status']
             );
-
-            if (!isset($shop_products)) {
-                $shop_products['shop_products']=array();
-            } 
         }
 
-        if (isset($this->request->get['json'])&& ) {
+         if (!isset($shop_products)) {
+            $shop_products['shop_products']=array();
+        } 
+
+
+        if (isset($this->request->get['json'])&&) {
             echo json_encode($shop_products);die;
         } else {
             $this->response->setOutput(json_encode($error));
