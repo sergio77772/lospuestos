@@ -370,7 +370,7 @@ public function filterbyCategories(){
         // } 
 
 
-        if (isset($this->request->get['json'])&&) {
+        if (isset($this->request->get['json'])) {
             echo json_encode($shop_products);die;
         } else {
             $this->response->setOutput(json_encode($error));
