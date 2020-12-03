@@ -144,6 +144,8 @@ class ControllerApiCart extends Controller {
 
 			$products = $this->cart->getProducts();
 
+			var_dump($products);die();
+
 			foreach ($products as $product) {
 				$product_total = 0;
 
