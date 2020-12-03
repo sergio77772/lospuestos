@@ -144,7 +144,6 @@ class ControllerApiCart extends Controller {
 
 			$products = $this->cart->getProducts();
 
-			var_dump($products);die();
 
 			foreach ($products as $product) {
 				$product_total = 0;
@@ -193,7 +192,7 @@ class ControllerApiCart extends Controller {
 					'product_id' => $product['product_id'],
 					'name'       => $product['name'],
 					'image' =>$image,
-					'descripcion'=>$product['description'],
+					//'descripcion'=>$product['description'],
 					'model'      => $product['model'],
 					'option'     => $option_data,
 					'quantity'   => $product['quantity'],
