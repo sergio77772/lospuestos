@@ -127,9 +127,13 @@ class ControllerApiCart extends Controller {
 	public function products() {
 		$this->load->language('api/cart');
 		$this->load->model('tool/image');
-
-
 		$json = array();
+if (isset($this->request->get['page'])) {
+     $page = $this->request->get['page'];
+  } else {
+     $page = 1;
+  }   
+
 
 		if (!isset($this->session->data['api_id'])) {
 			$json['error']['warning'] = $this->language->get('error_permission');
@@ -139,10 +143,16 @@ class ControllerApiCart extends Controller {
 				$json['error']['stock'] = $this->language->get('error_stock');
 			}
 
+             $filter_data = array(
+                'start' => ($page - 1) * 5,
+                'limit' => 5
+            );
+
+
 			// Products
 			$json['products'] = array();
 
-			$products = $this->cart->getProducts();
+			$products = $this->cart->getProducts($filter_data);
            
 
 			foreach ($products as $product) {
