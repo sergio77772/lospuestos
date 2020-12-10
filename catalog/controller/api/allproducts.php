@@ -87,8 +87,9 @@ $descripcion=strip_tags(html_entity_decode($result['description']));
              $imagenes=$this->model_catalog_product->getProductImages($this->request->get['product_id']);
              $product_details['slider']=$imagenes;
              $categoria=$this->model_catalog_product->getCategories($this->request->get['product_id']);
-              $product_details['category_id']=$categoria[0]['category_id'];
-
+             $product_details['category_id']=$categoria[0]['category_id'];
+             $nameCat=$this->model_catalog_product->getCategoriesNames($categoria[0]['category_id']);
+             $product_details['category_name']=$nameCat[0];
 
             echo json_encode($product_details);die;
         } else {

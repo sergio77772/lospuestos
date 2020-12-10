@@ -413,6 +413,16 @@ class ModelCatalogProduct extends Model {
 		return $query->rows;
 	}
 
+	public function getCategoriesNames($id_category) {
+		$query = $this->db->query("SELECT name FROM " . DB_PREFIX . "category_description WHERE category_id = '" . (int)$id_category . "'");
+
+		return $query->rows;
+	}
+
+
+
+
+
 	public function getTotalProducts($data = array()) {
 		$sql = "SELECT COUNT(DISTINCT p.product_id) AS total";
 
