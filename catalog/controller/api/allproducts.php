@@ -16,10 +16,14 @@ class ControllerApiAllproducts extends Controller {
         $results = $this->model_catalog_product->getProducts();
 
         foreach ($results as $result) {
-            if (is_file(DIR_IMAGE . $result['image'])) {
-                $image = $this->model_tool_image->resize($result['image'], 40, 40);
-            } else {
-                $image = $this->model_tool_image->resize('no_image.png', 40, 40);
+             if (is_file(DIR_IMAGE . $result['image'])) {
+
+            
+                $image = $this->model_tool_image->resize($result['image'], 150, 150);
+                $image=$this->config->get('config_url') . 'image/' .$result['image'];
+           } else {
+                $image = $this->model_tool_image->resize('no_image.png', 150, 150);
+                //$image=$this->config->get('config_url') . 'image/' .$product['image'];
             }
                 
             $special = false;
@@ -252,10 +256,16 @@ public function autocomplete() {
             foreach ($results as $result) {
                 $option_data = array();
 
-                if (is_file(DIR_IMAGE . $result['image'])) {
-                $image = $this->model_tool_image->resize($result['image'], 40, 40);
-            } else {
-                $image = $this->model_tool_image->resize('no_image.png', 40, 40);
+                 if (is_file(DIR_IMAGE . $result['image'])) {
+
+            
+                $image = $this->model_tool_image->resize($result['image'], 150, 150);
+                $image=$this->config->get('config_url') . 'image/' .$result['image'];
+           } else {
+                $image = $this->model_tool_image->resize('no_image.png', 150, 150);
+                //$image=$this->config->get('config_url') . 'image/' .$product['image'];
+
+
             }
 
                 $product_options = $this->model_catalog_product->getProductOptions($result['product_id']);
@@ -334,10 +344,16 @@ public function filterbyCategories(){
         $results = $this->model_catalog_product->getProducts($data);
 
         foreach ($results as $result) {
-            if (is_file(DIR_IMAGE . $result['image'])) {
-                $image = $this->model_tool_image->resize($result['image'], 40, 40);
-            } else {
-                $image = $this->model_tool_image->resize('no_image.png', 40, 40);
+             if (is_file(DIR_IMAGE . $result['image'])) {
+
+            
+                $image = $this->model_tool_image->resize($result['image'], 150, 150);
+                $image=$this->config->get('config_url') . 'image/' .$result['image'];
+           } else {
+                $image = $this->model_tool_image->resize('no_image.png', 150, 150);
+                //$image=$this->config->get('config_url') . 'image/' .$product['image'];
+
+
             }
                 
             $special = false;
