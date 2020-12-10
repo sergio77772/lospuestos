@@ -151,11 +151,16 @@ class ControllerApiCart extends Controller {
 
 
 				 if (is_file(DIR_IMAGE . $product['image'])) {
-                $image = $this->model_tool_image->resize($product['image'], 40, 40);
-           } else {
-                $image = $this->model_tool_image->resize('no_image.png', 40, 40);
-            }
 
+			
+                $image = $this->model_tool_image->resize($product['image'], 150, 150);
+                $image=$this->config->get('config_url') . 'image/' .$product['image'];
+           } else {
+                $image = $this->model_tool_image->resize('no_image.png', 150, 150);
+                //$image=$this->config->get('config_url') . 'image/' .$product['image'];
+
+
+            }
 
 				foreach ($products as $product_2) {
 					if ($product_2['product_id'] == $product['product_id']) {
@@ -179,11 +184,7 @@ class ControllerApiCart extends Controller {
 					);
 				}
 
- if (is_file(DIR_IMAGE . $product['image'])) {
-                $image = $this->model_tool_image->resize($product['image'], 40, 40);
-           } else {
-                $image = $this->model_tool_image->resize('no_image.png', 40, 40);
-            }
+ 
 
 
 
