@@ -40,6 +40,7 @@ class Cart {
 
 			$product_query = $this->db->query("SELECT * FROM " . DB_PREFIX . "product_to_store p2s LEFT JOIN " . DB_PREFIX . "product p ON (p2s.product_id = p.product_id) LEFT JOIN " . DB_PREFIX . "product_description pd ON (p.product_id = pd.product_id) WHERE p2s.store_id = '" . (int)$this->config->get('config_store_id') . "' AND p2s.product_id = '" . (int)$cart['product_id'] . "' AND pd.language_id = '" . (int)$this->config->get('config_language_id') . "' AND p.date_available <= NOW() AND p.status = '1'");
 
+
 			if ($product_query->num_rows && ($cart['quantity'] > 0)) {
 				$option_price = 0;
 				$option_points = 0;
@@ -235,10 +236,13 @@ class Cart {
 					$recurring = false;
 				}
 
+				$detalle=strip_tags(html_entity_decode(($product_query->row['description'])));
+
 				$product_data[] = array(
 					'cart_id'         => $cart['cart_id'],
 					'product_id'      => $product_query->row['product_id'],
 					'name'            => $product_query->row['name'],
+					'description'     =>$detalle,
 					'model'           => $product_query->row['model'],
 					'shipping'        => $product_query->row['shipping'],
 					'image'           => $product_query->row['image'],
@@ -404,4 +408,11 @@ class Cart {
 
 		return false;
 	}
+
+
+	 function strip_tags_content($text) {
+
+    return preg_replace('@<(\w+)\b.*?>.*?</\1>@si', '', $text);
+    
+ }
 }

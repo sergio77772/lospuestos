@@ -143,9 +143,10 @@ class ControllerApiCart extends Controller {
 			$json['products'] = array();
 
 			$products = $this->cart->getProducts();
-
+           
 
 			foreach ($products as $product) {
+				//var_dump($product);
 				$product_total = 0;
 
 
@@ -184,16 +185,13 @@ class ControllerApiCart extends Controller {
 					);
 				}
 
- 
-
-
 
 				$json['products'][] = array(
 					'cart_id'    => $product['cart_id'],
 					'product_id' => $product['product_id'],
 					'name'       => $product['name'],
 					'image' =>$image,
-					//'descripcion'=>$product['description'],
+					'descripcion'=>$product['description'],
 					'model'      => $product['model'],
 					'option'     => $option_data,
 					'quantity'   => $product['quantity'],
