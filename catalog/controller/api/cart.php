@@ -191,7 +191,7 @@ class ControllerApiCart extends Controller {
 					'product_id' => $product['product_id'],
 					'name'       => $product['name'],
 					'image' =>$image,
-					'descripcion'=>$product['description'],
+					'descripcion'=>strip_tags(html_entity_decode(($product['description']))),
 					'model'      => $product['model'],
 					'option'     => $option_data,
 					'quantity'   => $product['quantity'],

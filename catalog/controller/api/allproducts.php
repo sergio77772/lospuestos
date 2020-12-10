@@ -38,11 +38,13 @@ class ControllerApiAllproducts extends Controller {
                // }
             }
        
+$descripcion=strip_tags(html_entity_decode($result['description']));
+
             $shop_products['shop_products'][] = array(
                 'product_id' => $result['product_id'],
                 'image'      => $image,
                 'name'       => $result['name'],
-				'descripcion'=>$result['description'],
+				'descripcion'=>$descripcion,
                 'model'      => $result['model'],
                 'price'      => $result['price'],
                 'special'    => $special,
@@ -78,6 +80,16 @@ class ControllerApiAllproducts extends Controller {
         if (isset($this->request->get['product_id'])) {
             //$product_details['product_id'] = $this->request->get['product_id'];
             $product_details = $this->model_catalog_product->getProduct($this->request->get['product_id']);
+
+            $especificaciones =$this->model_catalog_product->getProductAttributes($this->request->get['product_id']);
+             $product_details['atributes']=$especificaciones;
+
+             $imagenes=$this->model_catalog_product->getProductImages($this->request->get['product_id']);
+             $product_details['slider']=$imagenes;
+             $categoria=$this->model_catalog_product->getCategories($this->request->get['product_id']);
+              $product_details['category_id']=$categoria[0]['category_id'];
+
+
             echo json_encode($product_details);die;
         } else {
             $this->response->setOutput(json_encode($error));
