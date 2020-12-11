@@ -199,6 +199,7 @@ if (isset($this->request->get['page'])) {
 				$json['products'][] = array(
 					'cart_id'    => $product['cart_id'],
 					'product_id' => $product['product_id'],
+					'pages'=>$product['pages'],
 					'name'       => $product['name'],
 					'image' =>$image,
 					'descripcion'=>strip_tags(html_entity_decode(($product['description']))),

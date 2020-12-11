@@ -44,11 +44,6 @@ class Cart {
 $sql= " LIMIT " . (int)$data['start'] . "," . (int)$data['limit'];
 $cart_query = $this->db->query("SELECT * FROM " . DB_PREFIX . "cart WHERE api_id = '" . (isset($this->session->data['api_id']) ? (int)$this->session->data['api_id'] : 0) . "' AND customer_id = '" . (int)$this->customer->getId() . "' AND session_id = '" . $this->db->escape($this->session->getId()) . "'".$sql);
 
-
-			
-
-
-
 		}
 
 		else
@@ -57,6 +52,10 @@ $cart_query = $this->db->query("SELECT * FROM " . DB_PREFIX . "cart WHERE api_id
 $cart_query = $this->db->query("SELECT * FROM " . DB_PREFIX . "cart WHERE api_id = '" . (isset($this->session->data['api_id']) ? (int)$this->session->data['api_id'] : 0) . "' AND customer_id = '" . (int)$this->customer->getId() . "' AND session_id = '" . $this->db->escape($this->session->getId()) . "'");
 
 		}
+
+		$cart_query2 = $this->db->query("SELECT * FROM " . DB_PREFIX . "cart WHERE api_id = '" . (isset($this->session->data['api_id']) ? (int)$this->session->data['api_id'] : 0) . "' AND customer_id = '" . (int)$this->customer->getId() . "' AND session_id = '" . $this->db->escape($this->session->getId()) . "'");
+
+
 
 		foreach ($cart_query->rows as $cart) {
 			$stock = true;
@@ -264,9 +263,13 @@ $cart_query = $this->db->query("SELECT * FROM " . DB_PREFIX . "cart WHERE api_id
 				}
 
 				$detalle=strip_tags(html_entity_decode(($product_query->row['description'])));
+                $total_pages = ceil($cart_query2->num_rows / 5);
+
+
 
 				$product_data[] = array(
 					'cart_id'         => $cart['cart_id'],
+					'pages'=> $total_pages,
 					'product_id'      => $product_query->row['product_id'],
 					'name'            => $product_query->row['name'],
 					'description'     =>$detalle,
