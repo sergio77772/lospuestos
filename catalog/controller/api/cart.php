@@ -158,7 +158,7 @@ if (isset($this->request->get['page'])) {
 			foreach ($products as $product) {
 				//var_dump($product);
 				$product_total = 0;
-
+                $pages=0;
 
 
 				 if (is_file(DIR_IMAGE . $product['image'])) {
@@ -199,7 +199,6 @@ if (isset($this->request->get['page'])) {
 				$json['products'][] = array(
 					'cart_id'    => $product['cart_id'],
 					'product_id' => $product['product_id'],
-					'pages'=>$product['pages'],
 					'name'       => $product['name'],
 					'image' =>$image,
 					'descripcion'=>strip_tags(html_entity_decode(($product['description']))),
@@ -212,6 +211,8 @@ if (isset($this->request->get['page'])) {
 					'total'      => $this->currency->format($this->tax->calculate($product['price'], $product['tax_class_id'], $this->config->get('config_tax')) * $product['quantity'], $this->session->data['currency']),
 					'reward'     => $product['reward']
 				);
+
+            $pages=$product['pages'];
 			}
 
 			// Voucher
@@ -284,6 +285,9 @@ if (isset($this->request->get['page'])) {
 				);
 			}
 		}
+
+$json['pages']=$pages;
+
 		
 		$this->response->addHeader('Content-Type: application/json');
 		$this->response->setOutput(json_encode($json));
