@@ -184,7 +184,6 @@ class ModelCatalogProduct extends Model {
 		}
 
 		if (isset($data['start']) || isset($data['limit'])) {
-			var_dump("hola");
 			if ($data['start'] < 0) {
 				$data['start'] = 0;
 			}
