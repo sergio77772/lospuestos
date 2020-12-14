@@ -286,9 +286,31 @@ if (isset($this->request->get['page'])) {
 			}
 		}
 
-$json['pages']=$pages;
+if (isset($this->request->get['filter'])) {
+     
+$input=$this->request->get['filter'];
+$final=[];
+$result = array_filter($json['products'], function ($item) use ($input) {
+    if (stripos($item['name'], $input) !== false) {
+             
+        return true;
+    }
+    return false;
+});
 
-		
+
+foreach ($result as $key => $value) {
+array_push($final,$value);
+
+}
+
+
+
+$json['products']=$final;
+//fin
+
+}
+$json['pages']=$pages;
 		$this->response->addHeader('Content-Type: application/json');
 		$this->response->setOutput(json_encode($json));
 	}
