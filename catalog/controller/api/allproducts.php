@@ -110,10 +110,32 @@ $descripcion=strip_tags(html_entity_decode($result['description']));
 
         $shop_categories = array();
         $this->load->model('catalog/category');
+        $this->load->model('tool/image');
         $error['fail'] = 'Failed';
 
         if (isset($this->request->get['json'])) {
             $shop_categories =$this->model_catalog_category->getCategories();
+          $lista=array();
+              foreach ($shop_categories as $key => $categories) {
+                  # code...
+                   if (is_file(DIR_IMAGE . $categories['image'])) {
+
+            
+                $image = $this->model_tool_image->resize($categories['image'], 150, 150);
+                $image=$this->config->get('config_url') . 'image/' .$categories['image'];
+           } else {
+                $image = $this->model_tool_image->resize('no_image.png', 150, 150);
+                //$image=$this->config->get('config_url') . 'image/' .$product['image'];
+            }
+
+            $shop_categories[$key]['image']= $image;
+
+
+
+              }
+
+
+
             echo json_encode($shop_categories);die;
         } else {
             $this->response->setOutput(json_encode($error));
