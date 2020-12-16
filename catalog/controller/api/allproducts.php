@@ -112,9 +112,22 @@ $descripcion=strip_tags(html_entity_decode($result['description']));
         $this->load->model('catalog/category');
         $this->load->model('tool/image');
         $error['fail'] = 'Failed';
+if (isset($this->request->get['parent'])) {
+    $category_id=$this->request->get['parent'];
+     $filter_data = array(
+                'parent' => $category_id
+            );
+}
+else
+{
+    $filter_data = array(
+                'parent' => 0
+            );
+}
+
 
         if (isset($this->request->get['json'])) {
-            $shop_categories =$this->model_catalog_category->getCategories();
+            $shop_categories =$this->model_catalog_category->getCategories($filter_data);
           $lista=array();
               foreach ($shop_categories as $key => $categories) {
                   # code...
