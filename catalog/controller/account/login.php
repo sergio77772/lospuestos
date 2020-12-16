@@ -10,6 +10,8 @@ class ControllerAccountLogin extends Controller {
 			$this->customer->logout();
 			$this->cart->clear();
 
+			var_dump($this->request->get);die();
+
 			unset($this->session->data['order_id']);
 			unset($this->session->data['payment_address']);
 			unset($this->session->data['payment_method']);
