@@ -20,6 +20,7 @@ class ControllerAccountRegister extends Controller {
 
 		if (($this->request->server['REQUEST_METHOD'] == 'POST') && $this->validate()) {
 			$customer_id = $this->model_account_customer->addCustomer($this->request->post);
+			//var_dump($customer_id);
 
 			// Clear any previous login attempts for unregistered accounts.
 			$this->model_account_customer->deleteLoginAttempts($this->request->post['email']);
@@ -215,8 +216,11 @@ class ControllerAccountRegister extends Controller {
 
 		if(isset($this->request->post['api']))
 		{
+$this->request->post['customer_id']=$customer_id;
 			$error[]['Succes']= "Usuario Registrado con exito";
 			$error[]['data']=$this->request->post;
+			
+
          echo json_encode($error);die;
 		}
 
