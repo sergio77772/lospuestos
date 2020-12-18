@@ -285,7 +285,7 @@ if (isset($this->request->get['page'])) {
 				);
 			}
 		}
-
+$i=0;
 if (isset($this->request->get['filter'])) {
      
 $input=$this->request->get['filter'];
@@ -298,9 +298,9 @@ $result = array_filter($json['products'], function ($item) use ($input) {
     return false;
 });
 
-
 foreach ($result as $key => $value) {
 array_push($final,$value);
+$i=$i+1;
 
 }
 
@@ -309,8 +309,16 @@ array_push($final,$value);
 $json['products']=$final;
 //fin
 
+$total_pages = ceil($i / 5);
 }
 $json['pages']=@$pages;
+
+if($i>0)
+{
+$json['pages']=$total_pages;
+}
+
+
 		$this->response->addHeader('Content-Type: application/json');
 		$this->response->setOutput(json_encode($json));
 	}
