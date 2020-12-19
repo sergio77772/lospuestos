@@ -80,16 +80,58 @@ $descripcion=strip_tags(html_entity_decode($result['description']));
         if (isset($this->request->get['product_id'])) {
             //$product_details['product_id'] = $this->request->get['product_id'];
             $product_details = $this->model_catalog_product->getProduct($this->request->get['product_id']);
+              if (is_file(DIR_IMAGE . $product_details['image'])) {
+
+               $product_details['image']=$this->config->get('config_url') . 'image/' .$product_details['image'];
+           } else {
+               $product_details['image'] = $this->model_tool_image->resize('no_image.png', 150, 150);
+                //$image=$this->config->get('config_url') . 'image/' .$product['image'];
+            }
+
+
 
             $especificaciones =$this->model_catalog_product->getProductAttributes($this->request->get['product_id']);
              $product_details['atributes']=$especificaciones;
 
              $imagenes=$this->model_catalog_product->getProductImages($this->request->get['product_id']);
+
+             if (isset($imagenes)){
+             foreach ($imagenes as $key => $value) {
+
+          if (is_file(DIR_IMAGE . $value['image'])) {
+
+                $imagenes[$key]['image']=$this->config->get('config_url') . 'image/' .$value['image'];
+           } else {
+                $images[$key]['image'] = $this->model_tool_image->resize('no_image.png', 150, 150);
+                //$image=$this->config->get('config_url') . 'image/' .$product['image'];
+            }
+
+
+                    
+                    }
+                }
+
              $product_details['slider']=$imagenes;
              $categoria=$this->model_catalog_product->getCategories($this->request->get['product_id']);
              $product_details['category_id']=$categoria[0]['category_id'];
+
+              $categoria_image=$this->model_catalog_product->getCategoriesImages($categoria[0]['category_id']);
+              if (is_file(DIR_IMAGE .  $categoria_image['0']['image'])) {
+
+                $categoria_image['0']['image']=$this->config->get('config_url') . 'image/' .$categoria_image['0']['image'];
+           } else {
+                $categoria_image['0']['image'] = $this->model_tool_image->resize('no_image.png', 150, 150);
+                //$image=$this->config->get('config_url') . 'image/' .$product['image'];
+            }
+
+
+
+
+              $product_details['category_image']=$categoria_image['0']['image'];
+
+
              $nameCat=$this->model_catalog_product->getCategoriesNames($categoria[0]['category_id']);
-             $product_details['category_name']=$nameCat[0];
+             $product_details['category_name']=$nameCat[0]['name'];
 
             echo json_encode($product_details);die;
         } else {

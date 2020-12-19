@@ -420,6 +420,12 @@ class ModelCatalogProduct extends Model {
 	}
 
 
+public function getCategoriesImages($id_category) {
+		$query = $this->db->query("SELECT image FROM " . DB_PREFIX . "category WHERE category_id = '" . (int)$id_category . "'");
+
+		return $query->rows;
+	}
+
 
 
 
