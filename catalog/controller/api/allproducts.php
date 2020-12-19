@@ -116,6 +116,8 @@ $descripcion=strip_tags(html_entity_decode($result['description']));
              $product_details['category_id']=$categoria[0]['category_id'];
 
               $categoria_image=$this->model_catalog_product->getCategoriesImages($categoria[0]['category_id']);
+
+              if (isset( $categoria_image)){
               if (is_file(DIR_IMAGE .  $categoria_image['0']['image'])) {
 
                 $categoria_image['0']['image']=$this->config->get('config_url') . 'image/' .$categoria_image['0']['image'];
@@ -123,7 +125,7 @@ $descripcion=strip_tags(html_entity_decode($result['description']));
                 $categoria_image['0']['image'] = $this->model_tool_image->resize('no_image.png', 150, 150);
                 //$image=$this->config->get('config_url') . 'image/' .$product['image'];
             }
-
+                }
 
 
 
