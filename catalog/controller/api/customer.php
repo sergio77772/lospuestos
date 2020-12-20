@@ -112,11 +112,10 @@ class ControllerApiCustomer extends Controller {
  			unset($this->session->data['reward']);
  			unset($this->session->data['voucher']);
  			unset($this->session->data['vouchers']);
- 			$json['success'] = $this->language->get('text_success');
+ 			$json['success'] = 'operacion exitosa';
  				$this->response->addHeader('Content-Type: application/json');
 		$this->response->setOutput(json_encode($json));
 
 		}
 
-	}
 }
