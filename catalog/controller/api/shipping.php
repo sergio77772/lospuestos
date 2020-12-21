@@ -128,6 +128,7 @@ class ControllerApiShipping extends Controller {
 						'custom_field'   => isset($this->request->post['custom_field']) ? $this->request->post['custom_field'] : array()
 					);
 
+
 					$json['success'] = $this->language->get('text_address');
 
 					//unset($this->session->data['shipping_method']);

@@ -33,6 +33,7 @@ class Cart {
 	public function getProducts($data = array()) {
 		$product_data = array();
 		if (isset($data['start']) || isset($data['limit'])) {
+			var_dump("if");
 
 			if ($data['start'] < 0) {
 				$data['start'] = 0;
@@ -49,7 +50,8 @@ $cart_query = $this->db->query("SELECT * FROM " . DB_PREFIX . "cart WHERE api_id
 		else
 		{
 
-$cart_query = $this->db->query("SELECT * FROM " . DB_PREFIX . "cart WHERE api_id = '" . (isset($this->session->data['api_id']) ? (int)$this->session->data['api_id'] : 0) . "' AND customer_id = '" . (int)$this->customer->getId() . "' AND session_id = '" . $this->db->escape($this->session->getId()) . "'");
+
+$cart_query = $this->db->query("SELECT * FROM " . DB_PREFIX . "cart WHERE api_id = '" . 0 . "' AND customer_id = '" . (int)$this->customer->getId() . "' AND session_id = '" . $this->db->escape($this->session->getId()) . "'");
 		}
 
 		$cart_query2 = $this->db->query("SELECT * FROM " . DB_PREFIX . "cart WHERE api_id = '" . 0 . "' AND customer_id = '" . (int)$this->customer->getId() . "' AND session_id = '" . $this->db->escape($this->session->getId()) . "'");
