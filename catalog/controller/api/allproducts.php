@@ -157,21 +157,17 @@ public function categories(){
         $this->load->model('tool/image');
         $error['fail'] = 'Failed';
 if (isset($this->request->get['parent'])) {
-    $category_id=$this->request->get['parent'];
-     $filter_data = array(
-                'parent' => $category_id
-            );
+   $parent_id=$this->request->get['parent'];
+    
 }
 else
 {
-    $filter_data = array(
-                'parent' => 0
-            );
+   $parent_id=0;
 }
 
 
         if (isset($this->request->get['json'])) {
-            $shop_categories =$this->model_catalog_category->getCategories($filter_data);
+            $shop_categories =$this->model_catalog_category->getCategories($parent_id);
           $lista=array();
               foreach ($shop_categories as $key => $categories) {
                   # code...
