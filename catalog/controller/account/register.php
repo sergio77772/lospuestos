@@ -216,6 +216,7 @@ class ControllerAccountRegister extends Controller {
 
 		if(isset($this->request->post['api']))
 		{
+			var_dump($customer_id);
 $this->request->post['customer_id']=$customer_id;
 			$error[]['Succes']= "Usuario Registrado con exito";
 			$error[]['data']=$this->request->post;
