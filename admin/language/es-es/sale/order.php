@@ -1,14 +1,14 @@
 <?php
 // Heading
-$_['heading_title']              = 'Pedidos';
+$_['heading_title']              = 'Cotizaciones';
 
 // Text
-$_['text_success']               = 'Operación Exitosa: Pedido Modificado.';
-$_['text_list']                  = 'Lista de Pedidos';
-$_['text_add']                   = 'Agregar Pedido';
-$_['text_edit']                  = 'Editar Pedido';
+$_['text_success']               = 'Operación Exitosa: Cotizacion Modificada.';
+$_['text_list']                  = 'Lista de Cotizaciones';
+$_['text_add']                   = 'Agregar Cotizacion';
+$_['text_edit']                  = 'Editar Cotizacion';
 $_['text_filter']                = 'Filtro';
-$_['text_order_detail']          = 'Detalles del Pedido';
+$_['text_order_detail']          = 'Detalles de la Cotizaciones';
 $_['text_customer_detail']       = 'Detalles del Cliente';
 $_['text_option']                = 'Opciones';
 $_['text_store']                 = 'Comercio';

@@ -1,11 +1,11 @@
 <?php
 // Heading
-$_['heading_title']     = 'Ultimos Pedidos';
+$_['heading_title']     = 'Ultimas Cotizaciones';
 
 // Text
 $_['text_extension']    = 'Extensiones';
-$_['text_success']      = 'Operación Exitosa: Ultimos Pedidos Modificado.';
-$_['text_edit']         = 'Editar Ultimos Pedidos';
+$_['text_success']      = 'Operación Exitosa: Ultimos Cotizaciones Modificadas.';
+$_['text_edit']         = 'Editar Ultimas Cotizaciones';
 
 // Column
 $_['column_order_id']   = 'Pedido ID';
