@@ -33,8 +33,6 @@ class Cart {
 	public function getProducts($data = array()) {
 		$product_data = array();
 		if (isset($data['start']) || isset($data['limit'])) {
-			var_dump("if");
-
 			if ($data['start'] < 0) {
 				$data['start'] = 0;
 			}
