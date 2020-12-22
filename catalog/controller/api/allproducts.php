@@ -150,7 +150,7 @@ $descripcion=strip_tags(html_entity_decode($result['description']));
 
 
     // Category Listing Page
-    public function categories(){ 
+public function categories(){ 
 
         $shop_categories = array();
         $this->load->model('catalog/category');
@@ -187,7 +187,7 @@ else
 
             $shop_categories[$key]['image']= $image;
 
-
+            $shop_categories[$key]['description']= strip_tags(html_entity_decode($categories['description']))
 
               }
 
