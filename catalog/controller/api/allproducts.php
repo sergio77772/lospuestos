@@ -187,7 +187,7 @@ else
 
             $shop_categories[$key]['image']= $image;
 
-            $shop_categories[$key]['description']= strip_tags(html_entity_decode($categories['description']))
+            $shop_categories[$key]['description']= strip_tags(html_entity_decode($categories['description']));
 
               }
 
