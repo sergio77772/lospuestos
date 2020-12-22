@@ -219,7 +219,7 @@ class ControllerAccountRegister extends Controller {
 $this->request->post['customer_id']=$customer_id;
 			$error[]['Succes']= "Usuario Registrado con exito";
 			$error[]['data']=$this->request->post;
-			$error[]['data']['customer_id']=$customer_id;
+			$error[]['data2']['customer_id']=$customer_id;
 			
 
          echo json_encode($error);die;
