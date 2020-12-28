@@ -17,4 +17,12 @@ class ModelAccountApi extends Model {
 
 		return $query->rows;
 	}
+
+public function addApiIp($ip) {
+		$this->db->query("INSERT INTO `" . DB_PREFIX . "api_ip` SET api_id = '" . 1 . "', ip = '" . $this->db->escape($ip) . "'");
+	}
+
+
+
+
 }

@@ -4,6 +4,7 @@ class ControllerApiLogin extends Controller {
 		$this->load->language('api/login');
 
 		$json = array();
+		$agree="";
 
 		$this->load->model('account/api');
 
@@ -19,17 +20,37 @@ class ControllerApiLogin extends Controller {
 			$ip_data = array();
 	
 			$results = $this->model_account_api->getApiIps($api_info['api_id']);
-	
+
 			foreach ($results as $result) {
 				$ip_data[] = trim($result['ip']);
 			}
+
+			
+
+if (!in_array($this->request->server['REMOTE_ADDR'], $ip_data)) {
+				$resp=$this->model_account_api->addApiIp($this->request->server['REMOTE_ADDR']);
+				$agree=$this->request->server['REMOTE_ADDR'];
+				
+$results = $this->model_account_api->getApiIps($api_info['api_id']);
+
+			foreach ($results as $result) {
+				$ip_data[] = trim($result['ip']);
+			}
+
+			}
+
+
 	
-			if (!in_array($this->request->server['REMOTE_ADDR'], $ip_data)) {
-				$json['error']['ip'] = sprintf($this->language->get('error_ip'), $this->request->server['REMOTE_ADDR']);
-			}				
+			// if (!in_array($this->request->server['REMOTE_ADDR'], $ip_data)) {
+			// 	$json['error']['ip'] = sprintf($this->language->get('error_ip'), $this->request->server['REMOTE_ADDR']);
+			// }				
 				
 			if (!$json) {
 				$json['success'] = $this->language->get('text_success');
+				if ($agree!="")
+				{
+					$json["ip_agregada"]=$this->request->server['REMOTE_ADDR'];
+				}
 				
 				$session = new Session($this->config->get('session_engine'), $this->registry);
 				
