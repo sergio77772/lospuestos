@@ -64,6 +64,51 @@ $descripcion=strip_tags(html_entity_decode($result['description']));
 
 
 
+public function log()
+{
+    $app="no especifica";
+    $archivo="sin espeficicar";
+    $linea="sin especificar";
+    $error="Error sin especificar";
+$json=array();
+
+if(isset($this->request->post['app']))
+{
+    $app=$this->request->post['app'];
+}
+
+
+if(isset($this->request->post['file']))
+{
+    $archivo=$this->request->post['file'];
+}
+
+
+if(isset($this->request->post['error']))
+{
+    $error=$this->request->post['error'];
+}
+
+
+if(isset($this->request->post['line']))
+{
+    $linea=$this->request->post['line'];
+}
+
+
+
+//$this->log->write('MESSAGE HERE');
+$this->log->write("aplicacion ".$app. ' ERROR :' . $error . ' en ' . $archivo . ' en linea ' . $linea);
+
+   $json['succes'] ="Operación Exitosa: log Guardado con exito";
+   $json['log']="aplicacion ".$app. ' ERROR :' . $error . ' en ' . $archivo . ' en linea ' . $linea;
+
+$this->response->addHeader('Content-Type: application/json');
+$this->response->setOutput(json_encode($json));
+
+
+}
+
 
 
 
