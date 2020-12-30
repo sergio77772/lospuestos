@@ -24,7 +24,7 @@ $_['text_close']                    = 'Cerrar';
 $_['text_pagination']               = 'Mostrando %d a %d de %d (%d Páginas)';
 $_['text_loading']                  = 'Cargando...';
 $_['text_no_results']               = 'Sin Resultados.';
-$_['text_confirm']                  = 'Seguro?';
+$_['text_confirm']                  = 'Esta seguro de eliminar el elemento?';
 $_['text_home']                     = 'Inicio';
 
 // Button
