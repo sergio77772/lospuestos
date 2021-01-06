@@ -133,6 +133,8 @@ $this->response->setOutput(json_encode($json));
                 //$image=$this->config->get('config_url') . 'image/' .$product['image'];
             }
 
+            $product_details['descripcion']=$product_details['description'];
+
 
 
             $especificaciones =$this->model_catalog_product->getProductAttributes($this->request->get['product_id']);
