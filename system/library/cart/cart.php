@@ -41,7 +41,7 @@ class Cart {
 				$data['limit'] = 5;
 			}
 $sql= " LIMIT " . (int)$data['start'] . "," . (int)$data['limit'];
-$cart_query = $this->db->query("SELECT * FROM " . DB_PREFIX . "cart WHERE api_id = '" . 0 . "' AND customer_id = '" . (int)$this->customer->getId() . "' AND session_id = '" . $this->db->escape($this->session->getId()) . "'".$sql);
+$cart_query = $this->db->query("SELECT * FROM " . DB_PREFIX . "cart WHERE api_id = '" . 0 . "' AND customer_id = '" . (int)$this->customer->getId() . "' AND session_id = '" . $this->db->escape($this->session->getId()) . "'"."ORDER BY date_added ASC".$sql);
 
 		}
 
@@ -49,7 +49,11 @@ $cart_query = $this->db->query("SELECT * FROM " . DB_PREFIX . "cart WHERE api_id
 		{
 
 
-$cart_query = $this->db->query("SELECT * FROM " . DB_PREFIX . "cart WHERE api_id = '" . 0 . "' AND customer_id = '" . (int)$this->customer->getId() . "' AND session_id = '" . $this->db->escape($this->session->getId()) . "'");
+$cart_query = $this->db->query("SELECT * FROM " . DB_PREFIX . "cart WHERE api_id = '" . 0 . "' AND customer_id = '" . (int)$this->customer->getId() . "' AND session_id = '" . $this->db->escape($this->session->getId()) . "' ORDER BY date_added ASC ");
+
+
+
+
 		}
 
 		$cart_query2 = $this->db->query("SELECT * FROM " . DB_PREFIX . "cart WHERE api_id = '" . 0 . "' AND customer_id = '" . (int)$this->customer->getId() . "' AND session_id = '" . $this->db->escape($this->session->getId()) . "'");
