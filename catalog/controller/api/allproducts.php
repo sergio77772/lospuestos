@@ -158,7 +158,15 @@ $this->response->setOutput(json_encode($json));
                     }
                 }
 
+                array_push($imagenes,array(
+                'product_image_id'=>'01',
+                'product_id'=>$this->request->get['product_id'],
+                'image'=>$product_details['image'],
+                'sort_order'=>'1'
+                ));
+
              $product_details['slider']=$imagenes;
+
              $categoria=$this->model_catalog_product->getCategories($this->request->get['product_id']);
              $product_details['category_id']=$categoria[0]['category_id'];
 
