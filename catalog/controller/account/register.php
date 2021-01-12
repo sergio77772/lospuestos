@@ -18,10 +18,16 @@ class ControllerAccountRegister extends Controller {
 
 		$this->load->model('account/customer');
 
+if (isset($this->request->post['api']) && !isset($this->request->post['firstname']) || !isset($this->request->post['lastname']) )
+			{
+          $error[]['Error']= "envie los datos completos";
+         echo json_encode($error);die;
+			}
+		
+
 		if (($this->request->server['REQUEST_METHOD'] == 'POST') && $this->validate()) {
 			$customer_id = $this->model_account_customer->addCustomer($this->request->post);
-			//var_dump($customer_id);
-
+			
 			// Clear any previous login attempts for unregistered accounts.
 			$this->model_account_customer->deleteLoginAttempts($this->request->post['email']);
 
@@ -220,8 +226,6 @@ $this->request->post['customer_id']=$customer_id;
 			$error[]['Succes']= "Usuario Registrado con exito";
 			$error[]['data']=$this->request->post;
 			$error[]['data2']['customer_id']=$customer_id;
-			
-
          echo json_encode($error);die;
 		}
 
