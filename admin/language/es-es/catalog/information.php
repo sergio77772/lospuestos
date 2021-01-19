@@ -18,6 +18,7 @@ $_['column_action']          = 'Acción';
 // Entry
 $_['entry_title']            = 'Título de la Información';
 $_['entry_description']      = 'Descripción';
+$_['entry_description2']      = 'Mas info';
 $_['entry_meta_title']       = 'Título Meta Tag';
 $_['entry_meta_keyword']     = 'Palabras Clave Meta Tag';
 $_['entry_meta_description'] = 'Descripción Meta Tag';
