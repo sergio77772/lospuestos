@@ -39,13 +39,16 @@ class ControllerApiAllproducts extends Controller {
             }
        
 $descripcion=strip_tags(html_entity_decode($result['description']));
+if (strlen($descripcion)>=150){
+$descripcion=substr($descripcion, 0, 150);
+$descripcion=$descripcion.'....';
+}
 
             $shop_products['shop_products'][] = array(
                 'product_id' => $result['product_id'],
                 'image'      => $image,
                 'name'       => $result['name'],
 				'descripcion'=>$descripcion,
-
                 'model'      => $result['model'],
                 'price'      => $result['price'],
                 'special'    => $special,
@@ -115,7 +118,6 @@ $this->response->setOutput(json_encode($json));
 
     // Product info Page
     public function productInfo(){
-
         $this->load->language('catalog/product');
         $this->load->model('catalog/product');
         $this->load->model('tool/image');
@@ -143,6 +145,12 @@ $this->response->setOutput(json_encode($json));
             }
 
             $product_details['descripcion']=$product_details['description'];
+$descripcion=$product_details['description'];
+if (strlen($descripcion)>=150){
+$descripcion=substr($descripcion, 0, 150);
+$descripcion=$descripcion.'....';
+$product_details['description']=$descripcion;
+}
 
 
 
