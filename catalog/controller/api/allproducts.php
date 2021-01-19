@@ -150,6 +150,7 @@ if (strlen($descripcion)>=150){
 $descripcion=substr($descripcion, 0, 150);
 $descripcion=$descripcion.'....';
 $product_details['description']=$descripcion;
+$product_details['descripcion']=$descripcion;
 }
 
 
