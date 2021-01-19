@@ -49,6 +49,7 @@ class ModelCatalogProduct extends Model {
 				'status'           => $query->row['status'],
 				'date_added'       => $query->row['date_added'],
 				'date_modified'    => $query->row['date_modified'],
+				'description_more' =>$query->row['descripcion_more'],
 				'viewed'           => $query->row['viewed']
 			);
 		} else {

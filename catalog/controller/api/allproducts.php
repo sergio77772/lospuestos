@@ -45,6 +45,7 @@ $descripcion=strip_tags(html_entity_decode($result['description']));
                 'image'      => $image,
                 'name'       => $result['name'],
 				'descripcion'=>$descripcion,
+
                 'model'      => $result['model'],
                 'price'      => $result['price'],
                 'special'    => $special,
@@ -125,6 +126,14 @@ $this->response->setOutput(json_encode($json));
         if (isset($this->request->get['product_id'])) {
             //$product_details['product_id'] = $this->request->get['product_id'];
             $product_details = $this->model_catalog_product->getProduct($this->request->get['product_id']);
+              
+            if (empty($product_details))
+            {
+            $error['fail'] = ' id no existe producto';
+            echo json_encode($error);die;
+            }
+
+
               if (is_file(DIR_IMAGE . $product_details['image'])) {
 
                $product_details['image']=$this->config->get('config_url') . 'image/' .$product_details['image'];
@@ -190,7 +199,8 @@ $this->response->setOutput(json_encode($json));
              $nameCat=$this->model_catalog_product->getCategoriesNames($categoria[0]['category_id']);
              $product_details['category_name']=$nameCat[0]['name'];
 
-            echo json_encode($product_details);die;
+            //echo json_encode($product_details);die;
+           echo json_encode($product_details, JSON_HEX_QUOT | JSON_HEX_TAG);die;
         } else {
             $this->response->setOutput(json_encode($error));
         }
