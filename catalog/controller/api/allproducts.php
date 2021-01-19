@@ -394,6 +394,12 @@ public function autocomplete() {
                 $filter_name = '';
             }
 
+         if (isset($this->request->get['filter_category_id'])) {
+                $filter_category_id = $this->request->get['filter_category_id'];
+            } else {
+                $filter_category_id = '';
+            }
+
             if (isset($this->request->get['filter_model'])) {
                 $filter_model = $this->request->get['filter_model'];
             } else {
@@ -409,6 +415,7 @@ public function autocomplete() {
             $filter_data = array(
                 'filter_name'  => $filter_name,
                 'filter_model' => $filter_model,
+                'filter_category_id'=>$filter_category_id,
                 'start'        => 0,
                 'limit'        => $limit
             );
