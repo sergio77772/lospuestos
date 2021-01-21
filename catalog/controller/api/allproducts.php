@@ -283,6 +283,31 @@ case '90':
 
         break;
 
+case '95':
+    $asset= array();
+        array_push ($asset,array(
+         'image'=>'images/splits-tradicionales.jpg',
+         'id'=>'96'
+        ));
+ array_push ($asset,array(
+         'image'=>'images/splits-inverter.jpg',
+         'id'=>'97'
+        ));
+
+ array_push ($asset,array(
+         'image'=>'images/multi-split.jpg',
+         'id'=>'98'
+        ));
+
+ array_push ($asset,array(
+         'image'=>'images/piso-techo.jpg',
+         'id'=>'99'
+        ));
+
+        break;
+
+
+
 
 }
 
