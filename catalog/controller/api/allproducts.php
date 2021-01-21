@@ -240,6 +240,54 @@ else
 }
 
 
+ $asset= array();
+switch ($parent_id) {
+    case '86':
+    $asset= array();
+        array_push ($asset,array(
+         'image'=>'images/termontaques-solares.jpg',
+         'id'=>'87'
+        ));
+ array_push ($asset,array(
+         'image'=>'images/heap-pipe.jpg',
+         'id'=>'88'
+        ));
+
+ array_push ($asset,array(
+         'image'=>'images/accesorios-termica.jpg',
+         'id'=>'89'
+        ));
+
+        break;
+
+case '90':
+    $asset= array();
+        array_push ($asset,array(
+         'image'=>'images/paneles.jpg',
+         'id'=>'91'
+        ));
+ array_push ($asset,array(
+         'image'=>'images/inversores.jpg',
+         'id'=>'92'
+        ));
+
+ array_push ($asset,array(
+         'image'=>'images/fijaciones.jpg',
+         'id'=>'93'
+        ));
+
+ array_push ($asset,array(
+         'image'=>'images/accesorios-fotovoltaica.jpg',
+         'id'=>'94'
+        ));
+
+        break;
+
+
+}
+
+
+
         if (isset($this->request->get['json'])) {
             $shop_categories =$this->model_catalog_category->getCategories($parent_id);
           $lista=array();
@@ -261,7 +309,7 @@ else
 
               }
 
-
+            $shop_categories['asset']= $asset;
 
             echo json_encode($shop_categories);die;
         } else {
