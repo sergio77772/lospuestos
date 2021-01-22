@@ -306,9 +306,6 @@ case '95':
 
         break;
 
-
-
-
 }
 
 
@@ -334,7 +331,7 @@ case '95':
 
               }
 
-            $shop_categories['asset']= $asset;
+            //$shop_categories['asset']= $asset;
 
             echo json_encode($shop_categories);die;
         } else {
