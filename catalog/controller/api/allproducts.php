@@ -237,6 +237,12 @@ class ControllerApiAllproducts extends Controller
             {
                 foreach ($imagenes as $key => $value)
                 {
+              
+               if ($value['sort_order']=='99')
+               {
+                 //unset($imagenes[$key]);
+                  continue;
+               }
 
                     if (is_file(DIR_IMAGE . $value['image']))
                     {
@@ -253,6 +259,7 @@ class ControllerApiAllproducts extends Controller
                         //$image=$this->config->get('config_url') . 'image/' .$product['image'];
                         
                     }
+                
 
                 }
             }
@@ -487,7 +494,7 @@ class ControllerApiAllproducts extends Controller
                         if ($categories['category_id'] == '94')
                         {
 
-                            $asset = 'images/fijaciones.jpg';
+                            $asset = 'images/accesorios-fotovoltaica.jpg';
                         }
                     break;
 
