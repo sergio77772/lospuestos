@@ -233,21 +233,20 @@ class ControllerApiAllproducts extends Controller
                 ->request
                 ->get['product_id']);
 
+        $images2=[];
             if (isset($imagenes))
             {
                 foreach ($imagenes as $key => $value)
                 {
               
-               if ($value['sort_order']=='99')
-               {
-                 //unset($imagenes[$key]);
-                  continue;
-               }
-
+            
                     if (is_file(DIR_IMAGE . $value['image']))
                     {
 
                         $imagenes[$key]['image'] = $this
+                            ->config
+                            ->get('config_url') . 'image/' . $value['image'];
+                            $value['image']=$this
                             ->config
                             ->get('config_url') . 'image/' . $value['image'];
                     }
@@ -256,24 +255,38 @@ class ControllerApiAllproducts extends Controller
                         $images[$key]['image'] = $this
                             ->model_tool_image
                             ->resize('no_image.png', 150, 150);
+                            $value['image']=$images[$key]['image'] = $this
+                            ->model_tool_image
+                            ->resize('no_image.png', 150, 150);
+
                         //$image=$this->config->get('config_url') . 'image/' .$product['image'];
                         
                     }
+
+
+                     if ($value['sort_order']!='99')
+                   {
+                  
+
+                 array_push($images2, $value);
+               }
                 
 
-                }
+                }//fin foreaach
             }
 
-            array_push($imagenes, array(
-                'product_image_id' => '01',
-                'product_id' => $this
-                    ->request
-                    ->get['product_id'],
-                'image' => $product_details['image'],
-                'sort_order' => '1'
-            ));
+             array_push($images2, array(
+                 'product_image_id' => '01',
+                 'product_id' => $this
+                     ->request
+                     ->get['product_id'],
+                 'image' => $product_details['image'],
+                 'sort_order' => '1'
+             ));
 
-            $product_details['slider'] = $imagenes;
+
+
+            $product_details['slider'] = $images2;
 
             $categoria = $this
                 ->model_catalog_product
