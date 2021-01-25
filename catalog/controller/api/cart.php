@@ -288,10 +288,10 @@ if (isset($this->request->get['page'])) {
 $i=0;
 if (isset($this->request->get['filter'])) {
      
-$input=$this->request->get['filter'];
+$input=strtolower($this->request->get['filter']);
 $final=[];
 $result = array_filter($json['products'], function ($item) use ($input) {
-    if (stripos($item['name'], $input) !== false) {
+    if (stripos(strtolower($item['name']), $input) !== false) {
              
         return true;
     }
