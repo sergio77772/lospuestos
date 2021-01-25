@@ -470,7 +470,7 @@ class ControllerApiAllproducts extends Controller
                         if ($categories['category_id'] == '87')
                         {
 
-                            $asset = 'images/termontaques-solares.jpg';
+                            $asset = 'images/termotanques-solares.jpg';
                         }
                         if ($categories['category_id'] == '88')
                         {
