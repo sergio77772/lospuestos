@@ -1005,17 +1005,25 @@
                   <thead>
                     <tr>
                       <td class="text-left">{{ entry_additional_image }}</td>
-                      <td class="text-right">{{ entry_sort_order }}</td>
-                      <td></td>
+                      <td class="text-right">Estado</td>
+                      <td>Acciones</td>
                     </tr>
                   </thead>
                   <tbody>
 
                     {% set image_row = 0 %}
                     {% for product_image in product_images %}
+                   
                       <tr id="image-row{{ image_row }}">
                         <td class="text-left"><a href="" id="thumb-image{{ image_row }}" data-toggle="image" class="img-thumbnail"><img src="{{ product_image.thumb }}" alt="" title="" data-placeholder="{{ placeholder }}"/></a> <input type="hidden" name="product_image[{{ image_row }}][image]" value="{{ product_image.image }}" id="input-image{{ image_row }}"/></td>
-                        <td class="text-right"><input type="text" name="product_image[{{ image_row }}][sort_order]" value="{{ product_image.sort_order }}" placeholder="{{ entry_sort_order }}" class="form-control"/></td>
+                        <td class="text-right">
+                        <label class="switch">
+                         <input name="check_image[{{ image_row }}][sort_order]" type="checkbox"  {% if product_image.sort_order != '99' %}
+                       checked=""
+                    {% endif %}>
+                          <span class="slider round"></span>
+                          </label>
+                        <input type="hidden" name="product_image[{{ image_row }}][sort_order]" value="{{ product_image.sort_order }}" placeholder="{{ entry_sort_order }}" class="form-control"/></td>
                         <td class="text-left"><button type="button" onclick="$('#image-row{{ image_row }}').remove();" data-toggle="tooltip" title="{{ button_remove }}" class="btn btn-danger"><i class="fa fa-minus-circle"></i></button></td>
                       </tr>
                       {% set image_row = image_row + 1 %}
@@ -1198,6 +1206,8 @@
   $('#product-category').delegate('.fa-minus-circle', 'click', function() {
 	  $(this).parent().remove();
   });
+
+
 
   // Filter
   $('input[name=\'filter\']').autocomplete({
@@ -1579,13 +1589,39 @@
   function addImage() {
 	  html = '<tr id="image-row' + image_row + '">';
 	  html += '  <td class="text-left"><a href="" id="thumb-image' + image_row + '"data-toggle="image" class="img-thumbnail"><img src="{{ placeholder }}" alt="" title="" data-placeholder="{{ placeholder }}" /></a><input type="hidden" name="product_image[' + image_row + '][image]" value="" id="input-image' + image_row + '" /></td>';
-	  html += '  <td class="text-right"><input type="text" name="product_image[' + image_row + '][sort_order]" value="" placeholder="{{ entry_sort_order }}" class="form-control" /></td>';
+	  html += '  <td class="text-right"> <label class="switch"><input name="check_image[' + image_row + '][sort_order]" type="checkbox"><span class="slider round"></span></label><input type="hidden" name="product_image[' + image_row + '][sort_order]" value="99" placeholder="{{ entry_sort_order }}" class="form-control" /></td>';
 	  html += '  <td class="text-left"><button type="button" onclick="$(\'#image-row' + image_row + '\').remove();" data-toggle="tooltip" title="{{ button_remove }}" class="btn btn-danger"><i class="fa fa-minus-circle"></i></button></td>';
 	  html += '</tr>';
 
 	  $('#images tbody').append(html);
 
 	  image_row++;
+
+$('[name*="check_image').unbind('click');
+
+$('[name*="check_image').click(function(){
+  name=$(this).attr('name');
+  var nuevo = name.replace("check", "product");
+  console.log(nuevo);
+ valor=$('[name='+'"'+nuevo+'"'+']').val();
+
+ if (valor=='99')
+ {
+   $('[name='+'"'+nuevo+'"'+']').val(0);
+   console.log('activado')
+ }
+if (valor=='0')
+ {
+   $('[name='+'"'+nuevo+'"'+']').val(99);
+   console.log('desactivado')
+ }
+
+
+ // alert($('[name =`$nuevo`]').val());
+  //alert($(nuevo).value);
+});
+
+
   }
 
   //--></script>
@@ -1617,6 +1653,33 @@
 
 	  recurring_row++;
   }
+
+$('[name*="check_image').click(function(){
+  name=$(this).attr('name');
+  var nuevo = name.replace("check", "product");
+  console.log(nuevo);
+ valor=$('[name='+'"'+nuevo+'"'+']').val();
+
+ if (valor=='99')
+ {
+   $('[name='+'"'+nuevo+'"'+']').val(0);
+   console.log('activado')
+ }
+if (valor=='0')
+ {
+   $('[name='+'"'+nuevo+'"'+']').val(99);
+   console.log('desactivado')
+ }
+
+
+ // alert($('[name =`$nuevo`]').val());
+  //alert($(nuevo).value);
+});
+
+
+
+ 
+
 
   //--></script>
   <script type="text/javascript"><!--
