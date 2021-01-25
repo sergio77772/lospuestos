@@ -369,7 +369,7 @@ class ControllerApiAllproducts extends Controller
             case '86':
                 $asset = array();
                 array_push($asset, array(
-                    'image' => 'images/termontaques-solares.jpg',
+                    'image' => 'images/termotanques-solares.jpg',
                     'id' => '87'
                 ));
                 array_push($asset, array(
