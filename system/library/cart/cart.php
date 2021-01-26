@@ -41,15 +41,6 @@ class Cart {
 				$data['limit'] = 5;
 			}
 
-if (!isset($this->request->get['filter']))
-{
-
-$data['start'] = 0;
-$data['limit'] = 100;
-
-}
-
-
 $sql= " LIMIT " . (int)$data['start'] . "," . (int)$data['limit'];
 $cart_query = $this->db->query("SELECT * FROM " . DB_PREFIX . "cart WHERE api_id = '" . 0 . "' AND customer_id = '" . (int)$this->customer->getId() . "' AND session_id = '" . $this->db->escape($this->session->getId()) . "'"."ORDER BY date_added ASC".$sql);
 
