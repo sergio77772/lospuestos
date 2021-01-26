@@ -143,9 +143,8 @@ if (isset($this->request->get['page'])) {
 				$json['error']['stock'] = $this->language->get('error_stock');
 			}
 
-if (!isset($this->request->get['filter']))
+if (isset($this->request->get['filter']))
 {
-
 
              $filter_data = array(
                 'start' => 0,
