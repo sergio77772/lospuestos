@@ -143,11 +143,25 @@ if (isset($this->request->get['page'])) {
 				$json['error']['stock'] = $this->language->get('error_stock');
 			}
 
+if (!isset($this->request->get['filter']))
+{
+
+
+             $filter_data = array(
+                'start' => 0,
+                'limit' => 100
+            );
+
+}
+else
+{
+
+
              $filter_data = array(
                 'start' => ($page - 1) * 5,
                 'limit' => 5
             );
-
+}
 
 			// Products
 			$json['products'] = array();
