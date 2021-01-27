@@ -208,13 +208,20 @@ else
 					);
 				}
 
+$descripcion = strip_tags(html_entity_decode($product['description']));
+            if (strlen($descripcion) >= 150)
+            {
+                $descripcion = substr($descripcion, 0, 150);
+                $descripcion = $descripcion . '....';
+            }
+
 
 				$json['products'][] = array(
 					'cart_id'    => $product['cart_id'],
 					'product_id' => $product['product_id'],
 					'name'       => $product['name'],
 					'image' =>$image,
-					'descripcion'=>strip_tags(html_entity_decode(($product['description']))),
+					'descripcion'=>$descripcion,
 					'model'      => $product['model'],
 					'option'     => $option_data,
 					'quantity'   => $product['quantity'],
