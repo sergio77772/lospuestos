@@ -219,7 +219,7 @@ class ControllerApiAllproducts extends Controller
             }
             else
             {
-                $product_details['image'] = $this
+                $product_details['manufacturer_image'] = $this
                     ->model_tool_image
                     ->resize('no_image.png', 150, 150);
                 //$image=$this->config->get('config_url') . 'image/' .$product['image'];
