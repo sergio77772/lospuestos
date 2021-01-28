@@ -210,6 +210,28 @@ class ControllerApiAllproducts extends Controller
                 
             }
 
+       if (is_file(DIR_IMAGE . $product_details['manufacturer_image']))
+            {
+
+                $product_details['manufacturer_image'] = $this
+                    ->config
+                    ->get('config_url') . 'image/' . $product_details['manufacturer_image'];
+            }
+            else
+            {
+                $product_details['image'] = $this
+                    ->model_tool_image
+                    ->resize('no_image.png', 150, 150);
+                //$image=$this->config->get('config_url') . 'image/' .$product['image'];
+                    $product_details['manufacturer_image']="";
+                
+            }
+
+
+
+
+
+
             $product_details['descripcion'] = $product_details['description'];
             $descripcion = $product_details['description'];
             if (strlen($descripcion) >= 150)
@@ -295,11 +317,15 @@ class ControllerApiAllproducts extends Controller
                 ->get['product_id']);
             $product_details['category_id'] = $categoria[0]['category_id'];
 
+
+$action = isset($categoria[1]['category_id']) ? $categoria[1]['category_id'] : $categoria[0]['category_id'];
             $categoria_image = $this
                 ->model_catalog_product
-                ->getCategoriesImages($categoria[1]['category_id']);
+                ->getCategoriesImages($action);
+
 
             if (isset($categoria_image))
+
             {
                 if (is_file(DIR_IMAGE . $categoria_image['0']['image']))
                 {
