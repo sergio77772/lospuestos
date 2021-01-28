@@ -297,7 +297,7 @@ class ControllerApiAllproducts extends Controller
 
             $categoria_image = $this
                 ->model_catalog_product
-                ->getCategoriesImages($categoria[0]['category_id']);
+                ->getCategoriesImages($categoria[1]['category_id']);
 
             if (isset($categoria_image))
             {
