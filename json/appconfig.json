@@ -1,0 +1,218 @@
+{
+    "app_activity": 5,
+    "base_url": "http://54.242.140.168/test/",
+    "assets" : [
+        {
+            "name" : "app_logo",
+            "value" : "assets/images/logo.png"
+        },
+        {
+            "name" : "app_no_image",
+            "value" : "assets/img/no-image.jpg"
+        },
+        {
+            "name" : "home_background",
+            "value" : "assets/images/home.gif"
+        },
+        {
+            "name" : "menu_categories_background",
+            "value" : "assets/images/category_background.gif"
+        },
+        {
+            "name" : "product_background",
+            "value" : "images/fondo-pantalla.png"
+        },
+        {
+            "name" : "product_detail_background",
+            "value" : "assets/images/ambient.gif"
+        },
+        {
+            "name" : "cart_background",
+            "value" : "assets/images/barra-superior.jpg"
+        }
+    ],
+    "routes": [
+        {
+            "route_name": "login_url", 
+            "value": "index.php?route=api%2Flogin" 
+        },
+        {
+            "route_name": "url_get_categories", 
+            "value": "index.php?route=api/allproducts/categories&json&parent=" 
+        },
+        {
+            "route_name": "products_filter_by_category", 
+            "value": "index.php?route=api/allproducts/filterbyCategories&categoria=" 
+        },
+        {
+            "route_name": "get_product_by_id", 
+            "value": "index.php?route=api/allproducts/productInfo&json&product_id=" 
+        },
+        {
+            "route_name": "search_product", 
+            "value": "/index.php?route=api/allproducts/autocomplete&filter_name=" 
+        },
+        {
+            "route_name": "register_url", 
+            "value": "index.php?route=account/register" 
+        },
+        {
+            "route_name": "get_user_url", 
+            "value": "index.php?route=api/allproducts/getuser&filter_email=" 
+        },
+        {
+            "route_name": "asign_token", 
+            "value": "index.php?route=api/customer&api_token=" 
+        },
+        {
+            "route_name": "close_session", 
+            "value": "index.php?route=api/customer/close&api_token=" 
+        },
+        {
+            "route_name": "add_product", 
+            "value": "index.php?route=api/cart/add&api_token=" 
+        },
+        {
+            "route_name": "get_cart", 
+            "value": "index.php?route=api%2Fcart%2Fproducts&api_token=" 
+        },
+        {
+            "route_name": "delete_cart_item", 
+            "value": "index.php?route=api/cart/remove&api_token=" 
+        },
+        {
+            "route_name": "update_cart_item", 
+            "value": "index.php?route=api/cart/edit&api_token=" 
+        },
+        {
+            "route_name": "set_checkout", 
+            "value": "index.php?route=api/shipping/address&api_token=" 
+        },
+        {
+            "route_name": "set_payment_address", 
+            "value": "index.php?route=api/payment/address&api_token=" 
+        },
+        {
+            "route_name": "get_shipping", 
+            "value": "index.php?route=api/shipping/methods&api_token=" 
+        },
+        {
+            "route_name": "set_shipping", 
+            "value": "index.php?route=api/shipping/method&api_token=" 
+        },
+        {
+            "route_name": "get_payment", 
+            "value": "index.php?route=api/payment/methods&api_token=" 
+        },
+        {
+            "route_name": "set_payment", 
+            "value": "index.php?route=api/payment/method&api_token=" 
+        },
+        {
+            "route_name": "add_order", 
+            "value": "index.php?route=api/order/add&api_token=" 
+        }
+    ],
+    "attributes": [
+        {
+            "app_id": 95,
+            "banners": [
+                {
+                    "component" : "app_title",
+                    "text": "Sistemas de Refrigeración"
+                },
+                {
+                    "component" : "app_subtitle",
+                    "text": "El confort térmico es un estado de equilibrio y bienestar,                           te ayudamos a generarlo"
+                }
+            ],
+            "components": [
+                { 
+                    "component" : "route_info", 
+                    "text" : "",
+                    "color": "#B5A8FA"
+                },
+                { 
+                    "component" : "button_add_product", 
+                    "text" : "+ Agregar a cotización",
+                    "color": "#5D53B2"
+                },
+                { 
+                    "component" : "button_register", 
+                    "text" : "SEGUIR VIENDO PRODUCTOS",
+                    "color": "#BEA8EE"
+                },
+                { 
+                    "component" : "button_continue", 
+                    "text" : " Continuar en otra pantalla",
+                    "color": "#5D53B2"
+                },
+                { 
+                    "component" : "button_search_product", 
+                    "text" : "",
+                    "color": "#F1EAFC"
+                },
+                { 
+                    "component" : "button_shopping_cart", 
+                    "text" : "",
+                    "color": "#F1EAFC"
+                },
+                { 
+                    "component" : "button_product_more_details", 
+                    "text" : "Detalles técnicos",
+                    "color": "#5D53B2"
+                },
+                { 
+                    "component" : "button_back_to_details", 
+                    "text" : "<<  Volver a detalles",
+                    "color": "#5D53B2"
+                },
+                { 
+                    "component" : "button_finish_quotation", 
+                    "text" : "Finalizar cotización",
+                    "color": "#5D53B2"
+                },
+                { 
+                    "component" : "button_finish_session", 
+                    "text" : "Finalizar Sesion",
+                    "color": "#5D53B2"
+                },
+                { 
+                    "component" : "button_close_more_details", 
+                    "text" : "Cerrar",
+                    "color": "#5D53B2"
+                },
+                { 
+                    "component" : "button_back_to_menu", 
+                    "text" : "Menú",
+                    "color": "#FFFFFF"
+                },
+                { 
+                    "component" : "button_found_product", 
+                    "text" : "Ver mas detalles",
+                    "color": "#DEADE4"
+                },
+                { 
+                    "component" : "atributes_title", 
+                    "text" : "",
+                    "color": "#B5A8FA"
+                },
+                { 
+                    "component" : "slider_more_products", 
+                    "text" : "",
+                    "color": "#5D53B2"
+                },
+                { 
+                    "component" : "cart_product_bg_light", 
+                    "text" : "",
+                    "color": "#F8ECFA"
+                },
+                { 
+                    "component" : "cart_product_bg_dark", 
+                    "text" : "",
+                    "color": "#EBCCEC"
+                }
+            ]
+        }
+    ]
+}
