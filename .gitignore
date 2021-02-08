@@ -2,3 +2,4 @@
 /admin/config.php
 /image/cache/catalog
 /json
+/json/*.json
