@@ -867,6 +867,20 @@ $action = isset($categoria[1]['category_id']) ? $categoria[1]['category_id'] : $
             {
                 $option_data = array();
 
+               if (is_file(DIR_IMAGE . $result['manufacturer_image']))
+                {
+
+                    $image = $this
+                        ->model_tool_image
+                        ->resize($result['manufacturer_image'], 150, 150);
+                    $result['manufacturer_image'] = $this
+                        ->config
+                        ->get('config_url') . 'image/' . $result['manufacturer_image'];
+                }
+
+
+
+
                 if (is_file(DIR_IMAGE . $result['image']))
                 {
 
@@ -877,6 +891,8 @@ $action = isset($categoria[1]['category_id']) ? $categoria[1]['category_id'] : $
                         ->config
                         ->get('config_url') . 'image/' . $result['image'];
                 }
+
+
                 else
                 {
                     $image = $this
@@ -942,6 +958,7 @@ $action = isset($categoria[1]['category_id']) ? $categoria[1]['category_id'] : $
                     'descripcion' => $result['description'],
                     'model' => $result['model'],
                     'option' => $option_data,
+                    'manufacturer_image'=>$result['manufacturer_image'],
                     'image' => $image,
                     'price' => $result['price']
                 );
