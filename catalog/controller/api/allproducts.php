@@ -559,7 +559,7 @@ $action = isset($categoria[1]['category_id']) ? $categoria[1]['category_id'] : $
                         if ($categories['category_id'] == '99')
                         {
 
-                            $asset = 'images/multi-split.jpg';
+                            $asset = 'images/piso-techo.jpg';
                         }
 
                     break;
