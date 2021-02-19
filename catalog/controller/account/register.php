@@ -223,6 +223,7 @@ if (isset($this->request->post['api']) && !isset($this->request->post['firstname
 		if(isset($this->request->post['api']))
 		{
 $this->request->post['customer_id']=$customer_id;
+$this->request->post['name']=$this->request->post['firstname'].' '.$this->request->post['lastname'];
 			$error[]['Succes']= "Usuario Registrado con exito";
 			$error[]['data']=$this->request->post;
 			$error[]['data2']['customer_id']=$customer_id;
