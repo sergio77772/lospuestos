@@ -96,7 +96,7 @@ class ControllerExtensionDashboardRecent extends Controller {
 			'order' => 'ASC',
 			'start' => 0,
 			'filter_order_status'=>'1',//ver tablita de pendientes
-			'limit' => 100
+			'limit' => 20
 		);
 
 		$this->load->model('sale/order');
