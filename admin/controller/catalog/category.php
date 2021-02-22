@@ -70,6 +70,1884 @@ class ControllerCatalogCategory extends Controller {
 				$url .= '&page=' . $this->request->get['page'];
 			}
 
+$file=DIR_APPLICATION;
+$file= str_replace('admin', 'json', $file);
+$base_url=HTTP_SERVER;
+$base_url=str_replace('/admin', '', $base_url);
+$tit=$this->request->post['category_description'][2]['name'];
+$sub=strip_tags(html_entity_decode($this->request->post['category_description'][2]['description']));
+if ($this->request->get['category_id']==75){
+@unlink($file.'climatizacion/appconfig.json');
+$d=array (
+  'app_activity' => 5,
+  'base_url' => $base_url,
+  'assets' => 
+  array (
+    0 => 
+    array (
+      'name' => 'app_logo',
+      'value' => 'assets/images/logo.png',
+    ),
+    1 => 
+    array (
+      'name' => 'app_no_image',
+      'value' => 'assets/img/no-image.jpg',
+    ),
+    2 => 
+    array (
+      'name' => 'home_background',
+      'value' => 'assets/images/home.gif',
+    ),
+    3 => 
+    array (
+      'name' => 'menu_categories_background',
+      'value' => 'assets/images/category_background.gif',
+    ),
+    4 => 
+    array (
+      'name' => 'product_background',
+      'value' => 'images/fondo-pantalla.png',
+    ),
+    5 => 
+    array (
+      'name' => 'product_detail_background',
+      'value' => 'assets/images/ambient.gif',
+    ),
+    6 => 
+    array (
+      'name' => 'cart_background',
+      'value' => 'assets/images/barra-superior.jpg',
+    ),
+  ),
+  'routes' => 
+  array (
+    0 => 
+    array (
+      'route_name' => 'login_url',
+      'value' => 'index.php?route=api%2Flogin',
+    ),
+    1 => 
+    array (
+      'route_name' => 'url_get_categories',
+      'value' => 'index.php?route=api/allproducts/categories&json&parent=',
+    ),
+    2 => 
+    array (
+      'route_name' => 'products_filter_by_category',
+      'value' => 'index.php?route=api/allproducts/filterbyCategories&categoria=',
+    ),
+    3 => 
+    array (
+      'route_name' => 'get_product_by_id',
+      'value' => 'index.php?route=api/allproducts/productInfo&json&product_id=',
+    ),
+    4 => 
+    array (
+      'route_name' => 'search_product',
+      'value' => '/index.php?route=api/allproducts/autocomplete&filter_name=',
+    ),
+    5 => 
+    array (
+      'route_name' => 'register_url',
+      'value' => 'index.php?route=account/register',
+    ),
+    6 => 
+    array (
+      'route_name' => 'get_user_url',
+      'value' => 'index.php?route=api/allproducts/getuser&filter_email=',
+    ),
+    7 => 
+    array (
+      'route_name' => 'asign_token',
+      'value' => 'index.php?route=api/customer&api_token=',
+    ),
+    8 => 
+    array (
+      'route_name' => 'close_session',
+      'value' => 'index.php?route=api/customer/close&api_token=',
+    ),
+    9 => 
+    array (
+      'route_name' => 'add_product',
+      'value' => 'index.php?route=api/cart/add&api_token=',
+    ),
+    10 => 
+    array (
+      'route_name' => 'get_cart',
+      'value' => 'index.php?route=api%2Fcart%2Fproducts&api_token=',
+    ),
+    11 => 
+    array (
+      'route_name' => 'delete_cart_item',
+      'value' => 'index.php?route=api/cart/remove&api_token=',
+    ),
+    12 => 
+    array (
+      'route_name' => 'update_cart_item',
+      'value' => 'index.php?route=api/cart/edit&api_token=',
+    ),
+    13 => 
+    array (
+      'route_name' => 'set_checkout',
+      'value' => 'index.php?route=api/shipping/address&api_token=',
+    ),
+    14 => 
+    array (
+      'route_name' => 'set_payment_address',
+      'value' => 'index.php?route=api/payment/address&api_token=',
+    ),
+    15 => 
+    array (
+      'route_name' => 'get_shipping',
+      'value' => 'index.php?route=api/shipping/methods&api_token=',
+    ),
+    16 => 
+    array (
+      'route_name' => 'set_shipping',
+      'value' => 'index.php?route=api/shipping/method&api_token=',
+    ),
+    17 => 
+    array (
+      'route_name' => 'get_payment',
+      'value' => 'index.php?route=api/payment/methods&api_token=',
+    ),
+    18 => 
+    array (
+      'route_name' => 'set_payment',
+      'value' => 'index.php?route=api/payment/method&api_token=',
+    ),
+    19 => 
+    array (
+      'route_name' => 'add_order',
+      'value' => 'index.php?route=api/order/add&api_token=',
+    ),
+  ),
+  'attributes' => 
+  array (
+    0 => 
+    array (
+      'app_id' => 75,
+      'banners' => 
+      array (
+        0 => 
+        array (
+          'component' => 'app_title',
+          'text' => $tit,
+        ),
+        1 => 
+        array (
+          'component' => 'app_subtitle',
+          'text' => $sub,
+        ),
+      ),
+      'components' => 
+      array (
+        0 => 
+        array (
+          'component' => 'route_info',
+          'text' => '',
+          'color' => '#BBC3EA',
+        ),
+        1 => 
+        array (
+          'component' => 'button_add_product',
+          'text' => '+ Agregar a cotización',
+          'color' => '#596489',
+        ),
+        2 => 
+        array (
+          'component' => 'button_register',
+          'text' => 'SEGUIR VIENDO PRODUCTOS',
+          'color' => '#BBC3EA',
+        ),
+        3 => 
+        array (
+          'component' => 'button_continue',
+          'text' => ' Continuar en otra pantalla',
+          'color' => '#596489',
+        ),
+        4 => 
+        array (
+          'component' => 'button_search_product',
+          'text' => '',
+          'color' => '#DFFDFF',
+        ),
+        5 => 
+        array (
+          'component' => 'button_shopping_cart',
+          'text' => '',
+          'color' => '#DFFDFF',
+        ),
+        6 => 
+        array (
+          'component' => 'button_product_more_details',
+          'text' => 'Detalles técnicos',
+          'color' => '#596489',
+        ),
+        7 => 
+        array (
+          'component' => 'button_back_to_details',
+          'text' => '<< Volver a detalles',
+          'color' => '#596489',
+        ),
+        8 => 
+        array (
+          'component' => 'button_finish_quotation',
+          'text' => 'Finalizar cotización',
+          'color' => '#596489',
+        ),
+        9 => 
+        array (
+          'component' => 'button_finish_session',
+          'text' => 'Finalizar Sesion',
+          'color' => '#596489',
+        ),
+        10 => 
+        array (
+          'component' => 'button_close_more_details',
+          'text' => 'Cerrar',
+          'color' => '#596489',
+        ),
+        11 => 
+        array (
+          'component' => 'button_back_to_menu',
+          'text' => 'Menú',
+          'color' => '#FFFFFF',
+        ),
+        12 => 
+        array (
+          'component' => 'button_found_product',
+          'text' => 'Ver mas detalles',
+          'color' => '#BBC3EA',
+        ),
+        13 => 
+        array (
+          'component' => 'atributes_title',
+          'text' => '',
+          'color' => '#BBC3EA',
+        ),
+        14 => 
+        array (
+          'component' => 'slider_more_products',
+          'text' => '',
+          'color' => '#596489',
+        ),
+        15 => 
+        array (
+          'component' => 'cart_product_bg_light',
+          'text' => '',
+          'color' => '#F5F6FF',
+        ),
+        16 => 
+        array (
+          'component' => 'cart_product_bg_dark',
+          'text' => '',
+          'color' => '#D5F2FF',
+        ),
+        17 => 
+        array (
+          'component' => 'user_form_acount_aviable',
+          'text' => 'YA TENGO CUENTA',
+          'color' => '',
+        ),
+        18 => 
+        array (
+          'component' => 'user_menu_home',
+          'text' => 'Categorías',
+          'color' => '',
+        ),
+        19 => 
+        array (
+          'component' => 'user_menu_close_session',
+          'text' => 'Cerrar Sesión',
+          'color' => '',
+        ),
+        20 => 
+        array (
+          'component' => 'user_menu_cart',
+          'text' => 'Mi Cotización',
+          'color' => '',
+        ),
+        21 => 
+        array (
+          'component' => 'user_menu_back',
+          'text' => 'Volver',
+          'color' => '',
+        ),
+      ),
+    ),
+  ),
+);
+
+$DescriptorFichero = fopen($file.'climatizacion/appconfig.json', "w");
+$string1           =json_encode($d);
+fputs($DescriptorFichero, $string1);
+fclose($DescriptorFichero);
+}
+
+if ($this->request->get['category_id']==90){
+@unlink($file.'fotovoltaica/appconfig.json');
+$d=	array (
+  'app_activity' => 5,
+  'base_url' => $base_url,
+  'assets' => 
+  array (
+    0 => 
+    array (
+      'name' => 'app_logo',
+      'value' => 'assets/images/logo.png',
+    ),
+    1 => 
+    array (
+      'name' => 'app_no_image',
+      'value' => 'assets/img/no-image.jpg',
+    ),
+    2 => 
+    array (
+      'name' => 'home_background',
+      'value' => 'assets/images/home.gif',
+    ),
+    3 => 
+    array (
+      'name' => 'menu_categories_background',
+      'value' => 'assets/images/category_background.gif',
+    ),
+    4 => 
+    array (
+      'name' => 'product_background',
+      'value' => 'images/fondo-pantalla.png',
+    ),
+    5 => 
+    array (
+      'name' => 'product_detail_background',
+      'value' => 'assets/images/ambient.gif',
+    ),
+    6 => 
+    array (
+      'name' => 'cart_background',
+      'value' => 'assets/images/barra-superior.jpg',
+    ),
+  ),
+  'routes' => 
+  array (
+    0 => 
+    array (
+      'route_name' => 'login_url',
+      'value' => 'index.php?route=api%2Flogin',
+    ),
+    1 => 
+    array (
+      'route_name' => 'url_get_categories',
+      'value' => 'index.php?route=api/allproducts/categories&json&parent=',
+    ),
+    2 => 
+    array (
+      'route_name' => 'products_filter_by_category',
+      'value' => 'index.php?route=api/allproducts/filterbyCategories&categoria=',
+    ),
+    3 => 
+    array (
+      'route_name' => 'get_product_by_id',
+      'value' => 'index.php?route=api/allproducts/productInfo&json&product_id=',
+    ),
+    4 => 
+    array (
+      'route_name' => 'search_product',
+      'value' => '/index.php?route=api/allproducts/autocomplete&filter_name=',
+    ),
+    5 => 
+    array (
+      'route_name' => 'register_url',
+      'value' => 'index.php?route=account/register',
+    ),
+    6 => 
+    array (
+      'route_name' => 'get_user_url',
+      'value' => 'index.php?route=api/allproducts/getuser&filter_email=',
+    ),
+    7 => 
+    array (
+      'route_name' => 'asign_token',
+      'value' => 'index.php?route=api/customer&api_token=',
+    ),
+    8 => 
+    array (
+      'route_name' => 'close_session',
+      'value' => 'index.php?route=api/customer/close&api_token=',
+    ),
+    9 => 
+    array (
+      'route_name' => 'add_product',
+      'value' => 'index.php?route=api/cart/add&api_token=',
+    ),
+    10 => 
+    array (
+      'route_name' => 'get_cart',
+      'value' => 'index.php?route=api%2Fcart%2Fproducts&api_token=',
+    ),
+    11 => 
+    array (
+      'route_name' => 'delete_cart_item',
+      'value' => 'index.php?route=api/cart/remove&api_token=',
+    ),
+    12 => 
+    array (
+      'route_name' => 'update_cart_item',
+      'value' => 'index.php?route=api/cart/edit&api_token=',
+    ),
+    13 => 
+    array (
+      'route_name' => 'set_checkout',
+      'value' => 'index.php?route=api/shipping/address&api_token=',
+    ),
+    14 => 
+    array (
+      'route_name' => 'set_payment_address',
+      'value' => 'index.php?route=api/payment/address&api_token=',
+    ),
+    15 => 
+    array (
+      'route_name' => 'get_shipping',
+      'value' => 'index.php?route=api/shipping/methods&api_token=',
+    ),
+    16 => 
+    array (
+      'route_name' => 'set_shipping',
+      'value' => 'index.php?route=api/shipping/method&api_token=',
+    ),
+    17 => 
+    array (
+      'route_name' => 'get_payment',
+      'value' => 'index.php?route=api/payment/methods&api_token=',
+    ),
+    18 => 
+    array (
+      'route_name' => 'set_payment',
+      'value' => 'index.php?route=api/payment/method&api_token=',
+    ),
+    19 => 
+    array (
+      'route_name' => 'add_order',
+      'value' => 'index.php?route=api/order/add&api_token=',
+    ),
+  ),
+  'attributes' => 
+  array (
+    0 => 
+    array (
+      'app_id' => 90,
+      'banners' => 
+      array (
+        0 => 
+        array (
+          'component' => 'app_title',
+          'text' => $tit,
+        ),
+        1 => 
+        array (
+          'component' => 'app_subtitle',
+          'text' => $sub,
+        ),
+      ),
+      'components' => 
+      array (
+        0 => 
+        array (
+          'component' => 'route_info',
+          'text' => '',
+          'color' => '#D79543',
+        ),
+        1 => 
+        array (
+          'component' => 'button_add_product',
+          'text' => '+ Agregar a cotización',
+          'color' => '#C19348',
+        ),
+        2 => 
+        array (
+          'component' => 'button_register',
+          'text' => 'SEGUIR VIENDO PRODUCTOS',
+          'color' => '#E8C0CE',
+        ),
+        3 => 
+        array (
+          'component' => 'button_continue',
+          'text' => ' Continuar en otra pantalla',
+          'color' => '#C19348',
+        ),
+        4 => 
+        array (
+          'component' => 'button_search_product',
+          'text' => '',
+          'color' => '#E9BE85',
+        ),
+        5 => 
+        array (
+          'component' => 'button_shopping_cart',
+          'text' => '',
+          'color' => '#E8E592',
+        ),
+        6 => 
+        array (
+          'component' => 'button_product_more_details',
+          'text' => 'Detalles técnicos',
+          'color' => '#C19348',
+        ),
+        7 => 
+        array (
+          'component' => 'button_back_to_details',
+          'text' => '<< Volver a detalles',
+          'color' => '#C19348',
+        ),
+        8 => 
+        array (
+          'component' => 'button_finish_quotation',
+          'text' => 'Finalizar cotización',
+          'color' => '#C19348',
+        ),
+        9 => 
+        array (
+          'component' => 'button_finish_session',
+          'text' => 'Finalizar Sesión',
+          'color' => '#C19348',
+        ),
+        10 => 
+        array (
+          'component' => 'button_close_more_details',
+          'text' => 'Cerrar',
+          'color' => '#C19348',
+        ),
+        11 => 
+        array (
+          'component' => 'button_back_to_menu',
+          'text' => 'Menú',
+          'color' => '#E8C078',
+        ),
+        12 => 
+        array (
+          'component' => 'button_found_product',
+          'text' => 'Ver mas detalles',
+          'color' => '#E8C0CE',
+        ),
+        13 => 
+        array (
+          'component' => 'atributes_title',
+          'text' => '',
+          'color' => '#D79543',
+        ),
+        14 => 
+        array (
+          'component' => 'slider_more_products',
+          'text' => '',
+          'color' => '#C19348',
+        ),
+        15 => 
+        array (
+          'component' => 'cart_product_bg_light',
+          'text' => '',
+          'color' => '#F9F7E4',
+        ),
+        16 => 
+        array (
+          'component' => 'cart_product_bg_dark',
+          'text' => '',
+          'color' => '#FDE0D4',
+        ),
+        17 => 
+        array (
+          'component' => 'user_form_acount_aviable',
+          'text' => 'YA TENGO CUENTA',
+          'color' => '',
+        ),
+        18 => 
+        array (
+          'component' => 'user_menu_home',
+          'text' => 'Categorías',
+          'color' => '',
+        ),
+        19 => 
+        array (
+          'component' => 'user_menu_close_session',
+          'text' => 'Cerrar Sesión',
+          'color' => '',
+        ),
+        20 => 
+        array (
+          'component' => 'user_menu_cart',
+          'text' => 'Mi Cotización',
+          'color' => '',
+        ),
+        21 => 
+        array (
+          'component' => 'user_menu_back',
+          'text' => 'Volver',
+          'color' => '',
+        ),
+      ),
+    ),
+  ),
+);
+$DescriptorFichero = fopen($file.'fotovoltaica/appconfig.json', "w");
+$string1           =json_encode($d);
+fputs($DescriptorFichero, $string1);
+fclose($DescriptorFichero);
+
+}
+
+
+if ($this->request->get['category_id']==86){
+@unlink($file.'termica/appconfig.json');
+
+$d=array (
+  'app_activity' => 5,
+  'base_url' => $base_url,
+  'assets' => 
+  array (
+    0 => 
+    array (
+      'name' => 'app_logo',
+      'value' => 'assets/images/logo.png',
+    ),
+    1 => 
+    array (
+      'name' => 'app_no_image',
+      'value' => 'assets/img/no-image.jpg',
+    ),
+    2 => 
+    array (
+      'name' => 'home_background',
+      'value' => 'assets/images/home.gif',
+    ),
+    3 => 
+    array (
+      'name' => 'menu_categories_background',
+      'value' => 'assets/images/category_background.gif',
+    ),
+    4 => 
+    array (
+      'name' => 'product_background',
+      'value' => 'images/fondo-pantalla.png',
+    ),
+    5 => 
+    array (
+      'name' => 'product_detail_background',
+      'value' => 'assets/images/termica.gif',
+    ),
+    6 => 
+    array (
+      'name' => 'cart_background',
+      'value' => 'assets/images/barra-superior.jpg',
+    ),
+  ),
+  'routes' => 
+  array (
+    0 => 
+    array (
+      'route_name' => 'login_url',
+      'value' => 'index.php?route=api%2Flogin',
+    ),
+    1 => 
+    array (
+      'route_name' => 'url_get_categories',
+      'value' => 'index.php?route=api/allproducts/categories&json&parent=',
+    ),
+    2 => 
+    array (
+      'route_name' => 'products_filter_by_category',
+      'value' => 'index.php?route=api/allproducts/filterbyCategories&categoria=',
+    ),
+    3 => 
+    array (
+      'route_name' => 'get_product_by_id',
+      'value' => 'index.php?route=api/allproducts/productInfo&json&product_id=',
+    ),
+    4 => 
+    array (
+      'route_name' => 'search_product',
+      'value' => '/index.php?route=api/allproducts/autocomplete&filter_name=',
+    ),
+    5 => 
+    array (
+      'route_name' => 'register_url',
+      'value' => 'index.php?route=account/register',
+    ),
+    6 => 
+    array (
+      'route_name' => 'get_user_url',
+      'value' => 'index.php?route=api/allproducts/getuser&filter_email=',
+    ),
+    7 => 
+    array (
+      'route_name' => 'asign_token',
+      'value' => 'index.php?route=api/customer&api_token=',
+    ),
+    8 => 
+    array (
+      'route_name' => 'close_session',
+      'value' => 'index.php?route=api/customer/close&api_token=',
+    ),
+    9 => 
+    array (
+      'route_name' => 'add_product',
+      'value' => 'index.php?route=api/cart/add&api_token=',
+    ),
+    10 => 
+    array (
+      'route_name' => 'get_cart',
+      'value' => 'index.php?route=api%2Fcart%2Fproducts&api_token=',
+    ),
+    11 => 
+    array (
+      'route_name' => 'delete_cart_item',
+      'value' => 'index.php?route=api/cart/remove&api_token=',
+    ),
+    12 => 
+    array (
+      'route_name' => 'update_cart_item',
+      'value' => 'index.php?route=api/cart/edit&api_token=',
+    ),
+    13 => 
+    array (
+      'route_name' => 'set_checkout',
+      'value' => 'index.php?route=api/shipping/address&api_token=',
+    ),
+    14 => 
+    array (
+      'route_name' => 'set_payment_address',
+      'value' => 'index.php?route=api/payment/address&api_token=',
+    ),
+    15 => 
+    array (
+      'route_name' => 'get_shipping',
+      'value' => 'index.php?route=api/shipping/methods&api_token=',
+    ),
+    16 => 
+    array (
+      'route_name' => 'set_shipping',
+      'value' => 'index.php?route=api/shipping/method&api_token=',
+    ),
+    17 => 
+    array (
+      'route_name' => 'get_payment',
+      'value' => 'index.php?route=api/payment/methods&api_token=',
+    ),
+    18 => 
+    array (
+      'route_name' => 'set_payment',
+      'value' => 'index.php?route=api/payment/method&api_token=',
+    ),
+    19 => 
+    array (
+      'route_name' => 'add_order',
+      'value' => 'index.php?route=api/order/add&api_token=',
+    ),
+  ),
+  'attributes' => 
+  array (
+    0 => 
+    array (
+      'app_id' => 86,
+      'banners' => 
+      array (
+        0 => 
+        array (
+          'component' => 'app_title',
+          'text' => $tit,
+        ),
+        1 => 
+        array (
+          'component' => 'app_subtitle',
+          'text' => $sub,
+        ),
+      ),
+      'components' => 
+      array (
+        0 => 
+        array (
+          'component' => 'route_info',
+          'text' => '',
+          'color' => '#BDAD58',
+        ),
+        1 => 
+        array (
+          'component' => 'button_add_product',
+          'text' => '+ Agregar a cotización',
+          'color' => '#846D15',
+        ),
+        2 => 
+        array (
+          'component' => 'button_register',
+          'text' => 'SEGUIR VIENDO PRODUCTOS',
+          'color' => '#E8C078',
+        ),
+        3 => 
+        array (
+          'component' => 'button_continue',
+          'text' => ' Continuar en otra pantalla',
+          'color' => '#846D15',
+        ),
+        4 => 
+        array (
+          'component' => 'button_search_product',
+          'text' => '',
+          'color' => '#EEE48C',
+        ),
+        5 => 
+        array (
+          'component' => 'button_shopping_cart',
+          'text' => '',
+          'color' => '#EEE48C',
+        ),
+        6 => 
+        array (
+          'component' => 'button_product_more_details',
+          'text' => 'Detalles técnicos',
+          'color' => '#846D15',
+        ),
+        7 => 
+        array (
+          'component' => 'button_back_to_details',
+          'text' => '<< Volver a detalles',
+          'color' => '#7C6F25',
+        ),
+        8 => 
+        array (
+          'component' => 'button_finish_quotation',
+          'text' => 'Finalizar cotización',
+          'color' => '#7C6F25',
+        ),
+        9 => 
+        array (
+          'component' => 'button_finish_session',
+          'text' => 'Finalizar Sesión',
+          'color' => '#7C6F25',
+        ),
+        10 => 
+        array (
+          'component' => 'button_close_more_details',
+          'text' => 'Cerrar',
+          'color' => '#7C6F25',
+        ),
+        11 => 
+        array (
+          'component' => 'button_back_to_menu',
+          'text' => 'Menú',
+          'color' => '#87711B',
+        ),
+        12 => 
+        array (
+          'component' => 'button_found_product',
+          'text' => 'Ver mas detalles',
+          'color' => '#7C6f25',
+        ),
+        13 => 
+        array (
+          'component' => 'atributes_title',
+          'text' => '',
+          'color' => '#B7AA5F',
+        ),
+        14 => 
+        array (
+          'component' => 'slider_more_products',
+          'text' => '',
+          'color' => '#7C6F25',
+        ),
+        15 => 
+        array (
+          'component' => 'cart_product_bg_light',
+          'text' => '',
+          'color' => '#F7F4D5',
+        ),
+        16 => 
+        array (
+          'component' => 'cart_product_bg_dark',
+          'text' => '',
+          'color' => '#F8F0C2',
+        ),
+        17 => 
+        array (
+          'component' => 'user_form_acount_aviable',
+          'text' => 'YA TENGO CUENTA',
+          'color' => '',
+        ),
+        18 => 
+        array (
+          'component' => 'user_menu_home',
+          'text' => 'Categorías',
+          'color' => '',
+        ),
+        19 => 
+        array (
+          'component' => 'user_menu_close_session',
+          'text' => 'Cerrar Sesión',
+          'color' => '',
+        ),
+        20 => 
+        array (
+          'component' => 'user_menu_cart',
+          'text' => 'Mi Cotización',
+          'color' => '',
+        ),
+        21 => 
+        array (
+          'component' => 'user_menu_back',
+          'text' => 'Volver',
+          'color' => '',
+        ),
+      ),
+    ),
+  ),
+);
+$DescriptorFichero = fopen($file.'termica/appconfig.json', "w");
+$string1           =json_encode($d);
+fputs($DescriptorFichero, $string1);
+fclose($DescriptorFichero);
+
+}
+
+if ($this->request->get['category_id']==66){
+@unlink($file.'psicina/appconfig.json');
+
+$d=array (
+  'app_activity' => 5,
+  'base_url' => $base_url,
+  'assets' => 
+  array (
+    0 => 
+    array (
+      'name' => 'app_logo',
+      'value' => 'assets/images/logo.png',
+    ),
+    1 => 
+    array (
+      'name' => 'app_no_image',
+      'value' => 'assets/img/no-image.jpg',
+    ),
+    2 => 
+    array (
+      'name' => 'home_background',
+      'value' => 'assets/images/home.gif',
+    ),
+    3 => 
+    array (
+      'name' => 'menu_categories_background',
+      'value' => 'assets/images/category_background.gif',
+    ),
+    4 => 
+    array (
+      'name' => 'product_background',
+      'value' => 'images/fondo-pantalla.png',
+    ),
+    5 => 
+    array (
+      'name' => 'product_detail_background',
+      'value' => 'assets/images/ambient.gif',
+    ),
+    6 => 
+    array (
+      'name' => 'cart_background',
+      'value' => 'assets/images/barra-superior.jpg',
+    ),
+  ),
+  'routes' => 
+  array (
+    0 => 
+    array (
+      'route_name' => 'login_url',
+      'value' => 'index.php?route=api%2Flogin',
+    ),
+    1 => 
+    array (
+      'route_name' => 'url_get_categories',
+      'value' => 'index.php?route=api/allproducts/categories&json&parent=',
+    ),
+    2 => 
+    array (
+      'route_name' => 'products_filter_by_category',
+      'value' => 'index.php?route=api/allproducts/filterbyCategories&categoria=',
+    ),
+    3 => 
+    array (
+      'route_name' => 'get_product_by_id',
+      'value' => 'index.php?route=api/allproducts/productInfo&json&product_id=',
+    ),
+    4 => 
+    array (
+      'route_name' => 'search_product',
+      'value' => '/index.php?route=api/allproducts/autocomplete&filter_name=',
+    ),
+    5 => 
+    array (
+      'route_name' => 'register_url',
+      'value' => 'index.php?route=account/register',
+    ),
+    6 => 
+    array (
+      'route_name' => 'get_user_url',
+      'value' => 'index.php?route=api/allproducts/getuser&filter_email=',
+    ),
+    7 => 
+    array (
+      'route_name' => 'asign_token',
+      'value' => 'index.php?route=api/customer&api_token=',
+    ),
+    8 => 
+    array (
+      'route_name' => 'close_session',
+      'value' => 'index.php?route=api/customer/close&api_token=',
+    ),
+    9 => 
+    array (
+      'route_name' => 'add_product',
+      'value' => 'index.php?route=api/cart/add&api_token=',
+    ),
+    10 => 
+    array (
+      'route_name' => 'get_cart',
+      'value' => 'index.php?route=api%2Fcart%2Fproducts&api_token=',
+    ),
+    11 => 
+    array (
+      'route_name' => 'delete_cart_item',
+      'value' => 'index.php?route=api/cart/remove&api_token=',
+    ),
+    12 => 
+    array (
+      'route_name' => 'update_cart_item',
+      'value' => 'index.php?route=api/cart/edit&api_token=',
+    ),
+    13 => 
+    array (
+      'route_name' => 'set_checkout',
+      'value' => 'index.php?route=api/shipping/address&api_token=',
+    ),
+    14 => 
+    array (
+      'route_name' => 'set_payment_address',
+      'value' => 'index.php?route=api/payment/address&api_token=',
+    ),
+    15 => 
+    array (
+      'route_name' => 'get_shipping',
+      'value' => 'index.php?route=api/shipping/methods&api_token=',
+    ),
+    16 => 
+    array (
+      'route_name' => 'set_shipping',
+      'value' => 'index.php?route=api/shipping/method&api_token=',
+    ),
+    17 => 
+    array (
+      'route_name' => 'get_payment',
+      'value' => 'index.php?route=api/payment/methods&api_token=',
+    ),
+    18 => 
+    array (
+      'route_name' => 'set_payment',
+      'value' => 'index.php?route=api/payment/method&api_token=',
+    ),
+    19 => 
+    array (
+      'route_name' => 'add_order',
+      'value' => 'index.php?route=api/order/add&api_token=',
+    ),
+  ),
+  'attributes' => 
+  array (
+    0 => 
+    array (
+      'app_id' => 66,
+      'banners' => 
+      array (
+        0 => 
+        array (
+          'component' => 'app_title',
+          'text' => $tit,
+        ),
+        1 => 
+        array (
+          'component' => 'app_subtitle',
+          'text' => $sub,
+        ),
+      ),
+      'components' => 
+      array (
+        0 => 
+        array (
+          'component' => 'route_info',
+          'text' => '',
+          'color' => '#79B2B2',
+        ),
+        1 => 
+        array (
+          'component' => 'button_add_product',
+          'text' => '+ Agregar a cotización',
+          'color' => '#4A665E',
+        ),
+        2 => 
+        array (
+          'component' => 'button_register',
+          'text' => 'SEGUIR VIENDO PRODUCTOS',
+          'color' => '#49E0E0',
+        ),
+        3 => 
+        array (
+          'component' => 'button_continue',
+          'text' => ' Continuar en otra pantalla',
+          'color' => '#4A665E',
+        ),
+        4 => 
+        array (
+          'component' => 'button_search_product',
+          'text' => '',
+          'color' => '#C2EDDF',
+        ),
+        5 => 
+        array (
+          'component' => 'button_shopping_cart',
+          'text' => '',
+          'color' => '#C2EDDF',
+        ),
+        6 => 
+        array (
+          'component' => 'button_product_more_details',
+          'text' => 'Detalles técnicos',
+          'color' => '#4A665E',
+        ),
+        7 => 
+        array (
+          'component' => 'button_back_to_details',
+          'text' => '<< Volver a detalles',
+          'color' => '#4A665E',
+        ),
+        8 => 
+        array (
+          'component' => 'button_finish_quotation',
+          'text' => 'Finalizar cotización',
+          'color' => '#4A665E',
+        ),
+        9 => 
+        array (
+          'component' => 'button_finish_session',
+          'text' => 'Finalizar Sesión',
+          'color' => '#4A665E',
+        ),
+        10 => 
+        array (
+          'component' => 'button_close_more_details',
+          'text' => 'Cerrar',
+          'color' => '#4A665E',
+        ),
+        11 => 
+        array (
+          'component' => 'button_back_to_menu',
+          'text' => 'Menú',
+          'color' => '#FFFFFF',
+        ),
+        12 => 
+        array (
+          'component' => 'button_found_product',
+          'text' => 'Ver mas detalles',
+          'color' => '#54AFB1',
+        ),
+        13 => 
+        array (
+          'component' => 'atributes_title',
+          'text' => '',
+          'color' => '#79B2B2',
+        ),
+        14 => 
+        array (
+          'component' => 'slider_more_products',
+          'text' => '',
+          'color' => '#4A665E',
+        ),
+        15 => 
+        array (
+          'component' => 'cart_product_bg_light',
+          'text' => '',
+          'color' => '#DCF4F1',
+        ),
+        16 => 
+        array (
+          'component' => 'cart_product_bg_dark',
+          'text' => '',
+          'color' => '#F5FFFB',
+        ),
+        17 => 
+        array (
+          'component' => 'user_form_acount_aviable',
+          'text' => 'YA TENGO CUENTA',
+          'color' => '',
+        ),
+        18 => 
+        array (
+          'component' => 'user_menu_home',
+          'text' => 'Categorías',
+          'color' => '',
+        ),
+        19 => 
+        array (
+          'component' => 'user_menu_close_session',
+          'text' => 'Cerrar Sesión',
+          'color' => '',
+        ),
+        20 => 
+        array (
+          'component' => 'user_menu_cart',
+          'text' => 'Mi Cotización',
+          'color' => '',
+        ),
+        21 => 
+        array (
+          'component' => 'user_menu_back',
+          'text' => 'Volver',
+          'color' => '',
+        ),
+      ),
+    ),
+  ),
+);
+$DescriptorFichero = fopen($file.'psicina/appconfig.json', "w");
+$string1           =json_encode($d);
+fputs($DescriptorFichero, $string1);
+fclose($DescriptorFichero);
+
+}
+
+if ($this->request->get['category_id']==95){
+@unlink($file.'refrigeracion/appconfig.json');
+
+$d=array (
+  'app_activity' => 5,
+  'base_url' => $base_url,
+  'assets' => 
+  array (
+    0 => 
+    array (
+      'name' => 'app_logo',
+      'value' => 'assets/images/logo.png',
+    ),
+    1 => 
+    array (
+      'name' => 'app_no_image',
+      'value' => 'assets/img/no-image.jpg',
+    ),
+    2 => 
+    array (
+      'name' => 'home_background',
+      'value' => 'assets/images/home.gif',
+    ),
+    3 => 
+    array (
+      'name' => 'menu_categories_background',
+      'value' => 'assets/images/category_background.gif',
+    ),
+    4 => 
+    array (
+      'name' => 'product_background',
+      'value' => 'images/fondo-pantalla.png',
+    ),
+    5 => 
+    array (
+      'name' => 'product_detail_background',
+      'value' => 'assets/images/ambient.gif',
+    ),
+    6 => 
+    array (
+      'name' => 'cart_background',
+      'value' => 'assets/images/barra-superior.jpg',
+    ),
+  ),
+  'routes' => 
+  array (
+    0 => 
+    array (
+      'route_name' => 'login_url',
+      'value' => 'index.php?route=api%2Flogin',
+    ),
+    1 => 
+    array (
+      'route_name' => 'url_get_categories',
+      'value' => 'index.php?route=api/allproducts/categories&json&parent=',
+    ),
+    2 => 
+    array (
+      'route_name' => 'products_filter_by_category',
+      'value' => 'index.php?route=api/allproducts/filterbyCategories&categoria=',
+    ),
+    3 => 
+    array (
+      'route_name' => 'get_product_by_id',
+      'value' => 'index.php?route=api/allproducts/productInfo&json&product_id=',
+    ),
+    4 => 
+    array (
+      'route_name' => 'search_product',
+      'value' => '/index.php?route=api/allproducts/autocomplete&filter_name=',
+    ),
+    5 => 
+    array (
+      'route_name' => 'register_url',
+      'value' => 'index.php?route=account/register',
+    ),
+    6 => 
+    array (
+      'route_name' => 'get_user_url',
+      'value' => 'index.php?route=api/allproducts/getuser&filter_email=',
+    ),
+    7 => 
+    array (
+      'route_name' => 'asign_token',
+      'value' => 'index.php?route=api/customer&api_token=',
+    ),
+    8 => 
+    array (
+      'route_name' => 'close_session',
+      'value' => 'index.php?route=api/customer/close&api_token=',
+    ),
+    9 => 
+    array (
+      'route_name' => 'add_product',
+      'value' => 'index.php?route=api/cart/add&api_token=',
+    ),
+    10 => 
+    array (
+      'route_name' => 'get_cart',
+      'value' => 'index.php?route=api%2Fcart%2Fproducts&api_token=',
+    ),
+    11 => 
+    array (
+      'route_name' => 'delete_cart_item',
+      'value' => 'index.php?route=api/cart/remove&api_token=',
+    ),
+    12 => 
+    array (
+      'route_name' => 'update_cart_item',
+      'value' => 'index.php?route=api/cart/edit&api_token=',
+    ),
+    13 => 
+    array (
+      'route_name' => 'set_checkout',
+      'value' => 'index.php?route=api/shipping/address&api_token=',
+    ),
+    14 => 
+    array (
+      'route_name' => 'set_payment_address',
+      'value' => 'index.php?route=api/payment/address&api_token=',
+    ),
+    15 => 
+    array (
+      'route_name' => 'get_shipping',
+      'value' => 'index.php?route=api/shipping/methods&api_token=',
+    ),
+    16 => 
+    array (
+      'route_name' => 'set_shipping',
+      'value' => 'index.php?route=api/shipping/method&api_token=',
+    ),
+    17 => 
+    array (
+      'route_name' => 'get_payment',
+      'value' => 'index.php?route=api/payment/methods&api_token=',
+    ),
+    18 => 
+    array (
+      'route_name' => 'set_payment',
+      'value' => 'index.php?route=api/payment/method&api_token=',
+    ),
+    19 => 
+    array (
+      'route_name' => 'add_order',
+      'value' => 'index.php?route=api/order/add&api_token=',
+    ),
+  ),
+  'attributes' => 
+  array (
+    0 => 
+    array (
+      'app_id' => 95,
+      'banners' => 
+      array (
+        0 => 
+        array (
+          'component' => 'app_title',
+          'text' => $tit,
+        ),
+        1 => 
+        array (
+          'component' => 'app_subtitle',
+          'text' => $sub,
+        ),
+      ),
+      'components' => 
+      array (
+        0 => 
+        array (
+          'component' => 'route_info',
+          'text' => '',
+          'color' => '#B5A8FA',
+        ),
+        1 => 
+        array (
+          'component' => 'button_add_product',
+          'text' => '+ Agregar a cotización',
+          'color' => '#5D53B2',
+        ),
+        2 => 
+        array (
+          'component' => 'button_register',
+          'text' => 'SEGUIR VIENDO PRODUCTOS',
+          'color' => '#BEA8EE',
+        ),
+        3 => 
+        array (
+          'component' => 'button_continue',
+          'text' => ' Continuar en otra pantalla',
+          'color' => '#5D53B2',
+        ),
+        4 => 
+        array (
+          'component' => 'button_search_product',
+          'text' => '',
+          'color' => '#F1EAFC',
+        ),
+        5 => 
+        array (
+          'component' => 'button_shopping_cart',
+          'text' => '',
+          'color' => '#F1EAFC',
+        ),
+        6 => 
+        array (
+          'component' => 'button_product_more_details',
+          'text' => 'Detalles técnicos',
+          'color' => '#5D53B2',
+        ),
+        7 => 
+        array (
+          'component' => 'button_back_to_details',
+          'text' => '<< Volver a detalles',
+          'color' => '#5D53B2',
+        ),
+        8 => 
+        array (
+          'component' => 'button_finish_quotation',
+          'text' => 'Finalizar cotización',
+          'color' => '#5D53B2',
+        ),
+        9 => 
+        array (
+          'component' => 'button_finish_session',
+          'text' => 'Finalizar Sesión',
+          'color' => '#5D53B2',
+        ),
+        10 => 
+        array (
+          'component' => 'button_close_more_details',
+          'text' => 'Cerrar',
+          'color' => '#5D53B2',
+        ),
+        11 => 
+        array (
+          'component' => 'button_back_to_menu',
+          'text' => 'Menú',
+          'color' => '#FFFFFF',
+        ),
+        12 => 
+        array (
+          'component' => 'button_found_product',
+          'text' => 'Ver mas detalles',
+          'color' => '#DEADE4',
+        ),
+        13 => 
+        array (
+          'component' => 'atributes_title',
+          'text' => '',
+          'color' => '#B5A8FA',
+        ),
+        14 => 
+        array (
+          'component' => 'slider_more_products',
+          'text' => '',
+          'color' => '#5D53B2',
+        ),
+        15 => 
+        array (
+          'component' => 'cart_product_bg_light',
+          'text' => '',
+          'color' => '#F8ECFA',
+        ),
+        16 => 
+        array (
+          'component' => 'cart_product_bg_dark',
+          'text' => '',
+          'color' => '#EBCCEC',
+        ),
+        17 => 
+        array (
+          'component' => 'user_form_acount_aviable',
+          'text' => 'YA TENGO CUENTA',
+          'color' => '',
+        ),
+        18 => 
+        array (
+          'component' => 'user_menu_home',
+          'text' => 'Categorías',
+          'color' => '',
+        ),
+        19 => 
+        array (
+          'component' => 'user_menu_close_session',
+          'text' => 'Cerrar Sesión',
+          'color' => '',
+        ),
+        20 => 
+        array (
+          'component' => 'user_menu_cart',
+          'text' => 'Mi Cotización',
+          'color' => '',
+        ),
+        21 => 
+        array (
+          'component' => 'user_menu_back',
+          'text' => 'Volver',
+          'color' => '',
+        ),
+      ),
+    ),
+  ),
+);
+$DescriptorFichero = fopen($file.'refrigeracion/appconfig.json', "w");
+$string1           =json_encode($d);
+fputs($DescriptorFichero, $string1);
+fclose($DescriptorFichero);
+
+}
+
+
+if ($this->request->get['category_id']==100){
+@unlink($file.'riego/appconfig.json');
+
+$d=array (
+  'app_activity' => 9,
+  'base_url' => $base_url,
+  'assets' => 
+  array (
+    0 => 
+    array (
+      'name' => 'app_logo',
+      'value' => 'assets/images/logo.png',
+    ),
+    1 => 
+    array (
+      'name' => 'app_no_image',
+      'value' => 'assets/img/no-image.jpg',
+    ),
+    2 => 
+    array (
+      'name' => 'home_background',
+      'value' => 'assets/images/home.gif',
+    ),
+    3 => 
+    array (
+      'name' => 'menu_categories_background',
+      'value' => 'assets/images/category_background.gif',
+    ),
+    4 => 
+    array (
+      'name' => 'product_background',
+      'value' => 'images/fondo-pantalla.png',
+    ),
+    5 => 
+    array (
+      'name' => 'product_detail_background',
+      'value' => 'assets/images/ambient.gif',
+    ),
+    6 => 
+    array (
+      'name' => 'cart_background',
+      'value' => 'assets/images/barra-superior.jpg',
+    ),
+  ),
+  'routes' => 
+  array (
+    0 => 
+    array (
+      'route_name' => 'login_url',
+      'value' => 'index.php?route=api%2Flogin',
+    ),
+    1 => 
+    array (
+      'route_name' => 'url_get_categories',
+      'value' => 'index.php?route=api/allproducts/categories&json&parent=',
+    ),
+    2 => 
+    array (
+      'route_name' => 'products_filter_by_category',
+      'value' => 'index.php?route=api/allproducts/filterbyCategories&categoria=',
+    ),
+    3 => 
+    array (
+      'route_name' => 'get_product_by_id',
+      'value' => 'index.php?route=api/allproducts/productInfo&json&product_id=',
+    ),
+    4 => 
+    array (
+      'route_name' => 'search_product',
+      'value' => '/index.php?route=api/allproducts/autocomplete&filter_name=',
+    ),
+    5 => 
+    array (
+      'route_name' => 'register_url',
+      'value' => 'index.php?route=account/register',
+    ),
+    6 => 
+    array (
+      'route_name' => 'get_user_url',
+      'value' => 'index.php?route=api/allproducts/getuser&filter_email=',
+    ),
+    7 => 
+    array (
+      'route_name' => 'asign_token',
+      'value' => 'index.php?route=api/customer&api_token=',
+    ),
+    8 => 
+    array (
+      'route_name' => 'close_session',
+      'value' => 'index.php?route=api/customer/close&api_token=',
+    ),
+    9 => 
+    array (
+      'route_name' => 'add_product',
+      'value' => 'index.php?route=api/cart/add&api_token=',
+    ),
+    10 => 
+    array (
+      'route_name' => 'get_cart',
+      'value' => 'index.php?route=api%2Fcart%2Fproducts&api_token=',
+    ),
+    11 => 
+    array (
+      'route_name' => 'delete_cart_item',
+      'value' => 'index.php?route=api/cart/remove&api_token=',
+    ),
+    12 => 
+    array (
+      'route_name' => 'update_cart_item',
+      'value' => 'index.php?route=api/cart/edit&api_token=',
+    ),
+    13 => 
+    array (
+      'route_name' => 'set_checkout',
+      'value' => 'index.php?route=api/shipping/address&api_token=',
+    ),
+    14 => 
+    array (
+      'route_name' => 'set_payment_address',
+      'value' => 'index.php?route=api/payment/address&api_token=',
+    ),
+    15 => 
+    array (
+      'route_name' => 'get_shipping',
+      'value' => 'index.php?route=api/shipping/methods&api_token=',
+    ),
+    16 => 
+    array (
+      'route_name' => 'set_shipping',
+      'value' => 'index.php?route=api/shipping/method&api_token=',
+    ),
+    17 => 
+    array (
+      'route_name' => 'get_payment',
+      'value' => 'index.php?route=api/payment/methods&api_token=',
+    ),
+    18 => 
+    array (
+      'route_name' => 'set_payment',
+      'value' => 'index.php?route=api/payment/method&api_token=',
+    ),
+    19 => 
+    array (
+      'route_name' => 'add_order',
+      'value' => 'index.php?route=api/order/add&api_token=',
+    ),
+  ),
+  'attributes' => 
+  array (
+    0 => 
+    array (
+      'app_id' => 100,
+      'banners' => 
+      array (
+        0 => 
+        array (
+          'component' => 'app_title',
+          'text' => $tit,
+        ),
+        1 => 
+        array (
+          'component' => 'app_subtitle',
+          'text' => $sub,
+        ),
+      ),
+      'components' => 
+      array (
+        0 => 
+        array (
+          'component' => 'route_info',
+          'text' => '',
+          'color' => '#4EBFA1',
+        ),
+        1 => 
+        array (
+          'component' => 'button_add_product',
+          'text' => '+ Agregar a cotización',
+          'color' => '#337865',
+        ),
+        2 => 
+        array (
+          'component' => 'button_register',
+          'text' => 'SEGUIR VIENDO PRODUCTOS',
+          'color' => '#9BE6BB',
+        ),
+        3 => 
+        array (
+          'component' => 'button_continue',
+          'text' => ' Continuar en otra pantalla',
+          'color' => '#337865',
+        ),
+        4 => 
+        array (
+          'component' => 'button_search_product',
+          'text' => '',
+          'color' => '#BFF1BC',
+        ),
+        5 => 
+        array (
+          'component' => 'button_shopping_cart',
+          'text' => '',
+          'color' => '#BFF1BC',
+        ),
+        6 => 
+        array (
+          'component' => 'button_product_more_details',
+          'text' => 'Detalles técnicos',
+          'color' => '#337865',
+        ),
+        7 => 
+        array (
+          'component' => 'button_back_to_details',
+          'text' => '<< Volver a detalles',
+          'color' => '#337865',
+        ),
+        8 => 
+        array (
+          'component' => 'button_finish_quotation',
+          'text' => 'Finalizar cotización',
+          'color' => '#337865',
+        ),
+        9 => 
+        array (
+          'component' => 'button_finish_session',
+          'text' => 'Finalizar Sesión',
+          'color' => '#337865',
+        ),
+        10 => 
+        array (
+          'component' => 'button_close_more_details',
+          'text' => 'Cerrar',
+          'color' => '#337865',
+        ),
+        11 => 
+        array (
+          'component' => 'button_back_to_menu',
+          'text' => 'Menú',
+          'color' => '#FFFFFF',
+        ),
+        12 => 
+        array (
+          'component' => 'button_found_product',
+          'text' => 'Ver mas detalles',
+          'color' => '#4EBFA1',
+        ),
+        13 => 
+        array (
+          'component' => 'atributes_title',
+          'text' => '',
+          'color' => '#4EBFA1',
+        ),
+        14 => 
+        array (
+          'component' => 'slider_more_products',
+          'text' => '',
+          'color' => '#337865',
+        ),
+        15 => 
+        array (
+          'component' => 'cart_product_bg_light',
+          'text' => '',
+          'color' => '#E3F9EC',
+        ),
+        16 => 
+        array (
+          'component' => 'cart_product_bg_dark',
+          'text' => '',
+          'color' => '#C8F2DC',
+        ),
+        17 => 
+        array (
+          'component' => 'user_form_acount_aviable',
+          'text' => 'YA TENGO CUENTA',
+          'color' => '',
+        ),
+        18 => 
+        array (
+          'component' => 'user_menu_home',
+          'text' => 'Categorías',
+          'color' => '',
+        ),
+        19 => 
+        array (
+          'component' => 'user_menu_close_session',
+          'text' => 'Cerrar Sesión',
+          'color' => '',
+        ),
+        20 => 
+        array (
+          'component' => 'user_menu_cart',
+          'text' => 'Mi Cotización',
+          'color' => '',
+        ),
+        21 => 
+        array (
+          'component' => 'user_menu_back',
+          'text' => 'Volver',
+          'color' => '',
+        ),
+      ),
+    ),
+  ),
+);
+$DescriptorFichero = fopen($file.'riego/appconfig.json', "w");
+$string1           =json_encode($d);
+fputs($DescriptorFichero, $string1);
+fclose($DescriptorFichero);
+
+}
+
+
+
+
+
+
+
+//var_dump($this->request->get['category_id']);
+
+
+
+
+
 			$this->response->redirect($this->url->link('catalog/category', 'user_token=' . $this->session->data['user_token'] . $url, true));
 		}
 
