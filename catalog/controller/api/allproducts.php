@@ -1509,7 +1509,7 @@ class ControllerApiAllproducts extends Controller
                                     $curl = curl_init();
 
                                     curl_setopt_array($curl, array(
-                                        CURLOPT_URL => "http://mercado.local/index.php?route=api/payment/method&api_token=" . $json1['api_token'],
+                                        CURLOPT_URL => HTTP_SERVER.'index.php?route=api/payment/method&api_token=' . $json1['api_token'],
                                         CURLOPT_RETURNTRANSFER => true,
                                         CURLOPT_ENCODING => "",
                                         CURLOPT_MAXREDIRS => 10,
