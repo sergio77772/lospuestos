@@ -210,7 +210,7 @@ class ControllerApiAllproducts extends Controller
                 
             }
 
-       if (is_file(DIR_IMAGE . $product_details['manufacturer_image']))
+            if (is_file(DIR_IMAGE . $product_details['manufacturer_image']))
             {
 
                 $product_details['manufacturer_image'] = $this
@@ -223,14 +223,9 @@ class ControllerApiAllproducts extends Controller
                     ->model_tool_image
                     ->resize('no_image.png', 150, 150);
                 //$image=$this->config->get('config_url') . 'image/' .$product['image'];
-                    $product_details['manufacturer_image']="";
-                
+                $product_details['manufacturer_image'] = "";
+
             }
-
-
-
-
-
 
             $product_details['descripcion'] = $product_details['description'];
             $descripcion = $product_details['description'];
@@ -255,20 +250,19 @@ class ControllerApiAllproducts extends Controller
                 ->request
                 ->get['product_id']);
 
-        $images2=[];
+            $images2 = [];
             if (isset($imagenes))
             {
                 foreach ($imagenes as $key => $value)
                 {
-              
-            
+
                     if (is_file(DIR_IMAGE . $value['image']))
                     {
 
                         $imagenes[$key]['image'] = $this
                             ->config
                             ->get('config_url') . 'image/' . $value['image'];
-                            $value['image']=$this
+                        $value['image'] = $this
                             ->config
                             ->get('config_url') . 'image/' . $value['image'];
                     }
@@ -277,7 +271,7 @@ class ControllerApiAllproducts extends Controller
                         $images[$key]['image'] = $this
                             ->model_tool_image
                             ->resize('no_image.png', 150, 150);
-                            $value['image']=$images[$key]['image'] = $this
+                        $value['image'] = $images[$key]['image'] = $this
                             ->model_tool_image
                             ->resize('no_image.png', 150, 150);
 
@@ -285,28 +279,24 @@ class ControllerApiAllproducts extends Controller
                         
                     }
 
+                    if ($value['sort_order'] != '99')
+                    {
 
-                     if ($value['sort_order']!='99')
-                   {
-                  
+                        array_push($images2, $value);
+                    }
 
-                 array_push($images2, $value);
-               }
+                } //fin foreaach
                 
-
-                }//fin foreaach
             }
 
-             array_push($images2, array(
-                 'product_image_id' => '01',
-                 'product_id' => $this
-                     ->request
-                     ->get['product_id'],
-                 'image' => $product_details['image'],
-                 'sort_order' => '1'
-             ));
-
-
+            array_push($images2, array(
+                'product_image_id' => '01',
+                'product_id' => $this
+                    ->request
+                    ->get['product_id'],
+                'image' => $product_details['image'],
+                'sort_order' => '1'
+            ));
 
             $product_details['slider'] = $images2;
 
@@ -317,12 +307,10 @@ class ControllerApiAllproducts extends Controller
                 ->get['product_id']);
             $product_details['category_id'] = $categoria[0]['category_id'];
 
-
-$action = isset($categoria[1]['category_id']) ? $categoria[1]['category_id'] : $categoria[0]['category_id'];
+            $action = isset($categoria[1]['category_id']) ? $categoria[1]['category_id'] : $categoria[0]['category_id'];
             $categoria_image = $this
                 ->model_catalog_product
                 ->getCategoriesImages($action);
-
 
             if (isset($categoria_image))
 
@@ -867,7 +855,7 @@ $action = isset($categoria[1]['category_id']) ? $categoria[1]['category_id'] : $
             {
                 $option_data = array();
 
-               if (is_file(DIR_IMAGE . $result['manufacturer_image']))
+                if (is_file(DIR_IMAGE . $result['manufacturer_image']))
                 {
 
                     $image = $this
@@ -877,9 +865,6 @@ $action = isset($categoria[1]['category_id']) ? $categoria[1]['category_id'] : $
                         ->config
                         ->get('config_url') . 'image/' . $result['manufacturer_image'];
                 }
-
-
-
 
                 if (is_file(DIR_IMAGE . $result['image']))
                 {
@@ -891,7 +876,6 @@ $action = isset($categoria[1]['category_id']) ? $categoria[1]['category_id'] : $
                         ->config
                         ->get('config_url') . 'image/' . $result['image'];
                 }
-
 
                 else
                 {
@@ -958,7 +942,7 @@ $action = isset($categoria[1]['category_id']) ? $categoria[1]['category_id'] : $
                     'descripcion' => $result['description'],
                     'model' => $result['model'],
                     'option' => $option_data,
-                    'manufacturer_image'=>$result['manufacturer_image'],
+                    'manufacturer_image' => $result['manufacturer_image'],
                     'image' => $image,
                     'price' => $result['price']
                 );
@@ -1196,8 +1180,10 @@ $action = isset($categoria[1]['category_id']) ? $categoria[1]['category_id'] : $
             ->setOutput(json_encode($json));
     }
 
-     public function closeSessions()
-     {
+    public function closeSessions()
+    {
+        ini_set('memory_limit', '-1');
+        set_time_limit(0);
         $json = array();
 
         if (isset($this
@@ -1278,46 +1264,8 @@ $action = isset($categoria[1]['category_id']) ? $categoria[1]['category_id'] : $
                         ->getAddresses($result['customer_id'])
                 );
 
-
-
-/*$curl = curl_init();
-
-curl_setopt_array($curl, array(
-  CURLOPT_URL => HTTP_SERVER.'index.php?route=api/login%20/index.php?route=api/login%20',
-  CURLOPT_RETURNTRANSFER => true,
-  CURLOPT_ENCODING => "",
-  CURLOPT_MAXREDIRS => 10,
-  CURLOPT_TIMEOUT => 30,
-  CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
-  CURLOPT_CUSTOMREQUEST => "POST",
-  CURLOPT_POSTFIELDS => "key=umQ7DYlMgq6BNHaNIoahpenzjIF0ipKCBlqF3r5Lfyqq5jyaQxScSBPTaMUePA5fjpFQahPkMJ04l7qZc7ERbYvzx35LTbO6Uc00IOdpJz6MmxZXGzpfHPRlOvtPlioHZ5k1HIFiETL0pVF1XETJLd0F6oR4JDFEDofJdiMGpMFD0wAGwWVf0XUY8uNZn5aNUQIzifvj5EZyRRQfcVgO3nYfpEEUDCzwt3WcyBDryQ8qQieaEgj8SX6R4yKWWdVA&username=demo&undefined=",
-  CURLOPT_HTTPHEADER => array(
-    "Content-Type: application/x-www-form-urlencoded",
-    "Postman-Token: 0ea14b5f-3ece-416b-bc87-03e9339321e8",
-    "cache-control: no-cache,no-cache",
-    "postman-token: 2ef6e7f4-84d1-28ae-84b0-ae2dcebeab2f"
-  ),
-));
-
-$response = curl_exec($curl);
-$err = curl_error($curl);
-echo 
-curl_close($curl);
-
-if ($err) {
-  echo "cURL Error #:" . $err;
-} else {
-  echo $response;
-}
-*/
-
-
-
-
-
-
-
-            }//fin foreach
+            } //fin foreach
+            
         }
 
         $sort_order = array();
@@ -1329,307 +1277,333 @@ if ($err) {
 
         array_multisort($sort_order, SORT_ASC, $json);
 
-foreach ($json as $key => $value) {
-    $curl = curl_init();
-curl_setopt_array($curl, array(
-  CURLOPT_URL => HTTP_SERVER.'index.php?route=api/login',
-  CURLOPT_RETURNTRANSFER => true,
-  CURLOPT_ENCODING => "",
-  CURLOPT_MAXREDIRS => 10,
-  CURLOPT_TIMEOUT => 60,
-  CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
-  CURLOPT_CUSTOMREQUEST => "POST",
-  CURLOPT_POSTFIELDS => "key=umQ7DYlMgq6BNHaNIoahpenzjIF0ipKCBlqF3r5Lfyqq5jyaQxScSBPTaMUePA5fjpFQahPkMJ04l7qZc7ERbYvzx35LTbO6Uc00IOdpJz6MmxZXGzpfHPRlOvtPlioHZ5k1HIFiETL0pVF1XETJLd0F6oR4JDFEDofJdiMGpMFD0wAGwWVf0XUY8uNZn5aNUQIzifvj5EZyRRQfcVgO3nYfpEEUDCzwt3WcyBDryQ8qQieaEgj8SX6R4yKWWdVA&username=demo&undefined=",
-  CURLOPT_HTTPHEADER => array(
-    "Content-Type: application/x-www-form-urlencoded",
-    "Postman-Token: 0ea14b5f-3ece-416b-bc87-03e9339321e8",
-    "cache-control: no-cache,no-cache",
-    "postman-token: 2ef6e7f4-84d1-28ae-84b0-ae2dcebeab2f"
-  ),
-));
-
-$response1 = curl_exec($curl);
-$err = curl_error($curl);
-echo 
-curl_close($curl);
-
-if ($err) {
-  echo "cURL Error #:" . $err;
-} else {
-  $json1 = json_decode($response1, TRUE);
-  var_dump($json1['api_token']);
-
-//incio de session
-$curl = curl_init();
-
-curl_setopt_array($curl, array(
-  CURLOPT_URL => HTTP_SERVER."index.php?route=api/customer&api_token=".$json1['api_token'],
-  CURLOPT_RETURNTRANSFER => true,
-  CURLOPT_ENCODING => "",
-  CURLOPT_MAXREDIRS => 10,
-  CURLOPT_TIMEOUT => 30,
-  CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
-  CURLOPT_CUSTOMREQUEST => "POST",
-  CURLOPT_POSTFIELDS => "firstname=".$value['firstname']."&lastname=".$value['lastname']."&email=".$value['email']."&telephone=".$value['telephone']."&customer_id=".$value['customer_id']."",
-  CURLOPT_HTTPHEADER => array(
-    "Content-Type: application/x-www-form-urlencoded",
-    "Postman-Token: c92d0315-1872-471e-848e-43a4d18e7725",
-    "cache-control: no-cache"
-  ),
-));
-
-$response = curl_exec($curl);
-$err = curl_error($curl);
-
-curl_close($curl);
-
-if ($err) {
-  echo "cURL Error #:" . $err;
-} else {
-  echo $response;
-  //aqui continuamos con las 7 pegadas :O 
-
-$curl = curl_init();
-
-curl_setopt_array($curl, array(
-  CURLOPT_URL => HTTP_SERVER."index.php?route=api/shipping/address&api_token=".$json1['api_token'],
-  CURLOPT_RETURNTRANSFER => true,
-  CURLOPT_ENCODING => "",
-  CURLOPT_MAXREDIRS => 10,
-  CURLOPT_TIMEOUT => 30,
-  CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
-  CURLOPT_CUSTOMREQUEST => "POST",
-  CURLOPT_POSTFIELDS => "------WebKitFormBoundary7MA4YWxkTrZu0gW\r\nContent-Disposition: form-data; name=\"firstname\"\r\n\r\n".$value['firstname']."\r\n------WebKitFormBoundary7MA4YWxkTrZu0gW\r\nContent-Disposition: form-data; name=\"lastname\"\r\n\r\n".$value['lastname']."\r\n------WebKitFormBoundary7MA4YWxkTrZu0gW\r\nContent-Disposition: form-data; name=\"address_1\"\r\n\r\njujuy\r\n------WebKitFormBoundary7MA4YWxkTrZu0gW\r\nContent-Disposition: form-data; name=\"city\"\r\n\r\nsan salvador de jujuy\r\n------WebKitFormBoundary7MA4YWxkTrZu0gW\r\nContent-Disposition: form-data; name=\"country_id\"\r\n\r\n10\r\n------WebKitFormBoundary7MA4YWxkTrZu0gW\r\nContent-Disposition: form-data; name=\"zone_id\"\r\n\r\n165\r\n------WebKitFormBoundary7MA4YWxkTrZu0gW--",
-  CURLOPT_HTTPHEADER => array(
-    "Postman-Token: 5c07f5fa-c148-49aa-9197-6d93ec27b2ed",
-    "cache-control: no-cache",
-    "content-type: multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW"
-  ),
-));
-
-$response = curl_exec($curl);
-$err = curl_error($curl);
-
-curl_close($curl);
-
-if ($err) {
-  echo "cURL Error #:" . $err;
-} else {
-  echo $response;
-
-$curl = curl_init();
-
-curl_setopt_array($curl, array(
-  CURLOPT_URL => HTTP_SERVER."index.php?route=api/payment/address&api_token=".$json1['api_token'],
-  CURLOPT_RETURNTRANSFER => true,
-  CURLOPT_ENCODING => "",
-  CURLOPT_MAXREDIRS => 10,
-  CURLOPT_TIMEOUT => 30,
-  CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
-  CURLOPT_CUSTOMREQUEST => "POST",
-  CURLOPT_POSTFIELDS => "------WebKitFormBoundary7MA4YWxkTrZu0gW\r\nContent-Disposition: form-data; name=\"firstname\"\r\n\r\n".$value['firstname']."\r\n------WebKitFormBoundary7MA4YWxkTrZu0gW\r\nContent-Disposition: form-data; name=\"lastname\"\r\n\r\n".$value['lastname']."\r\n------WebKitFormBoundary7MA4YWxkTrZu0gW\r\nContent-Disposition: form-data; name=\"address_1\"\r\n\r\njujuy\r\n------WebKitFormBoundary7MA4YWxkTrZu0gW\r\nContent-Disposition: form-data; name=\"city\"\r\n\r\nsan salvador de jujuy\r\n------WebKitFormBoundary7MA4YWxkTrZu0gW\r\nContent-Disposition: form-data; name=\"country_id\"\r\n\r\n10\r\n------WebKitFormBoundary7MA4YWxkTrZu0gW\r\nContent-Disposition: form-data; name=\"zone_id\"\r\n\r\n165\r\n------WebKitFormBoundary7MA4YWxkTrZu0gW--",
-  CURLOPT_HTTPHEADER => array(
-    "Postman-Token: c49b8a28-aa9e-4c26-9113-59ebaa81f71b",
-    "cache-control: no-cache",
-    "content-type: multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW"
-  ),
-));
-
-$response = curl_exec($curl);
-$err = curl_error($curl);
-
-curl_close($curl);
-
-if ($err) {
-  echo "cURL Error #:" . $err;
-} else {
-  echo $response;
-
-$curl = curl_init();
-
-curl_setopt_array($curl, array(
-  CURLOPT_URL => HTTP_SERVER."index.php?route=api/shipping/methods&api_token=".$json1['api_token'],
-  CURLOPT_RETURNTRANSFER => true,
-  CURLOPT_ENCODING => "",
-  CURLOPT_MAXREDIRS => 10,
-  CURLOPT_TIMEOUT => 30,
-  CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
-  CURLOPT_CUSTOMREQUEST => "POST",
-  CURLOPT_HTTPHEADER => array(
-    "Postman-Token: 962521b3-8158-4753-af4a-ca525d1a980f",
-    "cache-control: no-cache"
-  ),
-));
-
-$response = curl_exec($curl);
-$err = curl_error($curl);
-
-curl_close($curl);
-
-if ($err) {
-  echo "cURL Error #:" . $err;
-} else {
-  echo $response;
-
-$curl = curl_init();
-
-curl_setopt_array($curl, array(
-  CURLOPT_URL => HTTP_SERVER."index.php?route=api/shipping/method&api_token=".$json1['api_token'],
-  CURLOPT_RETURNTRANSFER => true,
-  CURLOPT_ENCODING => "",
-  CURLOPT_MAXREDIRS => 10,
-  CURLOPT_TIMEOUT => 30,
-  CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
-  CURLOPT_CUSTOMREQUEST => "POST",
-  CURLOPT_POSTFIELDS => "------WebKitFormBoundary7MA4YWxkTrZu0gW\r\nContent-Disposition: form-data; name=\"shipping_method\"\r\n\r\nfree.free\r\n------WebKitFormBoundary7MA4YWxkTrZu0gW--",//cambiar por free.free
-  CURLOPT_HTTPHEADER => array(
-    "Postman-Token: 2a8bf177-fb09-4b8c-bfc2-4d5aaa736cfe",
-    "cache-control: no-cache",
-    "content-type: multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW"
-  ),
-));
-
-$response = curl_exec($curl);
-$err = curl_error($curl);
-
-curl_close($curl);
-
-if ($err) {
-  echo "cURL Error #:" . $err;
-} else {
-  echo $response;
-
-
-$curl = curl_init();
-
-curl_setopt_array($curl, array(
-  CURLOPT_URL => HTTP_SERVER."index.php?route=api/payment/methods&api_token=".$json1['api_token'],
-  CURLOPT_RETURNTRANSFER => true,
-  CURLOPT_ENCODING => "",
-  CURLOPT_MAXREDIRS => 10,
-  CURLOPT_TIMEOUT => 30,
-  CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
-  CURLOPT_CUSTOMREQUEST => "POST",
-  CURLOPT_POSTFIELDS => "",
-  CURLOPT_HTTPHEADER => array(
-    "Postman-Token: f8744aa2-af06-479b-bbb2-bc81e69a4c11",
-    "cache-control: no-cache"
-  ),
-));
-
-$response = curl_exec($curl);
-$err = curl_error($curl);
-
-curl_close($curl);
-
-if ($err) {
-  echo "cURL Error #:" . $err;
-} else {
-  echo $response;
-}
-
-$curl = curl_init();
-
-curl_setopt_array($curl, array(
-  CURLOPT_URL => HTTP_SERVER."index.php?route=api/shipping/method&api_token=".$json1['api_token'],
-  CURLOPT_RETURNTRANSFER => true,
-  CURLOPT_ENCODING => "",
-  CURLOPT_MAXREDIRS => 10,
-  CURLOPT_TIMEOUT => 30,
-  CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
-  CURLOPT_CUSTOMREQUEST => "POST",
-  CURLOPT_POSTFIELDS => "------WebKitFormBoundary7MA4YWxkTrZu0gW\r\nContent-Disposition: form-data; name=\"shipping_method\"\r\n\r\ncod\r\n------WebKitFormBoundary7MA4YWxkTrZu0gW--",//poner cod
-  CURLOPT_HTTPHEADER => array(
-    "Postman-Token: 5446c70c-45dd-4f88-8fd2-18156996ecf6",
-    "cache-control: no-cache",
-    "content-type: multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW"
-  ),
-));
-
-$response = curl_exec($curl);
-$err = curl_error($curl);
-
-curl_close($curl);
-
-if ($err) {
-  echo "cURL Error #:" . $err;
-} else {
-  echo $response;
-
-
-$curl = curl_init();
-
-curl_setopt_array($curl, array(
-  CURLOPT_URL => HTTP_SERVER."index.php?route=api/order/add&api_token=".$json1['api_token'],
-  CURLOPT_RETURNTRANSFER => true,
-  CURLOPT_ENCODING => "",
-  CURLOPT_MAXREDIRS => 10,
-  CURLOPT_TIMEOUT => 30,
-  CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
-  CURLOPT_CUSTOMREQUEST => "POST",
-  CURLOPT_HTTPHEADER => array(
-    "Postman-Token: b3f3aec6-545d-4d0b-b5bc-212ed2e508ce",
-    "cache-control: no-cache"
-  ),
-));
-
-$response = curl_exec($curl);
-$err = curl_error($curl);
-
-curl_close($curl);
-
-if ($err) {
-  echo "cURL Error #:" . $err;
-} else {
-  echo $response;
-
-
-  unset($this->session->data['customer']);
-     
-            unset($this->session->data['shipping_address']);
-            //unset($this->session->data['customer']);
-            unset($this->session->data['shipping_method']);
-            unset($this->session->data['shipping_methods']);
-            unset($this->session->data['payment_address']);
-            unset($this->session->data['payment_method']);
-            unset($this->session->data['payment_methods']);
-            unset($this->session->data['comment']);
-            unset($this->session->data['order_id']);
-            unset($this->session->data['coupon']);
-            unset($this->session->data['reward']);
-            unset($this->session->data['voucher']);
-            unset($this->session->data['vouchers']);
-
-}
-
-}
-
-}
-
-
-}
-
-
-}
-
-
-}
-
-
-
-}
-
-
-
-}
-
-}// fin foreach
-
-
-
-
-
-
+        foreach ($json as $key => $value)
+        {
+            $curl = curl_init();
+            curl_setopt_array($curl, array(
+                CURLOPT_URL => HTTP_SERVER . 'index.php?route=api/login',
+                CURLOPT_RETURNTRANSFER => true,
+                CURLOPT_ENCODING => "",
+                CURLOPT_MAXREDIRS => 10,
+                CURLOPT_TIMEOUT => 60,
+                CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+                CURLOPT_CUSTOMREQUEST => "POST",
+                CURLOPT_POSTFIELDS => "key=umQ7DYlMgq6BNHaNIoahpenzjIF0ipKCBlqF3r5Lfyqq5jyaQxScSBPTaMUePA5fjpFQahPkMJ04l7qZc7ERbYvzx35LTbO6Uc00IOdpJz6MmxZXGzpfHPRlOvtPlioHZ5k1HIFiETL0pVF1XETJLd0F6oR4JDFEDofJdiMGpMFD0wAGwWVf0XUY8uNZn5aNUQIzifvj5EZyRRQfcVgO3nYfpEEUDCzwt3WcyBDryQ8qQieaEgj8SX6R4yKWWdVA&username=demo&undefined=",
+                CURLOPT_HTTPHEADER => array(
+                    "Content-Type: application/x-www-form-urlencoded",
+                    "Postman-Token: 0ea14b5f-3ece-416b-bc87-03e9339321e8",
+                    "cache-control: no-cache,no-cache",
+                    "postman-token: 2ef6e7f4-84d1-28ae-84b0-ae2dcebeab2f"
+                ) ,
+            ));
+
+            $response1 = curl_exec($curl);
+            $err = curl_error($curl);
+            echo curl_close($curl);
+
+            if ($err)
+            {
+                echo "cURL Error #:" . $err;
+            }
+            else
+            {
+                $json1 = json_decode($response1, true);
+                var_dump($json1['api_token']);
+                //incio de session
+                $curl = curl_init();
+
+                curl_setopt_array($curl, array(
+                    CURLOPT_URL => HTTP_SERVER . "index.php?route=api/customer&api_token=" . $json1['api_token'],
+                    CURLOPT_RETURNTRANSFER => true,
+                    CURLOPT_ENCODING => "",
+                    CURLOPT_MAXREDIRS => 10,
+                    CURLOPT_TIMEOUT => 30,
+                    CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+                    CURLOPT_CUSTOMREQUEST => "POST",
+                    CURLOPT_POSTFIELDS => "firstname=" . $value['firstname'] . "&lastname=" . $value['lastname'] . "&email=" . $value['email'] . "&telephone=" . $value['telephone'] . "&customer_id=" . $value['customer_id'] . "",
+                    CURLOPT_HTTPHEADER => array(
+                        "Content-Type: application/x-www-form-urlencoded",
+                        "Postman-Token: c92d0315-1872-471e-848e-43a4d18e7725",
+                        "cache-control: no-cache"
+                    ) ,
+                ));
+
+                $response = curl_exec($curl);
+                $err = curl_error($curl);
+
+                curl_close($curl);
+
+                if ($err)
+                {
+                    echo "cURL Error #:" . $err;
+                }
+                else
+                {
+                    echo $response;
+                    echo "-------------------------asigna session-------------------------";
+                    sleep(3);
+
+                    $curl = curl_init();
+
+                    curl_setopt_array($curl, array(
+                        CURLOPT_URL => HTTP_SERVER . "index.php?route=api/shipping/address&api_token=" . $json1['api_token'],
+                        CURLOPT_RETURNTRANSFER => true,
+                        CURLOPT_ENCODING => "",
+                        CURLOPT_MAXREDIRS => 10,
+                        CURLOPT_TIMEOUT => 30,
+                        CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+                        CURLOPT_CUSTOMREQUEST => "POST",
+                        CURLOPT_POSTFIELDS => "------WebKitFormBoundary7MA4YWxkTrZu0gW\r\nContent-Disposition: form-data; name=\"firstname\"\r\n\r\n" . $value['firstname'] . "\r\n------WebKitFormBoundary7MA4YWxkTrZu0gW\r\nContent-Disposition: form-data; name=\"lastname\"\r\n\r\n" . $value['lastname'] . "\r\n------WebKitFormBoundary7MA4YWxkTrZu0gW\r\nContent-Disposition: form-data; name=\"address_1\"\r\n\r\njujuy\r\n------WebKitFormBoundary7MA4YWxkTrZu0gW\r\nContent-Disposition: form-data; name=\"city\"\r\n\r\nsan salvador de jujuy\r\n------WebKitFormBoundary7MA4YWxkTrZu0gW\r\nContent-Disposition: form-data; name=\"country_id\"\r\n\r\n10\r\n------WebKitFormBoundary7MA4YWxkTrZu0gW\r\nContent-Disposition: form-data; name=\"zone_id\"\r\n\r\n165\r\n------WebKitFormBoundary7MA4YWxkTrZu0gW--",
+                        CURLOPT_HTTPHEADER => array(
+                            "Postman-Token: 5c07f5fa-c148-49aa-9197-6d93ec27b2ed",
+                            "cache-control: no-cache",
+                            "content-type: multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW"
+                        ) ,
+                    ));
+
+                    $response = curl_exec($curl);
+                    $err = curl_error($curl);
+
+                    curl_close($curl);
+
+                    if ($err)
+                    {
+                        echo "cURL Error #:" . $err;
+                    }
+                    else
+                    {
+                        //echo $response;
+                        echo '------------------1 carga direccion--------------------';
+                        sleep(3);
+
+                        $curl = curl_init();
+
+                        curl_setopt_array($curl, array(
+                            CURLOPT_URL => HTTP_SERVER . "index.php?route=api/payment/address&api_token=" . $json1['api_token'],
+                            CURLOPT_RETURNTRANSFER => true,
+                            CURLOPT_ENCODING => "",
+                            CURLOPT_MAXREDIRS => 10,
+                            CURLOPT_TIMEOUT => 30,
+                            CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+                            CURLOPT_CUSTOMREQUEST => "POST",
+                            CURLOPT_POSTFIELDS => "------WebKitFormBoundary7MA4YWxkTrZu0gW\r\nContent-Disposition: form-data; name=\"firstname\"\r\n\r\n" . $value['firstname'] . "\r\n------WebKitFormBoundary7MA4YWxkTrZu0gW\r\nContent-Disposition: form-data; name=\"lastname\"\r\n\r\n" . $value['lastname'] . "\r\n------WebKitFormBoundary7MA4YWxkTrZu0gW\r\nContent-Disposition: form-data; name=\"address_1\"\r\n\r\njujuy\r\n------WebKitFormBoundary7MA4YWxkTrZu0gW\r\nContent-Disposition: form-data; name=\"city\"\r\n\r\nsan salvador de jujuy\r\n------WebKitFormBoundary7MA4YWxkTrZu0gW\r\nContent-Disposition: form-data; name=\"country_id\"\r\n\r\n10\r\n------WebKitFormBoundary7MA4YWxkTrZu0gW\r\nContent-Disposition: form-data; name=\"zone_id\"\r\n\r\n165\r\n------WebKitFormBoundary7MA4YWxkTrZu0gW--",
+                            CURLOPT_HTTPHEADER => array(
+                                "Postman-Token: c49b8a28-aa9e-4c26-9113-59ebaa81f71b",
+                                "cache-control: no-cache",
+                                "content-type: multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW"
+                            ) ,
+                        ));
+
+                        $response = curl_exec($curl);
+                        $err = curl_error($curl);
+
+                        curl_close($curl);
+
+                        if ($err)
+                        {
+                            echo "cURL Error #:" . $err;
+                        }
+                        else
+                        {
+                            //  echo $response;
+                            echo '---------------------- 2 carga direccion de pago----------------';
+                            sleep(3);
+
+                            $curl = curl_init();
+
+                            curl_setopt_array($curl, array(
+                                CURLOPT_URL => HTTP_SERVER . "index.php?route=api/shipping/methods&api_token=" . $json1['api_token'],
+                                CURLOPT_RETURNTRANSFER => true,
+                                CURLOPT_ENCODING => "",
+                                CURLOPT_MAXREDIRS => 10,
+                                CURLOPT_TIMEOUT => 30,
+                                CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+                                CURLOPT_CUSTOMREQUEST => "POST",
+                                CURLOPT_HTTPHEADER => array(
+                                    "Postman-Token: 962521b3-8158-4753-af4a-ca525d1a980f",
+                                    "cache-control: no-cache"
+                                ) ,
+                            ));
+
+                            $response = curl_exec($curl);
+                            $err = curl_error($curl);
+
+                            curl_close($curl);
+
+                            if ($err)
+                            {
+                                echo "cURL Error #:" . $err;
+                            }
+                            else
+                            {
+                                // echo $response;
+                                echo '----------------------3 obtengo metodos de envio----------------';
+                                sleep(3);
+
+                                $curl = curl_init();
+
+                                curl_setopt_array($curl, array(
+                                    CURLOPT_URL => HTTP_SERVER . "index.php?route=api/shipping/method&api_token=" . $json1['api_token'],
+                                    CURLOPT_RETURNTRANSFER => true,
+                                    CURLOPT_ENCODING => "",
+                                    CURLOPT_MAXREDIRS => 10,
+                                    CURLOPT_TIMEOUT => 30,
+                                    CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+                                    CURLOPT_CUSTOMREQUEST => "POST",
+                                    CURLOPT_POSTFIELDS => "------WebKitFormBoundary7MA4YWxkTrZu0gW\r\nContent-Disposition: form-data; name=\"shipping_method\"\r\n\r\nfree.free\r\n------WebKitFormBoundary7MA4YWxkTrZu0gW--", //cambiar por free.free
+                                    CURLOPT_HTTPHEADER => array(
+                                        "Postman-Token: 2a8bf177-fb09-4b8c-bfc2-4d5aaa736cfe",
+                                        "cache-control: no-cache",
+                                        "content-type: multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW"
+                                    ) ,
+                                ));
+
+                                $response = curl_exec($curl);
+                                $err = curl_error($curl);
+
+                                curl_close($curl);
+
+                                if ($err)
+                                {
+                                    echo "cURL Error #:" . $err;
+                                }
+                                else
+                                {
+                                    //echo $response;
+                                    echo '----------------------4  cargo de envio----------------';
+                                    sleep(3);
+
+                                    $curl = curl_init();
+
+                                    curl_setopt_array($curl, array(
+                                        CURLOPT_URL => HTTP_SERVER . "index.php?route=api/payment/methods&api_token=" . $json1['api_token'],
+                                        CURLOPT_RETURNTRANSFER => true,
+                                        CURLOPT_ENCODING => "",
+                                        CURLOPT_MAXREDIRS => 10,
+                                        CURLOPT_TIMEOUT => 30,
+                                        CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+                                        CURLOPT_CUSTOMREQUEST => "POST",
+                                        CURLOPT_POSTFIELDS => "",
+                                        CURLOPT_HTTPHEADER => array(
+                                            "Postman-Token: f8744aa2-af06-479b-bbb2-bc81e69a4c11",
+                                            "cache-control: no-cache"
+                                        ) ,
+                                    ));
+
+                                    $response = curl_exec($curl);
+                                    $err = curl_error($curl);
+
+                                    curl_close($curl);
+
+                                    if ($err)
+                                    {
+                                        echo "cURL Error #:" . $err;
+                                    }
+                                    else
+                                    {
+                                        //echo $response;
+                                        echo '----------------------5  obtengo medios de pago----------------';
+                                        sleep(3);
+                                    }
+
+                                    $curl = curl_init();
+
+                                    curl_setopt_array($curl, array(
+                                        CURLOPT_URL => "http://mercado.local/index.php?route=api/payment/method&api_token=" . $json1['api_token'],
+                                        CURLOPT_RETURNTRANSFER => true,
+                                        CURLOPT_ENCODING => "",
+                                        CURLOPT_MAXREDIRS => 10,
+                                        CURLOPT_TIMEOUT => 30,
+                                        CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+                                        CURLOPT_CUSTOMREQUEST => "POST",
+                                        CURLOPT_POSTFIELDS => "------WebKitFormBoundary7MA4YWxkTrZu0gW\r\nContent-Disposition: form-data; name=\"payment_method\"\r\n\r\ncod\r\n------WebKitFormBoundary7MA4YWxkTrZu0gW--",
+                                        CURLOPT_HTTPHEADER => array(
+                                            "Postman-Token: ea58755c-5a14-4a73-b5e6-eb8e1b2016d1",
+                                            "cache-control: no-cache",
+                                            "content-type: multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW"
+                                        ) ,
+                                    ));
+
+                                    $response = curl_exec($curl);
+                                    $err = curl_error($curl);
+
+                                    curl_close($curl);
+
+                                    if ($err)
+                                    {
+                                        echo "cURL Error #:" . $err;
+                                    }
+                                    else
+                                    {
+                                        // echo $response;
+                                        echo '----------------------6  cargo medios de pago----------------';
+                                        sleep(3);
+
+                                        $curl = curl_init();
+
+                                        curl_setopt_array($curl, array(
+                                            CURLOPT_URL => HTTP_SERVER . "index.php?route=api/order/add&api_token=" . $json1['api_token'],
+                                            CURLOPT_RETURNTRANSFER => true,
+                                            CURLOPT_ENCODING => "",
+                                            CURLOPT_MAXREDIRS => 10,
+                                            CURLOPT_TIMEOUT => 30,
+                                            CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+                                            CURLOPT_CUSTOMREQUEST => "POST",
+                                            CURLOPT_HTTPHEADER => array(
+                                                "Postman-Token: b3f3aec6-545d-4d0b-b5bc-212ed2e508ce",
+                                                "cache-control: no-cache"
+                                            ) ,
+                                        ));
+
+                                        $response = curl_exec($curl);
+                                        $err = curl_error($curl);
+
+                                        curl_close($curl);
+
+                                        if ($err)
+                                        {
+                                            echo "cURL Error #:" . $err;
+                                        }
+                                        else
+                                        {
+                                            echo $response;
+
+                                            echo '---------------------- 7 finalizo perdido----------------';
+
+                                            unset($this->session->data['customer']);
+                                            
+                                            unset($this->session->data['shipping_address']);
+                                            //unset($this->session->data['customer']);
+                                            unset($this->session->data['shipping_method']);
+                                            unset($this->session->data['shipping_methods']);
+                                            unset($this->session->data['payment_address']);
+                                            unset($this->session->data['payment_method']);
+                                            unset($this->session->data['payment_methods']);
+                                            unset($this->session->data['comment']);
+                                            unset($this->session->data['order_id']);
+                                            unset($this->session->data['coupon']);
+                                            unset($this->session->data['reward']);
+                                            unset($this->session->data['voucher']);
+                                            unset($this->session->data['vouchers']);
+
+                                        }
+
+                                    }
+
+                                }
+
+                            }
+
+                        }
+
+                    }
+
+                }
+
+            }
+
+        } // fin foreach
+        
 
         $this
             ->response
@@ -1637,9 +1611,10 @@ if ($err) {
         // $this
         //     ->response
         //     ->setOutput(json_encode($json));
+        
 
-
-     }
+        
+    }
 
 }
 
