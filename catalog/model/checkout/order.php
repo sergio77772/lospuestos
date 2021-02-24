@@ -387,8 +387,8 @@ class ModelCheckoutOrder extends Model {
  public function changeStatus($id)
 
  {
-$query = $this->db->query("UPDATE `oc_order` SET `order_status_id` = \'2\' WHERE `oc_order`.`order_id` = ". (int)$id ."");
-			return $query->rows;
+$query = $this->db->query("UPDATE `oc_order` SET `order_status_id` = '2' WHERE `oc_order`.`order_id` = '" . (int)$id . "'");
+
  }
 
 }

@@ -1182,7 +1182,7 @@ class ControllerApiAllproducts extends Controller
 
     public function closeSessions()
     {
-        $this->load->model('checkout/order');
+         $this->load->model('checkout/order');
         ini_set('memory_limit', '-1');
         set_time_limit(0);
         $json = array();
