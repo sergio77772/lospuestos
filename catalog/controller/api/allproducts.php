@@ -1182,6 +1182,7 @@ class ControllerApiAllproducts extends Controller
 
     public function closeSessions()
     {
+        $this->load->model('checkout/order');
         ini_set('memory_limit', '-1');
         set_time_limit(0);
         $json = array();
@@ -1571,6 +1572,11 @@ class ControllerApiAllproducts extends Controller
 
                                             echo '---------------------- 7 finalizo perdido----------------';
                                             $json2 = json_decode($response, true);
+                                           // {"success":"Operaci\u00f3n Exitosa: Pedidos Modificados.","order_id":386}
+                                            if (isset($json2['order_id']))
+                                            {
+                                              $this->model_checkout_order->changeStatus($json2['order_id']);
+                                            }
                                             var_dump($json2);
 
 
