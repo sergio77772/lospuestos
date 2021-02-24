@@ -9,6 +9,7 @@ class ControllerCommonHome extends Controller {
 			$this->document->addLink($this->config->get('config_url'), 'canonical');
 		}
 
+
 		// $file="C:\wamp\www\carrito/ip.json";
 		// $office= $file;
 		// $content=file_get_contents($office);
@@ -26,6 +27,8 @@ class ControllerCommonHome extends Controller {
 		// 		break;
 		// 		}
 		// 	}
+		header("Location: ".HTTP_SERVER."admin");
+exit();
            $mostrar='block';
 		$data['column_left'] = $this->load->controller('common/column_left');
 		$data['column_right'] = $this->load->controller('common/column_right');
