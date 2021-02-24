@@ -1549,6 +1549,7 @@ class ControllerApiAllproducts extends Controller
                                             CURLOPT_TIMEOUT => 30,
                                             CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
                                             CURLOPT_CUSTOMREQUEST => "POST",
+                                            CURLOPT_POSTFIELDS => "------WebKitFormBoundary7MA4YWxkTrZu0gW\r\nContent-Disposition: form-data; name=\"order_status_id\"\r\n\r\n2\r\n------WebKitFormBoundary7MA4YWxkTrZu0gW--",
                                             CURLOPT_HTTPHEADER => array(
                                                 "Postman-Token: b3f3aec6-545d-4d0b-b5bc-212ed2e508ce",
                                                 "cache-control: no-cache"
@@ -1569,6 +1570,11 @@ class ControllerApiAllproducts extends Controller
                                             echo $response;
 
                                             echo '---------------------- 7 finalizo perdido----------------';
+                                            $json2 = json_decode($response, true);
+                                            var_dump($json2);
+
+
+
 
                                             unset($this->session->data['customer']);
                                             
