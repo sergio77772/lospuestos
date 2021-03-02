@@ -242,6 +242,13 @@ class ControllerApiAllproducts extends Controller
                 ->getProductAttributes($this
                 ->request
                 ->get['product_id']);
+
+             if (empty($especificaciones))
+             {
+               $especificaciones=null;
+             }
+ 
+
             $product_details['atributes'] = $especificaciones;
 
             $imagenes = $this
